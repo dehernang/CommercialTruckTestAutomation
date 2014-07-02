@@ -32,80 +32,32 @@ public class TCUtil extends TestCase{
 	protected boolean acceptNextAlert = true;
 	protected StringBuffer verificationErrors = new StringBuffer();
 	protected String baseUrl;
-	protected Map<String,String[]> makes;
+	//protected Map<String,String[]> makes;
 	protected String testing;
 	
 	public TCUtil() {
 		
-		//driver = new FirefoxDriver();
-		
+		//driver = new FirefoxDriver();		
 		element = new HashMap<String, String>();		
-		makes = new HashMap<String,String[]>();	
-
-		makes.put("CHEVROLET", new String[]{"CHEVROLET","Chevrolet"});
-
-		makes.put("FORD",new String[]{"FORD"});
-
-		makes.put("FREIGHTLINER",new String[]{"FREIGHTLINER"});
-
-		makes.put("GMC",new String[]{"GMC"});
-
-		makes.put("HINO",new String[]{"HINO"});
-
-		makes.put("INTERNATIONAL",new String[]{"INTERNATIONAL"});
-
-		makes.put("ISUZU",new String[]{"ISUZU"});
-	
-		makes.put("KENWORTH",new String[]{"KENWORTH"});
-
-		makes.put("MACK",new String[]{"MACK"});
-
-		makes.put("MERCEDES-BENZ",new String[]{"MERCEDES-BENZ"});
-
-		makes.put("MITSUBISHI-FUSO",new String[]{"MITSUBISHI FUSO"});
-
-		makes.put("NISSAN",new String[]{"NISSAN"});
-
-		makes.put("PETERBILT",new String[]{"PETERBILT"});
-
-		makes.put("RAM",new String[]{"RAM"});
-
-		makes.put("STERLING",new String[]{"STERLING"});
-
-		makes.put("VOLVO",new String[]{"VOLVO"});
-
-		makes.put("WESTERN STAR",new String[]{"WESTERN STAR"});
-
-		 
 		/*
-		OutputStream output = null;
-		Properties prop = new Properties();
-		try {
-			 
-			output = new FileOutputStream("config.properties");
-	 
-			// set the properties value
-			//prop.setProperty("database", "localhost");
-			//prop.setProperty("dbuser", "mkyong");
-			//prop.setProperty("dbpassword", "password");
-	 
-			// save properties to project root folder
-			//prop.store(output, null);
-			
-			prop.getProperty(key)
-	 
-		} catch (IOException io) {
-			io.printStackTrace();
-		} finally {
-			if (output != null) {
-				try {
-					output.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-	 
-		}
+		makes = new HashMap<String,String[]>();	
+		makes.put("CHEVROLET", new String[]{"CHEVROLET","Chevrolet"});
+		makes.put("FORD",new String[]{"FORD"});
+		makes.put("FREIGHTLINER",new String[]{"FREIGHTLINER"});
+		makes.put("GMC",new String[]{"GMC"});
+		makes.put("HINO",new String[]{"HINO"});
+		makes.put("INTERNATIONAL",new String[]{"INTERNATIONAL"});
+		makes.put("ISUZU",new String[]{"ISUZU"});	
+		makes.put("KENWORTH",new String[]{"KENWORTH"});
+		makes.put("MACK",new String[]{"MACK"});
+		makes.put("MERCEDES-BENZ",new String[]{"MERCEDES-BENZ"});
+		makes.put("MITSUBISHI-FUSO",new String[]{"MITSUBISHI FUSO"});
+		makes.put("NISSAN",new String[]{"NISSAN"});
+		makes.put("PETERBILT",new String[]{"PETERBILT"});
+		makes.put("RAM",new String[]{"RAM"});
+		makes.put("STERLING",new String[]{"STERLING"});
+		makes.put("VOLVO",new String[]{"VOLVO"});
+		makes.put("WESTERN STAR",new String[]{"WESTERN STAR"});
 		*/
 	}
 	
@@ -144,41 +96,37 @@ public class TCUtil extends TestCase{
 	 */
 	protected void verifyElementPresent(String target, String type, Boolean verExist, String testcaseName){
 		
-		String not = "";
-		if(!verExist)
-			not = "!";
-
+		String method = null;
 	    try {    		    	
 	    	switch(type){
 	    		case "linkText":
-	    			this.verifyElementPresentBytLinkText(target, verExist);
-	    			System.out.println(testcaseName+" Passed - "+not+"verifyElementPresentBytLinkText[" + target + "]");
+	    			method = "verifyElementPresentBytLinkText";
+	    			this.verifyElementPresentBytLinkText(target, verExist, testcaseName);
 	    			break;
 	    		case "id":
-	    			this.verifyElementPresentById(target, verExist);
-	    			System.out.println(testcaseName+" Passed - "+not+"verifyElementPresentById[" + target + "]");
+	    			method = "verifyElementPresentById";
+	    			this.verifyElementPresentById(target, verExist, testcaseName);
 	    			break;
 	    		case "xpath":
-	    			this.verifyElementPresentByXpath(target, verExist);
-	    			System.out.println(testcaseName+" Passed - "+not+"verifyElementPresentByXpath[" + target + "]");
+	    			method = "verifyElementPresentByXpath";
+	    			this.verifyElementPresentByXpath(target, verExist, testcaseName);
 	    			break;
 	    		case "cssSelector":
-	    			this.verifyElementPresentByCssSelector(target, verExist);
-	    			System.out.println(testcaseName+" Passed - "+not+"verifyElementPresentByCssSelector[" + target + "]");
+	    			method = "verifyElementPresentByCssSelector";
+	    			this.verifyElementPresentByCssSelector(target, verExist, testcaseName);
 	    			break;
 	    		default:
-	    			System.out.println(testcaseName+" Error - "+not+"verifyElementPresent 'Type' param not found");
+	    			System.out.println(testcaseName+" Error - verifyElementPresent 'Type' param not found");
 	    			break;	    	
 	    	}	
-	    	
-	     } catch (Error e) {
-	    	 
-	    	 if(verExist)
-	    		 System.out.println(testcaseName+" <<<Failed!>>> - Not found element["+target+"] type["+type+"]");
-	    	 else
-	    		 System.out.println(testcaseName+" <<<Failed!>>> - Not expecting element["+target+"] type["+type+"]");
-	    	 verificationErrors.append(e.toString());
+	    
+
+	     }catch(Error e){
+	    	 if(!verExist)
+	    		 method = "!"+method;    	 
+	    	 result(target, testcaseName, false, method);
 	     }
+	     
 
 	}
 	
@@ -190,34 +138,34 @@ public class TCUtil extends TestCase{
 	 * @param xpath String
 	 */
 	protected void verifyTextPresent(String target, String type, Boolean verExist, String testcaseName, String xpath){
-
-		String not = "";
-		if(!verExist)
-			not = "!";
-		
-	    try {    		    	
-	    	switch(type){
+	
+		String method = null;
+		try {    		    	
+			switch(type){
 	    		case "cssSelector":
-	    			this.verifyTextPresentByCssSelector(target, verExist);
-	    			System.out.println(testcaseName+" Passed - "+not+"verifyTextPresentByCssSelector[" + target + "]");
+	    			method = "verifyTextPresentByCssSelector";
+	    			this.verifyTextPresentByCssSelector(target, verExist, testcaseName);
 	    			break;
 	    		case "xpath":
-	    			this.verifyTextPresentByXpath(xpath, target, verExist);
-	    			System.out.println(testcaseName+" Passed - "+not+"verifyTextPresentByXpath[" + target + "]");
+	    			method = "verifyTextPresentByXpath";
+	    			this.verifyTextPresentByXpath(xpath, target, verExist, testcaseName);    			
 	    			break;
 	    		default:
 	    			System.out.println(testcaseName+" Error - verifyTextPresent 'Type' param not found");
 	    			break;	    	
 	    	}	
 	    	
-	     } catch (Error e) {
-	    	 
-	    	 if(verExist)
-	    		 System.out.println(testcaseName+" <<<Failed!>>> - Not found text["+target+"] type["+type+"]");
+
+	     }catch(Error e){  
+	    	 if(!verExist)
+	    		 method = "!"+method; 
+	    	 if(xpath != null)
+	    		 result(target, testcaseName, false, method, xpath);
 	    	 else
-	    		 System.out.println(testcaseName+" <<<Failed!>>> - Not expecting text["+target+"] type["+type+"]");
-	        verificationErrors.append(e.toString());
+	    		 result(target, testcaseName, false, method);
+	         
 	     }
+	     
 
 	}
 	
@@ -225,72 +173,147 @@ public class TCUtil extends TestCase{
 	 * 
 	 * @param str String id name
 	 * @param verExist Boolean true for assertTrue, false for assertFalse
+	 * @param testcaseName String test case name
 	 */
-	protected void verifyElementPresentById(String str, Boolean verExist){
-		if(verExist)
-			assertTrue(isElementPresent(By.id(str)));
-		else
-			assertFalse(isElementPresent(By.id(str)));
+	protected void verifyElementPresentById(String str, Boolean verExist, String testcaseName){
+		
+		String msg = "verifyElementPresentById";
+		try{		
+			if(verExist)
+				assertTrue(isElementPresent(By.id(str)));
+			else{
+				msg = "!"+msg;
+				assertFalse(isElementPresent(By.id(str)));	
+			}
+			result(str, testcaseName, true, msg); 
+		}catch(Exception e){
+			result(str, testcaseName, false, msg); 
+			println(e.getMessage());  		  
+		}
+	
 	}
 	
 	/**
 	 * 
 	 * @param str String link text name
 	 * @param verExist Boolean true for assertTrue, false for assertFalse
+	 * @param testcaseName String test case name
 	 */
-	protected void verifyElementPresentBytLinkText(String str, Boolean verExist){
-		if(verExist)
-			assertTrue(isElementPresent(By.linkText(str)));
-		else
-			assertFalse(isElementPresent(By.linkText(str)));
+	protected void verifyElementPresentBytLinkText(String str, Boolean verExist, String testcaseName){
+		
+		String msg = "verifyElementPresentBytLinkText";
+		try{	
+			if(verExist)
+				assertTrue(isElementPresent(By.linkText(str)));
+			else{
+				msg = "!"+msg;
+				assertFalse(isElementPresent(By.linkText(str)));
+			}
+			result(str, testcaseName, true, msg); 
+		}catch(Exception e){
+			result(str, testcaseName, false, msg); 
+			println(e.getMessage());  		  
+		}
+	
 	}
 	
 	/**
 	 * 
 	 * @param str String XPath regular expression string
+	 * @param verExist Boolean true for assertTrue, false for assertFalse
+	 * @param testcaseName String test case name
 	 */
-	protected void verifyElementPresentByXpath(String str, Boolean verExist){
-		if(verExist)
-			assertTrue(isElementPresent(By.xpath(str)));
-		else
-			assertFalse(isElementPresent(By.xpath(str)));
+	protected void verifyElementPresentByXpath(String str, Boolean verExist, String testcaseName){
+		
+		String msg = "verifyElementPresentByXpath";
+		try{		
+			if(verExist)
+				assertTrue(isElementPresent(By.xpath(str)));
+			else{
+				msg = "!"+msg;
+				assertFalse(isElementPresent(By.xpath(str)));	
+			}
+			result(str, testcaseName, true, msg); 
+		}catch(Exception e){
+			result(str, testcaseName, false, msg); 
+			println(e.getMessage());  		  
+		}
+	
 	}
 	
 	/**
 	 * 
 	 * @param str String CSS label
 	 * @param verExist Boolean true for assertTrue, false for assertFalse
+	 * @param testcaseName String test case name
 	 */
-	protected void verifyElementPresentByCssSelector(String str, Boolean verExist){
-		if(verExist)	
-			assertTrue(isElementPresent(By.cssSelector(str)));
-		else
-			assertFalse(isElementPresent(By.cssSelector(str)));
+	protected void verifyElementPresentByCssSelector(String str, Boolean verExist, String testcaseName){
+		
+		String msg = "verifyElementPresentByCssSelector";
+		try{		
+			if(verExist)	
+				assertTrue(isElementPresent(By.cssSelector(str)));
+			else{
+				msg = "!"+msg;
+				assertFalse(isElementPresent(By.cssSelector(str)));	
+			}
+			result(str, testcaseName, true, msg); 
+		}catch(Exception e){
+			result(str, testcaseName, false, msg); 
+			println(e.getMessage());  		  
+		}
+	
 	}
 	
 	/**
 	 * 
 	 * @param str String CSS label
 	 * @param verExist Boolean true for assertTrue, false for assertFalse
+	 * @param testcaseName String test case name
 	 */
-	protected void verifyTextPresentByCssSelector(String str, Boolean verExist){
-		if(verExist)
-			assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches(str));
-		else
-			assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches(str));
+	protected void verifyTextPresentByCssSelector(String str, Boolean verExist, String testcaseName){
+		
+		String msg = "verifyTextPresentByCssSelector";
+		try{		
+			if(verExist)
+				assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches(str));
+			else{
+				msg = "!"+msg;
+				assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches(str));	
+			}
+			result(str, testcaseName, true, msg); 
+		}catch(Exception e){
+			result(str, testcaseName, false, msg); 
+			println(e.getMessage());  		  
+		}
+	
 	}	
 
 	/**
 	 * 
-	 * @param str String Xpath String
+	 * @param str String xpath
+	 * @param str2 String regex
 	 * @param verExist Boolean true for assertTrue, false for assertFalse
+	 * @param testcaseName String test case name
 	 */
-	protected void verifyTextPresentByXpath(String xp, String str, Boolean verExist){
-		if(verExist)
-			assertTrue(driver.findElement(By.xpath(xp)).getText().matches(str));
-		else
-			assertFalse(driver.findElement(By.xpath(xp)).getText().matches(str));
+	protected void verifyTextPresentByXpath(String str, String str2, Boolean verExist, String testcaseName){
+
+		String msg = "verifyTextPresentByXpath";
+		try{	
+			if(verExist)
+				assertTrue(driver.findElement(By.xpath(str)).getText().matches(str2));			
+			else{
+				msg = "!"+msg;
+				assertFalse(driver.findElement(By.xpath(str)).getText().matches(str2));	
+			}
+			result(str2, testcaseName, true, msg, str); 
+		}catch(Exception e){
+			result(str2, testcaseName, false, msg, str); 
+			println(e.getMessage());  		  
+		}
+				
 	}	
+	
 	
 	/**
 	 * 
@@ -330,6 +353,28 @@ public class TCUtil extends TestCase{
 		}
 	}	
 	
+	
+	public void result(String target, String tcName, Boolean pass, String method){
+		
+		String status = "Passed";
+		if(!pass)
+			status = "<<<Failed>>>";
+	
+		println(tcName+" "+status+" - "+method+" [" + target + "]");
+	}
+	
+	public void result(String target, String tcName, Boolean pass, String method, String xpath){
+		
+		String status = "Passed";
+		if(!pass)
+			status = "<<<Failed>>>";
+	
+		println(tcName+" "+status+" - "+method+" [" + target + "] xpath["+xpath+"]");
+	}
+	
+	public void println(String msg){
+		System.out.println(msg);
+	}
 
     
 	

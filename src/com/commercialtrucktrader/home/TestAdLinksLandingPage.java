@@ -18,11 +18,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 	
 	  @Test
 	  public void testAdLinksLandingPage() throws Exception {
+		  
 		  driver.get(baseUrl + "/");
 		  driver.findElement(By.linkText("Chevy Trucks")).click();
 
-		  
-		  /* --------- Chevy --------- */
+		  //--------- Chevy ---------
 
 		  element.put("^[\\s\\S]*Chevrolet Trucks for Sale[\\s\\S]*$","xpath");
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/h1");	
@@ -34,9 +34,9 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  element.clear();
 		  element.put("^[\\s\\S]*Chevrolet results found[\\s\\S]*$","xpath");
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");	
-		  
-		  
-		  /* --------- Ford --------- */
+
+		  		  
+		  //--------- Ford ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Ford Trucks")).click();
@@ -55,7 +55,7 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
 		  
 		  
-		  /* --------- Freightliner --------- */
+		  //--------- Freightliner ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Freightliner Trucks")).click();
@@ -67,9 +67,9 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  element.clear();
 		  element.put("^[\\s\\S]*Freightliner results found[\\s\\S]*$","xpath");
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
-	
 		  
-		  /* --------- GMC --------- */
+		  
+		  //--------- GMC ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("GMC Trucks")).click();
@@ -83,7 +83,7 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");		  
 		  
 
-		  /* --------- Hino --------- */
+		  //--------- Hino ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Hino Trucks")).click();
@@ -95,9 +95,9 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  element.clear();
 		  element.put("^[\\s\\S]*Hino results found[\\s\\S]*$","xpath");
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		
 		  
-		  
-		  /* --------- International --------- */
+		  //--------- International ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("International Trucks")).click();
@@ -111,7 +111,7 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
 		  
 		  
-		  /* --------- Isuzu --------- */
+		  //--------- Isuzu ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Isuzu Trucks")).click();
@@ -125,7 +125,7 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
 		  
 		  
-		  /* --------- Nissan --------- */
+		  //--------- Nissan ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Nissan Trucks")).click();
@@ -138,8 +138,8 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  element.put("^[\\s\\S]*Nissan results found[\\s\\S]*$","xpath");
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
 		  
-
-		  /* --------- Peterbilt --------- */
+		  
+		  //--------- Peterbilt ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Peterbilt Trucks")).click();
@@ -153,7 +153,7 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
 		  
 		  
-		  /* --------- Ram --------- */
+		  //--------- Ram ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Ram Trucks")).click();
@@ -165,9 +165,9 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  element.clear();
 		  element.put("^[\\s\\S]*Ram results found[\\s\\S]*$","xpath");
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");	
+
 		  
-		  
-		  /* --------- Sterling --------- */
+		  //--------- Sterling ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Sterling Trucks")).click();
@@ -181,7 +181,7 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
 		  
 		  
-		  /* --------- Volvo --------- */
+		  //--------- Volvo ---------
 		  
 		  driver.findElement(By.linkText("HOME")).click();
 		  driver.findElement(By.linkText("Volvo Trucks")).click();
@@ -194,16 +194,19 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  element.put("^[\\s\\S]*Volvo results found[\\s\\S]*$","xpath");
 		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
 		  
+
+		  
 		  
 	  }
-	
+	  
+	  
 	  @After
 	  public void tearDown() throws Exception {
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
+		  driver.quit();
+		  String verificationErrorString = verificationErrors.toString();
+		  if (!"".equals(verificationErrorString)) {
+			  fail(verificationErrorString);
+		  }
 	  }
 
 }
