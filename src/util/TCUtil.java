@@ -39,26 +39,7 @@ public class TCUtil extends TestCase{
 		
 		//driver = new FirefoxDriver();		
 		element = new HashMap<String, String>();		
-		/*
-		makes = new HashMap<String,String[]>();	
-		makes.put("CHEVROLET", new String[]{"CHEVROLET","Chevrolet"});
-		makes.put("FORD",new String[]{"FORD"});
-		makes.put("FREIGHTLINER",new String[]{"FREIGHTLINER"});
-		makes.put("GMC",new String[]{"GMC"});
-		makes.put("HINO",new String[]{"HINO"});
-		makes.put("INTERNATIONAL",new String[]{"INTERNATIONAL"});
-		makes.put("ISUZU",new String[]{"ISUZU"});	
-		makes.put("KENWORTH",new String[]{"KENWORTH"});
-		makes.put("MACK",new String[]{"MACK"});
-		makes.put("MERCEDES-BENZ",new String[]{"MERCEDES-BENZ"});
-		makes.put("MITSUBISHI-FUSO",new String[]{"MITSUBISHI FUSO"});
-		makes.put("NISSAN",new String[]{"NISSAN"});
-		makes.put("PETERBILT",new String[]{"PETERBILT"});
-		makes.put("RAM",new String[]{"RAM"});
-		makes.put("STERLING",new String[]{"STERLING"});
-		makes.put("VOLVO",new String[]{"VOLVO"});
-		makes.put("WESTERN STAR",new String[]{"WESTERN STAR"});
-		*/
+		
 	}
 	
 	/**
@@ -66,10 +47,8 @@ public class TCUtil extends TestCase{
 	 * @param link Map list of element and type
 	 * @param verExist Boolean true for assertTrue, false for assertFalse
 	 */
-	protected void doVerifyElementPresent(Map<String,String> link, Boolean verExist, String testcaseName){
-	    Set<Map.Entry<String, String>> set = link.entrySet();
-	    
-	    for(Map.Entry<String, String> lnkEntry : set){
+	protected void doVerifyElementPresent(Map<String,String> link, Boolean verExist, String testcaseName){   
+	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
 	    	this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), verExist, testcaseName);    	
 	    }
 	}
@@ -81,9 +60,7 @@ public class TCUtil extends TestCase{
 	 * @param xpath String
 	 */
 	protected void doVerifyTextPresent(Map<String,String> link, Boolean verExist, String testcaseName, String xpath){
-	    Set<Map.Entry<String, String>> set = link.entrySet();
-	    
-	    for(Map.Entry<String, String> lnkEntry : set){
+	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
 	    	this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), verExist, testcaseName, xpath);    	
 	    }
 	}
@@ -329,6 +306,10 @@ public class TCUtil extends TestCase{
 		  }
 	 }
 	
+	/**
+	 * 
+	 * @return
+	 */
 	protected boolean isAlertPresent() {
 		try {
 		      driver.switchTo().alert();
@@ -338,6 +319,10 @@ public class TCUtil extends TestCase{
 		 }
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	protected String closeAlertAndGetItsText() {
 		try {
 		      Alert alert = driver.switchTo().alert();
@@ -353,7 +338,13 @@ public class TCUtil extends TestCase{
 		}
 	}	
 	
-	
+	/**
+	 * 
+	 * @param target needle
+	 * @param tcName test case name
+	 * @param pass passed true or failed false the test
+	 * @param method test method name
+	 */
 	public void result(String target, String tcName, Boolean pass, String method){
 		
 		String status = "Passed";
@@ -363,6 +354,14 @@ public class TCUtil extends TestCase{
 		println(tcName+" "+status+" - "+method+" [" + target + "]");
 	}
 	
+	/**
+	 * 
+	 * @param target needle
+	 * @param tcName test case name
+	 * @param pass passed true or failed false the test
+	 * @param method test method name
+	 * @param xpath regex used to locate the element
+	 */
 	public void result(String target, String tcName, Boolean pass, String method, String xpath){
 		
 		String status = "Passed";
@@ -372,6 +371,10 @@ public class TCUtil extends TestCase{
 		println(tcName+" "+status+" - "+method+" [" + target + "] xpath["+xpath+"]");
 	}
 	
+	/**
+	 * 
+	 * @param msg
+	 */
 	public void println(String msg){
 		System.out.println(msg);
 	}
