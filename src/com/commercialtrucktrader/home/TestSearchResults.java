@@ -43,7 +43,7 @@ public class TestSearchResults extends TCUtil{
 			makes.put("MITSUBISHI-FUSO",new String[]{"MITSUBISHI FUSO"});
 			makes.put("NISSAN",new String[]{"NISSAN"});
 			makes.put("PETERBILT",new String[]{"PETERBILT"});
-			makes.put("RAM",new String[]{"RAM"});
+			makes.put("RAM",new String[]{" RAM "});
 			makes.put("STERLING",new String[]{"STERLING"});
 			makes.put("VOLVO",new String[]{"VOLVO"});
 			makes.put("WESTERN STAR",new String[]{"WESTERN STAR"});
@@ -81,7 +81,7 @@ public class TestSearchResults extends TCUtil{
 			
 			      for(String kw : make.getValue()){
 			    	  element.clear();
-			    	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.* "+kw+" *)[\\s\\S]*$","xpath");
+			    	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
 			    	  this.doVerifyTextPresent(element, true, TestSearchResults.class.getSimpleName(), "//h3/a");
 			      }
 			      
@@ -91,7 +91,7 @@ public class TestSearchResults extends TCUtil{
 			    	  if(!e.getKey().equals(make.getKey())){ 	    		  
 			    		  //loop keywords of the make
 			    		  for(String kw : e.getValue()){
-			    			  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.* "+kw+" *)[\\s\\S]*$","xpath");
+			    			  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
 			    		  }		    		
 			    	  }
 			      }
