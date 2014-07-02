@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="run" name="run sample selenium tc 1">
+  	<property name="testdir" location="staging" />
+    <property name="srcdir" location="src" />
+  	<property name="full-compile" value="true" />
+	<path id="classpath.base"/>
+	<path id="classpath.test">
+		<pathelement location="lib/junit-4.10.jar" />
+		<pathelement location="lib/selenium-java-2.42.2.jar" />
+		<pathelement location="lib/selenium-server-standalone-2.42.2.jar" />
+		<pathelement location="${testdir}" />
+        <pathelement location="${srcdir}" />
+		<path refid="classpath.base" />
+	</path>
+	<target name="compile">
+		<javac includeantruntime="false" srcdir="${srcdir}" destdir="${testdir}" verbose="${full-compile}">
+			<classpath refid="classpath.test"/>
+		</javac>
+	</target>
+	<target name="run" depends="compile">
+		<!-- <junit showoutput="true"> -->
+			<junit>
+			<!-- <formatter type="brief" usefile="false" /> -->
+			<!-- let output more details -->
+			<formatter type="plain" usefile="false" />
+			<classpath refid="classpath.test" />
+			<batchtest fork="yes" todir="${testdir}">
+				<fileset dir="src">
+					<include name="**/Suite*.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>	
+</project>
