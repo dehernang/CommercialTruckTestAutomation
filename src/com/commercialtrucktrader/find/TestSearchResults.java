@@ -1,0 +1,119 @@
+package com.commercialtrucktrader.find;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.regex.Pattern;
+import java.util.concurrent.TimeUnit;
+import org.junit.*;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import util.TCUtil;
+import java.util.Map;
+
+public class TestSearchResults extends TCUtil{
+
+		private Map<String,String[]> makes;
+		private Boolean makeFound;
+		
+		public TestSearchResults(){
+			super();
+		}
+	  
+		@Before
+		public void setUp() throws Exception {
+			driver = new FirefoxDriver();
+			baseUrl = "http://php5dev.commercialtrucktrader.com/";
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			  
+		    makes = new HashMap<String,String[]>();	
+			makes.put("CHEVROLET", new String[]{"CHEVROLET","Chevrolet"});
+			makes.put("DODGE",new String[]{"DODGE"});
+			makes.put("FORD",new String[]{"FORD"});
+			makes.put("FREIGHTLINER",new String[]{"FREIGHTLINER"});
+			makes.put("GMC",new String[]{"GMC"});
+			makes.put("HINO",new String[]{"HINO"});
+			makes.put("INTERNATIONAL",new String[]{"INTERNATIONAL"});
+			makes.put("ISUZU",new String[]{"ISUZU"});	
+			makes.put("KENWORTH",new String[]{"KENWORTH"});
+			makes.put("MACK",new String[]{"MACK"});
+			makes.put("MERCEDES-BENZ",new String[]{"MERCEDES-BENZ"});
+			makes.put("MITSUBISHI-FUSO",new String[]{"MITSUBISHI FUSO"});
+			makes.put("NISSAN",new String[]{"NISSAN"});
+			makes.put("PETERBILT",new String[]{"PETERBILT"});
+			makes.put("RAM",new String[]{"RAM"});
+			makes.put("STERLING",new String[]{"STERLING"});
+			makes.put("VOLVO",new String[]{"VOLVO"});
+			makes.put("WESTERN STAR",new String[]{"WESTERN STAR"});
+			
+			
+	  }
+
+	  @Test
+	  public void testSearchResults() throws Exception {
+
+		  driver.get(baseUrl + "/");
+		  driver.findElement(By.linkText("FIND")).click();
+
+		  for(Map.Entry<String,String[]> make : makes.entrySet()){
+
+			  if(make.getKey() == "RAM"){
+	
+				  try{
+					  new Select(driver.findElement(By.id("makesDrop"))).selectByVisibleText("RAM");
+					  makeFound = true;
+				  }catch(Exception e){
+					  makeFound = false;
+					  println(e.getMessage());
+					  result(make.getKey(), TestSearchResults.class.getSimpleName(), false, "selectByVisibleText");
+				  }
+				  
+				  if(makeFound){
+					  driver.findElement(By.cssSelector("img[alt=\"Find It\"]")).click();
+				
+				      Thread.sleep(1000);
+				
+				      for(String kw : make.getValue()){
+				    	  element.clear();
+				    	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
+				    	  this.doVerifyTextPresent(element, true, TestSearchResults.class.getSimpleName(), "//h3/a");
+				      }
+				      
+				      element.clear();		    		      
+				      for(Map.Entry<String,String[]> e : makes.entrySet()){	    	  
+				    	  //skip itself
+				    	  if(!e.getKey().equals(make.getKey())){ 	    		  
+				    		  //loop keywords of the make
+				    		  for(String kw : e.getValue()){
+				    			  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
+				    		  }		    		
+				    	  }
+				      }
+				      this.doVerifyTextPresent(element, false, TestSearchResults.class.getSimpleName(), "//h3/a");
+			
+				      
+				      Thread.sleep(1000);
+				      driver.findElement(By.linkText("HOME")).click();
+				      Thread.sleep(1000);
+			  
+				  }
+		  	}	  
+		 }
+		 
+		  
+	  }
+	
+	  @After
+	  public void tearDown() throws Exception {
+		    driver.quit();
+		    String verificationErrorString = verificationErrors.toString();
+		    if (!"".equals(verificationErrorString)) {
+		    	fail(verificationErrorString);
+		    }
+	  }
+	  
+
+ 
+}
