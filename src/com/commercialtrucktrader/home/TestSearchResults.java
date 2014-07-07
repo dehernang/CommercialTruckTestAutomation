@@ -43,9 +43,9 @@ public class TestSearchResults extends TCUtil{
 			makes.put("HINO",new String[]{"HINO"});
 			makes.put("INTERNATIONAL",new String[]{"INTERNATIONAL"});
 			makes.put("ISUZU",new String[]{"ISUZU"});	
-			makes.put("KENWORTH",new String[]{"KENWORTaaaHaaa"});
+			makes.put("KENWORTH",new String[]{"KENWORTH"});
 			makes.put("MACK",new String[]{"MACK"});
-			makes.put("MERCEDES-BENZ",new String[]{"MERCEDES-BENssZ"});
+			makes.put("MERCEDES-BENZ",new String[]{"MERCEDES-BENZ"});
 			makes.put("MITSUBISHI-FUSO",new String[]{"MITSUBISHI FUSO"});
 			makes.put("NISSAN",new String[]{"NISSAN"});
 			makes.put("PETERBILT",new String[]{"PETERBILT"});
