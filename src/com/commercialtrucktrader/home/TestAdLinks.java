@@ -14,8 +14,6 @@ import util.TCUtil;
  *
  */
 public class TestAdLinks extends TCUtil{
-
-	//private String classname = TestAdLinks.class.getSimpleName();
 	
 	public TestAdLinks(){
 		super();
