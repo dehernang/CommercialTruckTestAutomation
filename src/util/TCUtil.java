@@ -77,7 +77,7 @@ public class TCUtil extends TestCase{
 			
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream("resources/" + conf);
 			prop.load(is);
-			println("baseurl: " + prop.getProperty("baseurl"));
+			println("getProperty baseurl: " + prop.getProperty("baseurl"));
 			
 			this.baseUrl = prop.getProperty("baseurl");	
 			this.timeout = Integer.parseInt(prop.getProperty("timeout"));	
