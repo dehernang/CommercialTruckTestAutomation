@@ -50,33 +50,34 @@ public class TCUtil extends TestCase{
 	protected int counterFail;
 	
 	public String classname;
-	//private static final String CUSTOMER_CONFIG_FILE_NAME = "dev.properties";
 	
-	private String configPath;
+	private String conf;
+	private String env;
+	private static final String CONFIG_DEV = "dev.properties";
+	private static final String CONFIG_LIVE = "live.properties";
+	private static final String LIVE = "LIVE";
+	private static final String DEV = "DEV";
 	
 	public TCUtil() {
 		
 		Properties prop = new Properties();	
 		try {
-			
-			//InputStream custumerConfigIn = TCUtil.class.getClassLoader().getResourceAsStream(CUSTOMER_CONFIG_FILE_NAME);
-	        //System.out.println("custumerConfigIn: " + TCUtil.class.getClassLoader().getResourceAsStream(CUSTOMER_CONFIG_FILE_NAME));       
-			
-			//String file = "/home/hernan/workspace/CommercialTruck/config.properties";
-			//String file = System.getProperty("user.dir") + "/config.properties";
-			//String file = getClass().getResourceAsStream("/config.properties");
-			
-			/*
-			String file = "dev.properties";
 
-			println("Uploading config file from " + file);
-			FileInputStream in = new FileInputStream(file);
-			prop.load(in);
-			*/
+			env = System.getenv("ENV_TEST_AUTO");
+			println("ENV_TEST_AUTO = " + env);
 			
-			InputStream is = this.getClass().getClassLoader().getResourceAsStream("resources/dev.properties");
+			//ENV_TEST_AUTO has to be set up already
+			if(env == LIVE){
+				conf = CONFIG_LIVE;
+			}else if(env == DEV){
+				conf = CONFIG_DEV;
+			}else{
+				conf = CONFIG_DEV;
+			}
+			
+			InputStream is = this.getClass().getClassLoader().getResourceAsStream("resources/" + conf);
 			prop.load(is);
-			System.out.println("baseurl: " + prop.getProperty("baseurl"));
+			println("baseurl: " + prop.getProperty("baseurl"));
 			
 			this.baseUrl = prop.getProperty("baseurl");	
 			this.timeout = Integer.parseInt(prop.getProperty("timeout"));	
@@ -84,9 +85,6 @@ public class TCUtil extends TestCase{
 		} catch (IOException e) {
 			e.printStackTrace();		
 		}
-		
-		//this.baseUrl = "http://php5dev.commercialtrucktrader.com";	
-		//this.timeout = 30;
 		
 		this.element = new HashMap<String, String>();		
 		this.counter = 0;
