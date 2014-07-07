@@ -25,8 +25,7 @@ public class TestLogoNav extends TCUtil {
 	  @Before
 	  public void setUp() throws Exception {
 		  driver = new FirefoxDriver();
-		  baseUrl = "http://php5dev.commercialtrucktrader.com/";
-		  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		  driver.manage().timeouts().implicitlyWait(super.timeout, TimeUnit.SECONDS);
 	  }
 	
 	  @Test

@@ -17,6 +17,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import junit.framework.TestCase;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -38,20 +41,33 @@ public class TCUtil extends TestCase{
 	protected boolean acceptNextAlert = true;
 	protected StringBuffer verificationErrors = new StringBuffer();
 	protected String baseUrl;
-	//protected Map<String,String[]> makes;
+	protected int timeout;
 	protected String testing;
 	protected int counter;
-	public String classname;
 	protected int counterPass;
 	protected int counterFail;
 	
+	public String classname;
+	
 	public TCUtil() {
 		
-		//driver = new FirefoxDriver();		
+		Properties prop = new Properties();	
+		try {
+			FileInputStream in = new FileInputStream("config.properties");
+			prop.load(in);
+			this.baseUrl = prop.getProperty("baseurl");	
+			this.timeout = Integer.parseInt(prop.getProperty("timeout"));	
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		
 		this.element = new HashMap<String, String>();		
 		this.counter = 0;
 		this.counterPass = 0;
 		this.counterFail = 0;
+
 	}
 	
 	/**
