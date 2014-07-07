@@ -2,6 +2,7 @@
 <project default="run" name="run sample selenium tc 1">
   	<property name="testdir" location="staging" />
     <property name="srcdir" location="src" />
+	<property name="projdir" location="." />
   	<property name="full-compile" value="true" />
 	<path id="classpath.base"/>
 	<path id="classpath.test">
@@ -10,8 +11,10 @@
 		<pathelement location="lib/selenium-server-standalone-2.42.2.jar" />
 		<pathelement location="${testdir}" />
         <pathelement location="${srcdir}" />
+		<pathelement location="${projdir}" />
 		<path refid="classpath.base" />
 	</path>
+	<property file="dev.properties"/>
 	<target name="compile">
 		<javac includeantruntime="false" srcdir="${srcdir}" destdir="${testdir}" verbose="${full-compile}">
 			<classpath refid="classpath.test"/>

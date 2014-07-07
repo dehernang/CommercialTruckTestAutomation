@@ -18,10 +18,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import junit.framework.TestCase;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
@@ -48,19 +50,43 @@ public class TCUtil extends TestCase{
 	protected int counterFail;
 	
 	public String classname;
+	//private static final String CUSTOMER_CONFIG_FILE_NAME = "dev.properties";
+	
+	private String configPath;
 	
 	public TCUtil() {
 		
 		Properties prop = new Properties();	
 		try {
-			FileInputStream in = new FileInputStream("config.properties");
+			
+			//InputStream custumerConfigIn = TCUtil.class.getClassLoader().getResourceAsStream(CUSTOMER_CONFIG_FILE_NAME);
+	        //System.out.println("custumerConfigIn: " + TCUtil.class.getClassLoader().getResourceAsStream(CUSTOMER_CONFIG_FILE_NAME));       
+			
+			//String file = "/home/hernan/workspace/CommercialTruck/config.properties";
+			//String file = System.getProperty("user.dir") + "/config.properties";
+			//String file = getClass().getResourceAsStream("/config.properties");
+			
+			/*
+			String file = "dev.properties";
+
+			println("Uploading config file from " + file);
+			FileInputStream in = new FileInputStream(file);
 			prop.load(in);
+			*/
+			
+			InputStream is = this.getClass().getClassLoader().getResourceAsStream("resources/dev.properties");
+			prop.load(is);
+			System.out.println("baseurl: " + prop.getProperty("baseurl"));
+			
 			this.baseUrl = prop.getProperty("baseurl");	
 			this.timeout = Integer.parseInt(prop.getProperty("timeout"));	
 			
 		} catch (IOException e) {
 			e.printStackTrace();		
 		}
+		
+		//this.baseUrl = "http://php5dev.commercialtrucktrader.com";	
+		//this.timeout = 30;
 		
 		this.element = new HashMap<String, String>();		
 		this.counter = 0;
@@ -420,11 +446,9 @@ public class TCUtil extends TestCase{
 		System.out.println(msg);
 	}
 
-	/**
-	 * 
-	 */
     public void printTotalVerification(){
     	this.println(this.classname + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);  	
     }
-	
+    
+    
 }
