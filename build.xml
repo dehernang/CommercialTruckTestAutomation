@@ -19,7 +19,7 @@
 	</target>
 	<target name="run" depends="compile">
 		<!-- <junit showoutput="true"> -->
-			<junit>
+			<junit fork="yes" printsummary="on">
 			<!-- <formatter type="brief" usefile="false" /> -->
 			<!-- let output more details -->
 			<formatter type="plain" usefile="false" />
