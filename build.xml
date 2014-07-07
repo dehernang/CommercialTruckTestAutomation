@@ -3,6 +3,7 @@
   	<property name="testdir" location="staging" />
     <property name="srcdir" location="src" />
 	<property name="projdir" location="." />
+	<property name="cleandir" location="staging/*" />
   	<property name="full-compile" value="true" />
 	<path id="classpath.base"/>
 	<path id="classpath.test">
@@ -15,7 +16,7 @@
 		<path refid="classpath.base" />
 	</path>
 	<property file="dev.properties"/>
-	<target name="compile">
+	<target name="compile" depends="clean">
 		<javac includeantruntime="false" srcdir="${srcdir}" destdir="${testdir}" verbose="${full-compile}">
 			<classpath refid="classpath.test"/>
 		</javac>
@@ -33,5 +34,8 @@
 				</fileset>
 			</batchtest>
 		</junit>
+	</target>	
+	<target name="clean">
+		<delete dir="${cleandir}"/>
 	</target>	
 </project>

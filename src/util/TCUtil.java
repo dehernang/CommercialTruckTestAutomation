@@ -64,17 +64,18 @@ public class TCUtil extends TestCase{
 		try {
 
 			env = System.getenv("ENV_TEST_AUTO");
+			println("ENV_TEST_AUTO = " + env);
 			
 			//ENV_TEST_AUTO has to be set up already
 			if(env == LIVE){
 				conf = CONFIG_LIVE;
-				println("ENV_TEST_AUTO = " + LIVE);
+				println("reloading " + LIVE + " properties");
 			}else if(env == DEV){
 				conf = CONFIG_DEV;
-				println("ENV_TEST_AUTO = " + DEV);
+				println("reloading " + LIVE + " properties");
 			}else{
 				conf = CONFIG_DEV;
-				println("ENV_TEST_AUTO = " + DEV + " (default)");
+				println("reloading default " + LIVE + " properties");
 			}
 			
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream("resources/" + conf);
