@@ -59,8 +59,7 @@ public class TCUtil extends TestCase{
 			this.timeout = Integer.parseInt(prop.getProperty("timeout"));	
 			
 		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(1);
+			e.printStackTrace();		
 		}
 		
 		this.element = new HashMap<String, String>();		
