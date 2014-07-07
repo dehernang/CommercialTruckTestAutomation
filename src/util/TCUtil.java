@@ -63,14 +63,14 @@ public class TCUtil extends TestCase{
 		Properties prop = new Properties();	
 		try {
 
-			env = System.getenv("ENV_TEST_AUTO");
-			println("ENV_TEST_AUTO = " + env);
+			env = (String)System.getenv("ENV_TEST_AUTO");
+			println("ENV_TEST_AUTO = " + env + ".");
 			
 			String tmpstr = "";
 			//ENV_TEST_AUTO has to be set up already
-			if(env == LIVE){
+			if(LIVE.equalsIgnoreCase(env)){
 				conf = CONFIG_LIVE;
-			}else if(env == DEV){
+			}else if(DEV.equalsIgnoreCase(env)){
 				conf = CONFIG_DEV;
 			}else{
 				conf = CONFIG_DEV;
