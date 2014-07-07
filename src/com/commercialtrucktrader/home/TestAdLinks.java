@@ -7,10 +7,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import util.TCUtil;
 
+/**
+ * @author hernan
+ * @version 1.0
+ * @since Jul 7, 2014
+ *
+ */
 public class TestAdLinks extends TCUtil{
 
+	//private String classname = TestAdLinks.class.getSimpleName();
+	
 	public TestAdLinks(){
 		super();
+		super.classname = TestAdLinks.class.getSimpleName();
 	}
   
 	@Before
@@ -77,12 +86,13 @@ public class TestAdLinks extends TCUtil{
 	    element.put("Light Duty Trucks","linkText");
 	    element.put("Trailers","linkText");
 	    
-	    this.doVerifyElementPresent(element, true, TestAdLinks.class.getSimpleName());
+	    this.doVerifyElementPresent(element, true, super.classname);
 	   
 	  }
 	
 	  @After
 	  public void tearDown() throws Exception {
+		super.printTotalVerification();  
 	    driver.quit();
 	    String verificationErrorString = verificationErrors.toString();
 	    if (!"".equals(verificationErrorString)) {

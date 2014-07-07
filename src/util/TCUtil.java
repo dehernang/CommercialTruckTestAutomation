@@ -22,6 +22,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Properties;
 
+/**
+ * @author hernan
+ * @version 1.0
+ * @since Jul 7, 2014
+ *
+ */
 public class TCUtil extends TestCase{
 
 	protected Iterator<String> iterator;
@@ -34,12 +40,18 @@ public class TCUtil extends TestCase{
 	protected String baseUrl;
 	//protected Map<String,String[]> makes;
 	protected String testing;
+	protected int counter;
+	public String classname;
+	protected int counterPass;
+	protected int counterFail;
 	
 	public TCUtil() {
 		
 		//driver = new FirefoxDriver();		
-		element = new HashMap<String, String>();		
-		
+		this.element = new HashMap<String, String>();		
+		this.counter = 0;
+		this.counterPass = 0;
+		this.counterFail = 0;
 	}
 	
 	/**
@@ -49,7 +61,8 @@ public class TCUtil extends TestCase{
 	 */
 	protected void doVerifyElementPresent(Map<String,String> link, Boolean verExist, String testcaseName){   
 	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
-	    	this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), verExist, testcaseName);    	
+	    	this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), verExist, testcaseName); 
+	    	counter++;
 	    }
 	}
 	
@@ -61,7 +74,8 @@ public class TCUtil extends TestCase{
 	 */
 	protected void doVerifyTextPresent(Map<String,String> link, Boolean verExist, String testcaseName, String xpath){
 	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
-	    	this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), verExist, testcaseName, xpath);    	
+	    	this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), verExist, testcaseName, xpath);    
+	    	counter++;
 	    }
 	}
 	
@@ -162,8 +176,10 @@ public class TCUtil extends TestCase{
 				msg = "!"+msg;
 				assertFalse(isElementPresent(By.id(str)));	
 			}
+			this.counterPass++;
 			result(str, testcaseName, true, msg); 
 		}catch(Exception e){
+			this.counterFail++;
 			result(str, testcaseName, false, msg); 
 			println(e.getMessage());  		  
 		}
@@ -186,8 +202,10 @@ public class TCUtil extends TestCase{
 				msg = "!"+msg;
 				assertFalse(isElementPresent(By.linkText(str)));
 			}
+			this.counterPass++;
 			result(str, testcaseName, true, msg); 
 		}catch(Exception e){
+			this.counterFail++;
 			result(str, testcaseName, false, msg); 
 			println(e.getMessage());  		  
 		}
@@ -210,8 +228,10 @@ public class TCUtil extends TestCase{
 				msg = "!"+msg;
 				assertFalse(isElementPresent(By.xpath(str)));	
 			}
+			this.counterPass++;
 			result(str, testcaseName, true, msg); 
 		}catch(Exception e){
+			this.counterFail++;
 			result(str, testcaseName, false, msg); 
 			println(e.getMessage());  		  
 		}
@@ -234,8 +254,10 @@ public class TCUtil extends TestCase{
 				msg = "!"+msg;
 				assertFalse(isElementPresent(By.cssSelector(str)));	
 			}
+			this.counterPass++;
 			result(str, testcaseName, true, msg); 
 		}catch(Exception e){
+			this.counterFail++;
 			result(str, testcaseName, false, msg); 
 			println(e.getMessage());  		  
 		}
@@ -258,8 +280,10 @@ public class TCUtil extends TestCase{
 				msg = "!"+msg;
 				assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches(str));	
 			}
+			this.counterPass++;
 			result(str, testcaseName, true, msg); 
 		}catch(Exception e){
+			this.counterFail++;
 			result(str, testcaseName, false, msg); 
 			println(e.getMessage());  		  
 		}
@@ -283,8 +307,10 @@ public class TCUtil extends TestCase{
 				msg = "!"+msg;
 				assertFalse(driver.findElement(By.xpath(str)).getText().matches(str2));	
 			}
+			this.counterPass++;
 			result(str2, testcaseName, true, msg, str); 
 		}catch(Exception e){
+			this.counterFail++;
 			result(str2, testcaseName, false, msg, str); 
 			println(e.getMessage());  		  
 		}
@@ -379,6 +405,11 @@ public class TCUtil extends TestCase{
 		System.out.println(msg);
 	}
 
-    
+	/**
+	 * 
+	 */
+    public void printTotalVerification(){
+    	this.println(this.classname + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);  	
+    }
 	
 }

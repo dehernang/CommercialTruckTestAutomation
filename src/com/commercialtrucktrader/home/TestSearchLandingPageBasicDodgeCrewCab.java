@@ -7,8 +7,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import util.TCUtil;
 
+/**
+ * @author hernan
+ * @version 1.0
+ * @since Jul 7, 2014
+ *
+ */
 public class TestSearchLandingPageBasicDodgeCrewCab extends TCUtil{
 
+	public TestSearchLandingPageBasicDodgeCrewCab(){
+		super();
+		super.classname = TestSearchLandingPageBasicDodgeCrewCab.class.getSimpleName();
+	}
+	
 	@Before
 	public void setUp() throws Exception {
 		driver = new FirefoxDriver();
@@ -31,6 +42,7 @@ public class TestSearchLandingPageBasicDodgeCrewCab extends TCUtil{
 
 	@After
 	public void tearDown() throws Exception {
+		super.printTotalVerification(); 
 		driver.quit();
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {

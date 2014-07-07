@@ -4,12 +4,22 @@ import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.commercialtrucktrader.home.TestSearchLandingPageBasicDodgeCrewCab;
+
 import util.TCUtil;
 
+/**
+ * @author hernan
+ * @version 1.0
+ * @since Jul 7, 2014
+ *
+ */
 public class TestLogoNav extends TCUtil {
 
 	  public TestLogoNav(){
 		  super();
+		  super.classname = TestLogoNav.class.getSimpleName();							  
 	  }
 	  
 	  @Before
@@ -142,6 +152,7 @@ public class TestLogoNav extends TCUtil {
 	
 	  @After
 	  public void tearDown() throws Exception {
+		  super.printTotalVerification(); 
 		  driver.quit();
 		  String verificationErrorString = verificationErrors.toString();
 		  if (!"".equals(verificationErrorString)) {

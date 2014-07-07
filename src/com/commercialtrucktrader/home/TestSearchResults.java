@@ -13,6 +13,12 @@ import org.openqa.selenium.support.ui.Select;
 import util.TCUtil;
 import java.util.Map;
 
+/**
+ * @author hernan
+ * @version 1.0
+ * @since Jul 7, 2014
+ *
+ */
 public class TestSearchResults extends TCUtil{
 
 		private Map<String,String[]> makes;
@@ -20,8 +26,9 @@ public class TestSearchResults extends TCUtil{
 		
 		public TestSearchResults(){
 			super();
+			super.classname = TestSearchLandingPageBasicDodgeCrewCab.class.getSimpleName();
 		}
-	  
+  
 		@Before
 		public void setUp() throws Exception {
 			driver = new FirefoxDriver();
@@ -30,20 +37,20 @@ public class TestSearchResults extends TCUtil{
 			  
 		    makes = new HashMap<String,String[]>();	
 			makes.put("CHEVROLET", new String[]{"CHEVROLET","Chevrolet"});
-			makes.put("DODGE",new String[]{"DODGE"});
+			//makes.put("DODGE",new String[]{"DODGE"}); //moved to a special test case
 			makes.put("FORD",new String[]{"FORD"});
 			makes.put("FREIGHTLINER",new String[]{"FREIGHTLINER"});
 			makes.put("GMC",new String[]{"GMC"});
 			makes.put("HINO",new String[]{"HINO"});
 			makes.put("INTERNATIONAL",new String[]{"INTERNATIONAL"});
 			makes.put("ISUZU",new String[]{"ISUZU"});	
-			makes.put("KENWORTH",new String[]{"KENWORTH"});
+			makes.put("KENWORTH",new String[]{"KENWORTaaaHaaa"});
 			makes.put("MACK",new String[]{"MACK"});
-			makes.put("MERCEDES-BENZ",new String[]{"MERCEDES-BENZ"});
+			makes.put("MERCEDES-BENZ",new String[]{"MERCEDES-BENssZ"});
 			makes.put("MITSUBISHI-FUSO",new String[]{"MITSUBISHI FUSO"});
 			makes.put("NISSAN",new String[]{"NISSAN"});
 			makes.put("PETERBILT",new String[]{"PETERBILT"});
-			makes.put("RAM",new String[]{" RAM "});
+			//makes.put("RAM",new String[]{" RAM "}); //moved to a special test case
 			makes.put("STERLING",new String[]{"STERLING"});
 			makes.put("VOLVO",new String[]{"VOLVO"});
 			makes.put("WESTERN STAR",new String[]{"WESTERN STAR"});
@@ -55,22 +62,15 @@ public class TestSearchResults extends TCUtil{
 	  public void testSearchResults() throws Exception {
 
 		  driver.get(baseUrl + "/");
-		  
-		  //System.out.println(TestSearchResults.class.getSimpleName());
 
 		  for(Map.Entry<String,String[]> make : makes.entrySet()){
 
-		      //String lMake = "WESTERN STAR";
-		      //new Select(driver.findElement(By.id("alltype"))).selectByVisibleText("Light Duty (Class 1-3)");
-		      //new Select(driver.findElement(By.id("typeLight"))).selectByVisibleText("Crew Cab");
-			  
 			  try{
 				  new Select(driver.findElement(By.id("makesDrop"))).selectByVisibleText(make.getKey());
 				  makeFound = true;
 			  }catch(Exception e){
 				  makeFound = false;
 				  println(e.getMessage());
-				  //println("Make["+make.getKey()+"] Not Found, Skipping...");
 				  result(make.getKey(), TestSearchResults.class.getSimpleName(), false, "selectByVisibleText");
 			  }
 			  
@@ -111,11 +111,12 @@ public class TestSearchResults extends TCUtil{
 	
 	  @After
 	  public void tearDown() throws Exception {
-		    driver.quit();
-		    String verificationErrorString = verificationErrors.toString();
-		    if (!"".equals(verificationErrorString)) {
-		    	fail(verificationErrorString);
-		    }
+		  super.printTotalVerification(); 
+		  driver.quit();
+		  String verificationErrorString = verificationErrors.toString();
+		  if (!"".equals(verificationErrorString)) {
+			  fail(verificationErrorString);
+		  }
 	  }
 	  
 

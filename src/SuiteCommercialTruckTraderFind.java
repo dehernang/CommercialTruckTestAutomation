@@ -1,6 +1,12 @@
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+/**
+ * @author hernan
+ * @version 1.0
+ * @since Jul 7, 2014
+ *
+ */
 public class SuiteCommercialTruckTraderFind {
 
 	

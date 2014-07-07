@@ -10,9 +10,18 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import com.commercialtrucktrader.home.TestSearchLandingPageBasicDodgeCrewCab;
+
 import util.TCUtil;
 import java.util.Map;
 
+/**
+ * @author hernan
+ * @version 1.0
+ * @since Jul 7, 2014
+ *
+ */
 public class TestSearchResults extends TCUtil{
 
 		private Map<String,String[]> makes;
@@ -20,6 +29,7 @@ public class TestSearchResults extends TCUtil{
 		
 		public TestSearchResults(){
 			super();
+			super.classname = TestSearchLandingPageBasicDodgeCrewCab.class.getSimpleName();			
 		}
 	  
 		@Before
@@ -107,11 +117,12 @@ public class TestSearchResults extends TCUtil{
 	
 	  @After
 	  public void tearDown() throws Exception {
-		    driver.quit();
-		    String verificationErrorString = verificationErrors.toString();
-		    if (!"".equals(verificationErrorString)) {
-		    	fail(verificationErrorString);
-		    }
+		  super.printTotalVerification(); 
+		  driver.quit();
+		  String verificationErrorString = verificationErrors.toString();
+		  if (!"".equals(verificationErrorString)) {
+			  fail(verificationErrorString);
+		  }
 	  }
 	  
 
