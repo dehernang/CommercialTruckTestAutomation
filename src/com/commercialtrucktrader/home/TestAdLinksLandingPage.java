@@ -171,7 +171,7 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Ram Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/div/h1");	
+		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Ram results found[\\s\\S]*$","xpath");

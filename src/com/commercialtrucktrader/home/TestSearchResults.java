@@ -67,7 +67,10 @@ public class TestSearchResults extends TCUtil{
 			  try{
 				  new Select(driver.findElement(By.id("makesDrop"))).selectByVisibleText(make.getKey());
 				  makeFound = true;
+				  super.counter++;
+				  super.counterPass++;
 			  }catch(Exception e){
+				  super.counterFail++;
 				  makeFound = false;
 				  println(e.getMessage());
 				  result(make.getKey(), TestSearchResults.class.getSimpleName(), false, "selectByVisibleText");
