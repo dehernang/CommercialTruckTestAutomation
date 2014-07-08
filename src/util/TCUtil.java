@@ -76,7 +76,6 @@ public class TCUtil extends TestCase{
 				conf = CONFIG_DEV;
 				tmpstr = "(default)";
 			}
-			conf = CONFIG_LIVE;
 			println("Loading " + conf + tmpstr + "...");
 			
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream("resources/" + conf);
