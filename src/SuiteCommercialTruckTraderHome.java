@@ -17,7 +17,8 @@ public class SuiteCommercialTruckTraderHome {
 		  suite.addTestSuite(com.commercialtrucktrader.home.TestAdLinks.class);
 		  suite.addTestSuite(com.commercialtrucktrader.home.TestAdLinksLandingPage.class);  
 		  suite.addTestSuite(com.commercialtrucktrader.home.TestSearchResults.class);
-		  suite.addTestSuite(com.commercialtrucktrader.home.TestSearchResultsDodgeRAM.class);
+		  suite.addTestSuite(com.commercialtrucktrader.home.TestSearchResultsDodge.class);
+		  suite.addTestSuite(com.commercialtrucktrader.home.TestSearchResultsRAM.class);
 		  
 		  //suite.addTestSuite(com.commercialtrucktrader.home.TestSearchLandingPageBasic.class);
 		  //suite.addTestSuite(com.commercialtrucktrader.home.TestSearchLandingPageBasicDodgeCrewCab.class);

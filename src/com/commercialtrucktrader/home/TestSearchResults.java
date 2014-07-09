@@ -37,7 +37,7 @@ public class TestSearchResults extends TCUtil{
 		    makes = new HashMap<String,String[]>();	
 
 		    makes.put("CHEVROLET", new String[]{"CHEVROLET"});
-			//makes.put("DODGE",new String[]{"DODGE"}); //moved to a special test case
+			makes.put("DODGE",new String[]{"DODGE"});
 			makes.put("FORD",new String[]{"FORD"});
 			makes.put("FREIGHTLINER",new String[]{"FREIGHTLINER"});
 			makes.put("GMC",new String[]{"GMC"});
@@ -50,7 +50,7 @@ public class TestSearchResults extends TCUtil{
 			makes.put("MITSUBISHI-FUSO",new String[]{"MITSUBISHI"});
 			makes.put("NISSAN",new String[]{"NISSAN"});
 			makes.put("PETERBILT",new String[]{"PETERBILT"});
-			//makes.put("RAM",new String[]{" RAM "}); //moved to a special test case
+			makes.put("RAM",new String[]{" RAM "});
 			makes.put("STERLING",new String[]{"STERLING"});
 			makes.put("VOLVO",new String[]{"VOLVO"});
 			makes.put("WESTERN STAR",new String[]{"W*STAR"});
@@ -123,21 +123,6 @@ public class TestSearchResults extends TCUtil{
 			    	  }
 			    	  
 			      }
-			      
-			      /*
-			      element.clear();		    		      
-			      for(Map.Entry<String,String[]> e : makes.entrySet()){	    	  
-			    	  //skip itself
-			    	  if(!e.getKey().equals(make.getKey())){ 	    		  
-			    		  //loop keywords of the make
-			    		  for(String kw : e.getValue()){
-			    			  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","cssSelector");
-			    		  }		    		
-			    	  }
-			      }
-			      this.doVerifyTextNotPresent(element, null);
-				  */
-
 			      
 			      Thread.sleep(1000);
 			      driver.findElement(By.linkText("HOME")).click();
