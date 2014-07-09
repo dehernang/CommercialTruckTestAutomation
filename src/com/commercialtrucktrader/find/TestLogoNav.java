@@ -4,10 +4,6 @@ import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.commercialtrucktrader.home.TestSearchLandingPageBasicDodgeCrewCab;
-import com.commercialtrucktrader.home.TestSearchResults;
-
 import util.TCUtil;
 
 /**
