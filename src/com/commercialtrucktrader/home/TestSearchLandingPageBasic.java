@@ -17,8 +17,7 @@ import util.TCUtil;
 public class TestSearchLandingPageBasic extends TCUtil{
 	
 	public TestSearchLandingPageBasic(){
-		super();
-		super.classname = TestSearchLandingPageBasic.class.getSimpleName();
+		super(TestSearchLandingPageBasic.class.getName());
 	}
 	
 	@Before

@@ -17,8 +17,7 @@ public class TestAdLinksLandingPage extends TCUtil{
 		
 	
 	public TestAdLinksLandingPage(){
-		super();
-		super.classname = TestAdLinksLandingPage.class.getSimpleName();
+		super(TestAdLinksLandingPage.class.getName());
 	}
 	
 	  @Before
@@ -36,15 +35,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  //--------- Chevy ---------
 
 		  element.put("^[\\s\\S]*Chevrolet Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/h1");	
-		  
-		  //element.clear();
-		  //element.put("//img[@alt='Chevy for Sale']","xpath");
-		  //this.doVerifyElementPresent(element);	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Chevrolet results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");	
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");	
 
 		  		  
 		  //--------- Ford ---------
@@ -55,15 +50,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  element.clear();
 		  
 		  element.put("^[\\s\\S]*Ford Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/h1");	
-		  
-		  //element.clear();
-		  //element.put("//img[@alt='Isuzu for Sale']","xpath");
-		  //this.doVerifyElementPresent(element);	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Ford results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Freightliner ---------
@@ -73,11 +64,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Freightliner Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/div/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/div/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Freightliner results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- GMC ---------
@@ -87,11 +78,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Gmc Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/div/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/div/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Gmc results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");		  
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");		  
 		  
 
 		  //--------- Hino ---------
@@ -101,11 +92,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Hino Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/div/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/div/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Hino results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		
 		  
 		  //--------- International ---------
@@ -115,11 +106,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*International Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*International results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Isuzu ---------
@@ -129,11 +120,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Isuzu Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Isuzu results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Nissan ---------
@@ -143,11 +134,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Nissan Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/div/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/div/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Nissan results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Peterbilt ---------
@@ -157,11 +148,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Peterbilt Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/div/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/div/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Peterbilt results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Ram ---------
@@ -171,11 +162,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Ram Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Ram results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");	
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");	
 
 		  
 		  //--------- Sterling ---------
@@ -185,11 +176,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Sterling Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/div/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/div/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Sterling results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Volvo ---------
@@ -199,11 +190,11 @@ public class TestAdLinksLandingPage extends TCUtil{
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Volvo Trucks for Sale[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='topic_container']/h1");	
+		  this.doVerifyTextPresent(element, "//div[@id='topic_container']/h1");	
 		  
 		  element.clear();
 		  element.put("^[\\s\\S]*Volvo results found[\\s\\S]*$","xpath");
-		  this.doVerifyTextPresent(element, true, TestAdLinksLandingPage.class.getSimpleName(), "//div[@id='pagineationSort_container']/h2");
+		  this.doVerifyTextPresent(element, "//div[@id='pagineationSort_container']/h2");
 		  
 
 		  

@@ -15,7 +15,7 @@ import util.TCUtil;
 public class TestLogoNav extends TCUtil{
 
 	  public TestLogoNav(){
-		  super();
+		  super(TestLogoNav.class.getName());
 	  }
 	  
 	  @Before
@@ -100,7 +100,7 @@ public class TestLogoNav extends TCUtil{
 		  //Footer Dominion Enterprises
 		  element.put("Dominion Enterprises","linkText");
 	    
-		  this.doVerifyElementPresent(element, true, TestLogoNav.class.getSimpleName());
+		  this.doVerifyElementPresent(element);
 	    
 		  element.clear();
 		  
@@ -119,7 +119,7 @@ public class TestLogoNav extends TCUtil{
 		  element.put("Fraud Awareness Tips", "linkText");
 		  element.put("div.viewDomLogo", "cssSelector");
 		  
-		  this.doVerifyElementPresent(element, true, TestLogoNav.class.getSimpleName());
+		  this.doVerifyElementPresent(element);
 	   
 	  }
 	

@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.commercialtrucktrader.home.TestSearchLandingPageBasicDodgeCrewCab;
+import com.commercialtrucktrader.home.TestSearchResults;
 
 import util.TCUtil;
 
@@ -18,8 +19,7 @@ import util.TCUtil;
 public class TestLogoNav extends TCUtil {
 
 	  public TestLogoNav(){
-		  super();
-		  super.classname = TestLogoNav.class.getSimpleName();							  
+		  super(TestLogoNav.class.getName());
 	  }
 	  
 	  @Before
@@ -129,7 +129,7 @@ public class TestLogoNav extends TCUtil {
 		  //Footer Dominion Enterprises
 		  element.put("Dominion Enterprises","linkText");
 	    
-		  this.doVerifyElementPresent(element, true, TestLogoNav.class.getSimpleName());
+		  this.doVerifyElementPresent(element);
 	    
 		  element.clear();		  
 		  driver.findElement(By.id("viewall_img1")).click();		  
@@ -145,7 +145,7 @@ public class TestLogoNav extends TCUtil {
 		  element.put("Trailer Trader", "linkText");
 		  element.put("Fraud Awareness Tips", "linkText");
 		  element.put("div.viewDomLogo", "cssSelector");		  
-		  this.doVerifyElementPresent(element, true, TestLogoNav.class.getSimpleName());
+		  this.doVerifyElementPresent(element);
 	   
 	  }
 	

@@ -10,9 +10,6 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-
-import com.commercialtrucktrader.home.TestSearchLandingPageBasicDodgeCrewCab;
-
 import util.TCUtil;
 import java.util.Map;
 
@@ -28,8 +25,7 @@ public class TestSearchResults extends TCUtil{
 		private Boolean makeFound;
 		
 		public TestSearchResults(){
-			super();
-			super.classname = TestSearchLandingPageBasicDodgeCrewCab.class.getSimpleName();			
+			super(TestSearchResults.class.getName());
 		}
 	  
 		@Before
@@ -87,7 +83,7 @@ public class TestSearchResults extends TCUtil{
 				      for(String kw : make.getValue()){
 				    	  element.clear();
 				    	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
-				    	  this.doVerifyTextPresent(element, true, TestSearchResults.class.getSimpleName(), "//h3/a");
+				    	  this.doVerifyTextPresent(element, "//h3/a");
 				      }
 				      
 				      element.clear();		    		      
@@ -100,7 +96,7 @@ public class TestSearchResults extends TCUtil{
 				    		  }		    		
 				    	  }
 				      }
-				      this.doVerifyTextPresent(element, false, TestSearchResults.class.getSimpleName(), "//h3/a");
+				      this.doVerifyTextNotPresent(element, "//h3/a");
 			
 				      
 				      Thread.sleep(1000);

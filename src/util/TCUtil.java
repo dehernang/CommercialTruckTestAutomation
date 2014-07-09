@@ -49,8 +49,7 @@ public class TCUtil extends TestCase{
 	protected int counterPass;
 	protected int counterFail;
 	
-	public String classname;
-	
+	private String tcName;
 	private String conf;
 	private String env;
 	private static final String CONFIG_DEV = "dev.properties";
@@ -58,25 +57,25 @@ public class TCUtil extends TestCase{
 	private static final String LIVE = "LIVE";
 	private static final String DEV = "DEV";
 	
-	public TCUtil() {
+	public TCUtil(String tc) {
 		
+		this.tcName = tc;
 		Properties prop = new Properties();	
 		try {
 
 			env = (String)System.getenv("ENV_TEST_AUTO");
 			println("ENV_TEST_AUTO = " + env + ".");
 			
-			String tmpstr = "";
 			//ENV_TEST_AUTO has to be set up already
 			if(LIVE.equalsIgnoreCase(env)){
 				conf = CONFIG_LIVE;
-				println("Loading LIVE. " + conf + " " + LIVE + " == " + env + "?");
+				println("Loading LIVE. " + conf + " " + LIVE + "==" + env);
 			}else if(DEV.equalsIgnoreCase(env)){
 				conf = CONFIG_DEV;
-				println("Loading DEV. " + conf + " " + DEV + " == " + env + "?");
+				println("Loading DEV. " + conf + " " + DEV + "==" + env);
 			}else{
 				conf = CONFIG_DEV;
-				println("Loading Default DEV. " + conf + " " + DEV + " == " + env + "?");
+				println("Loading Default DEV. " + conf + " " + DEV + "==" + env);
 			}
 			
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream("resources/" + conf);
@@ -96,31 +95,53 @@ public class TCUtil extends TestCase{
 		this.counterFail = 0;
 
 	}
+
 	
 	/**
 	 * 
-	 * @param link Map list of element and type
-	 * @param verExist Boolean true for assertTrue, false for assertFalse
+	 * @param link
 	 */
-	protected void doVerifyElementPresent(Map<String,String> link, Boolean verExist, String testcaseName){   
+	protected void doVerifyElementPresent(Map<String,String> link){   
 	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
-	    	this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), verExist, testcaseName); 
+	    	this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), true, this.tcName); 
+	    	counter++;
+	    }
+	}	
+	
+	/**
+	 * 
+	 * @param link
+	 * @param xpath
+	 */
+	protected void doVerifyTextPresent(Map<String,String> link, String xpath){
+	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
+	    	this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), true, this.tcName, xpath);    
 	    	counter++;
 	    }
 	}
 	
 	/**
 	 * 
-	 * @param link Map list of element and type
-	 * @param verExist Boolean true for assertTrue, false for assertFalse
-	 * @param xpath String
+	 * @param link
 	 */
-	protected void doVerifyTextPresent(Map<String,String> link, Boolean verExist, String testcaseName, String xpath){
+	protected void doVerifyElementNotPresent(Map<String,String> link){   
 	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
-	    	this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), verExist, testcaseName, xpath);    
+	    	this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), false, this.tcName); 
 	    	counter++;
 	    }
-	}
+	}	
+	
+	/**
+	 * 
+	 * @param link
+	 * @param xpath
+	 */
+	protected void doVerifyTextNotPresent(Map<String,String> link, String xpath){
+	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
+	    	this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), false, this.tcName, xpath);    
+	    	counter++;
+	    }
+	}	
 	
 	/**
 	 * 
@@ -449,7 +470,7 @@ public class TCUtil extends TestCase{
 	}
 
     public void printTotalVerification(){
-    	this.println(this.classname + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);  	
+    	this.println(this.tcName + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);  	
     }
     
     

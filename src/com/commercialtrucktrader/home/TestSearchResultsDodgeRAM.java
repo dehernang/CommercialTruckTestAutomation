@@ -26,8 +26,7 @@ public class TestSearchResultsDodgeRAM extends TCUtil{
 		private Boolean makeFound;
 		
 		public TestSearchResultsDodgeRAM(){
-			super();
-			super.classname = TestSearchResultsDodgeRAM.class.getSimpleName();
+			super(TestSearchResultsDodgeRAM.class.getName());
 		}
   
 		@Before
@@ -61,6 +60,7 @@ public class TestSearchResultsDodgeRAM extends TCUtil{
 				  result(make.getKey(), TestSearchResultsDodgeRAM.class.getSimpleName(), false, "selectByVisibleText");
 			  }
 			  
+			  //proceed only when Make exists
 			  if(makeFound){
 			      driver.findElement(By.cssSelector("img[alt=\"Find It\"]")).click();
 			
@@ -69,7 +69,7 @@ public class TestSearchResultsDodgeRAM extends TCUtil{
 			      for(String kw : make.getValue()){
 			    	  element.clear();
 			    	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
-			    	  this.doVerifyTextPresent(element, true, TestSearchResultsDodgeRAM.class.getSimpleName(), "//h3/a");
+			    	  this.doVerifyTextPresent(element, "//h3/a");
 			      }
 			      
 			      element.clear();		    		      
@@ -82,7 +82,7 @@ public class TestSearchResultsDodgeRAM extends TCUtil{
 			    		  }		    		
 			    	  }
 			      }
-			      this.doVerifyTextPresent(element, false, TestSearchResultsDodgeRAM.class.getSimpleName(), "//h3/a");
+			      this.doVerifyTextNotPresent(element, "//h3/a");
 		
 			      
 			      Thread.sleep(1000);

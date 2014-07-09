@@ -16,8 +16,7 @@ import util.TCUtil;
 public class TestAdLinks extends TCUtil{
 	
 	public TestAdLinks(){
-		super();
-		super.classname = TestAdLinks.class.getSimpleName();
+		super(TestAdLinks.class.getName());
 	}
   
 	@Before
@@ -83,7 +82,7 @@ public class TestAdLinks extends TCUtil{
 	    element.put("Light Duty Trucks","linkText");
 	    element.put("Trailers","linkText");
 	    
-	    this.doVerifyElementPresent(element, true, super.classname);
+	    this.doVerifyElementPresent(element);
 	   
 	  }
 	

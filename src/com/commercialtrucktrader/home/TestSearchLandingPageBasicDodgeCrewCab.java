@@ -16,8 +16,7 @@ import util.TCUtil;
 public class TestSearchLandingPageBasicDodgeCrewCab extends TCUtil{
 
 	public TestSearchLandingPageBasicDodgeCrewCab(){
-		super();
-		super.classname = TestSearchLandingPageBasicDodgeCrewCab.class.getSimpleName();
+		super(TestSearchLandingPageBasicDodgeCrewCab.class.getName());
 	}
 	
 	@Before
