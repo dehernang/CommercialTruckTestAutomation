@@ -70,13 +70,13 @@ public class TCUtil extends TestCase{
 			//ENV_TEST_AUTO has to be set up already
 			if(LIVE.equalsIgnoreCase(env)){
 				conf = CONFIG_LIVE;
-				println("Loading LIVE. " + conf + " " + LIVE + " == " + env);
+				println("Loading LIVE. " + conf + " " + LIVE + " == " + env + "?");
 			}else if(DEV.equalsIgnoreCase(env)){
 				conf = CONFIG_DEV;
-				println("Loading DEV. " + conf + " " + LIVE + " == " + env);
+				println("Loading DEV. " + conf + " " + DEV + " == " + env + "?");
 			}else{
 				conf = CONFIG_DEV;
-				println("Loading Default DEV. " + conf + " " + LIVE + " == " + env);
+				println("Loading Default DEV. " + conf + " " + DEV + " == " + env + "?");
 			}
 			
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream("resources/" + conf);
