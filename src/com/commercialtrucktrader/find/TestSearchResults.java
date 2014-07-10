@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import util.TCUtil;
+import util.TC;
 import java.util.Map;
 
 /**
@@ -19,20 +19,14 @@ import java.util.Map;
  * @since Jul 7, 2014
  *
  */
-public class TestSearchResults extends TCUtil{
+public class TestSearchResults extends TC{
 
 		private Map<String,String[]> makes;
 		private Boolean makeFound;
-		
-		public TestSearchResults(){
-			super(TestSearchResults.class.getName());
-		}
 	  
 		@Before
 		public void setUp() throws Exception {
-			driver = new FirefoxDriver();
-			driver.manage().timeouts().implicitlyWait(super.timeout, TimeUnit.SECONDS);
-			  
+			super.init(TestSearchResults.class.getName());
 		    makes = new HashMap<String,String[]>();	
 			makes.put("CHEVROLET", new String[]{"CHEVROLET","Chevrolet"});
 			makes.put("DODGE",new String[]{"DODGE"});
@@ -51,23 +45,19 @@ public class TestSearchResults extends TCUtil{
 			makes.put("RAM",new String[]{"RAM"});
 			makes.put("STERLING",new String[]{"STERLING"});
 			makes.put("VOLVO",new String[]{"VOLVO"});
-			makes.put("WESTERN STAR",new String[]{"WESTERN STAR"});
-			
-			
+			makes.put("WESTERN STAR",new String[]{"WESTERN STAR"});	
 	  }
 
 	  @Test
 	  public void testSearchResults() throws Exception {
 
-		  driver.get(baseUrl + "/");
-		  driver.findElement(By.linkText("FIND")).click();
-
+		  click("linkText","FIND");
 		  for(Map.Entry<String,String[]> make : makes.entrySet()){
 
 			  if(make.getKey() == "RAM"){
 	
 				  try{
-					  new Select(driver.findElement(By.id("makesDrop"))).selectByVisibleText("RAM");
+					  select("id","makesDrop","RAM");
 					  makeFound = true;
 				  }catch(Exception e){
 					  makeFound = false;
@@ -76,10 +66,9 @@ public class TestSearchResults extends TCUtil{
 				  }
 				  
 				  if(makeFound){
-					  driver.findElement(By.cssSelector("img[alt=\"Find It\"]")).click();
-				
-				      Thread.sleep(1000);
-				
+					  
+					  click("cssSelector","img[alt=\"Find It\"]");				
+				      Thread.sleep(1000);				
 				      for(String kw : make.getValue()){
 				    	  element.clear();
 				    	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");

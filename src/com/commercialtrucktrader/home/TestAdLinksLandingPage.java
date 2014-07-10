@@ -4,8 +4,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import util.TCUtil;
+import util.TC;
 
 /**
  * @author hernan
@@ -13,24 +12,17 @@ import util.TCUtil;
  * @since Jul 7, 2014
  *
  */
-public class TestAdLinksLandingPage extends TCUtil{
-		
-	
-	public TestAdLinksLandingPage(){
-		super(TestAdLinksLandingPage.class.getName());
-	}
+public class TestAdLinksLandingPage extends TC{
 	
 	  @Before
 	  public void setUp() throws Exception {
-		  driver = new FirefoxDriver();
-		  driver.manage().timeouts().implicitlyWait(super.timeout, TimeUnit.SECONDS);
+		  super.init(TestAdLinksLandingPage.class.getName());
 	  }
 	
 	  @Test
 	  public void testAdLinksLandingPage() throws Exception {
-		  
-		  driver.get(baseUrl + "/");
-		  driver.findElement(By.linkText("Chevy Trucks")).click();
+
+		  click("linkText","Chevy Trucks");
 
 		  //--------- Chevy ---------
 

@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import util.TCUtil;
+import util.TC;
 import java.util.Map;
 
 /**
@@ -19,23 +19,16 @@ import java.util.Map;
  * @since Jul 7, 2014
  *
  */
-public class TestSearchResults extends TCUtil{
+public class TestSearchResults extends TC{
 
 		private Map<String,String[]> makes;
 		private Boolean makeFound;
 		private ArrayList<String> xpaths;
-		
-		public TestSearchResults(){
-			super(TestSearchResults.class.getName());
-		}
-  
+
 		@Before
 		public void setUp() throws Exception {
-			driver = new FirefoxDriver();
-			driver.manage().timeouts().implicitlyWait(super.timeout, TimeUnit.SECONDS);
-			  
+			super.init(TestSearchResults.class.getName());
 		    makes = new HashMap<String,String[]>();	
-
 		    makes.put("CHEVROLET", new String[]{"CHEVROLET"});
 			makes.put("DODGE",new String[]{"DODGE"});
 			makes.put("FORD",new String[]{"FORD"});
@@ -54,8 +47,7 @@ public class TestSearchResults extends TCUtil{
 			makes.put("STERLING",new String[]{"STERLING"});
 			makes.put("VOLVO",new String[]{"VOLVO"});
 			makes.put("WESTERN STAR",new String[]{"W*STAR"});
-			
-		    
+			   
 			xpaths = new ArrayList<String>();
 			xpaths.add("//h3/a");
 			xpaths.add("//div[4]/div/h3/a");
@@ -82,21 +74,18 @@ public class TestSearchResults extends TCUtil{
 			xpaths.add("//div[27]/div/h3/a");
 			xpaths.add("//div[28]/div/h3/a");
 			xpaths.add("//div[29]/div/h3/a");
-	
 			
 	  }
 
 	  @Test
 	  public void testSearchResults() throws Exception {
 
-		  driver.get(baseUrl + "/");
-
 		  //Make list
 		  for(Map.Entry<String,String[]> make : makes.entrySet()){
 
 			  Thread.sleep(1000);
 			  try{
-				  new Select(driver.findElement(By.id("makesDrop"))).selectByVisibleText(make.getKey());
+				  select("id","makesDrop",make.getKey());
 				  makeFound = true;
 				  super.counter++;
 				  super.counterPass++;
@@ -108,8 +97,8 @@ public class TestSearchResults extends TCUtil{
 			  }
 			  
 			  if(makeFound){
-			      driver.findElement(By.cssSelector("img[alt=\"Find It\"]")).click();
-			
+
+			      click("cssSelector","img[alt=\"Find It\"]");
 			      Thread.sleep(1000);
 			
 			      //Evaluate each item in the array per Make

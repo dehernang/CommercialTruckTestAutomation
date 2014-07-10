@@ -10,7 +10,7 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import util.TCUtil;
+import util.TC;
 import java.util.Map;
 
 /**
@@ -19,21 +19,15 @@ import java.util.Map;
  * @since Jul 7, 2014
  *
  */
-public class TestSearchResultsRAM extends TCUtil{
+public class TestSearchResultsRAM extends TC{
 
 		private static final String make = "RAM";
 		private Map<String,String[]> notExistsKW;
 		private ArrayList<String> xpaths;
-		
-		public TestSearchResultsRAM(){
-			super(TestSearchResultsRAM.class.getName());
-		}
-  
+
 		@Before
 		public void setUp() throws Exception {
-			driver = new FirefoxDriver();
-			driver.manage().timeouts().implicitlyWait(super.timeout, TimeUnit.SECONDS);
-			
+			super.init(TestSearchResultsRAM.class.getName());
 			notExistsKW = new HashMap<String,String[]>();	
 			notExistsKW.put("RAM",new String[]{"DODGE","DODGE/RAM"});
 			
@@ -69,13 +63,10 @@ public class TestSearchResultsRAM extends TCUtil{
 	  @Test
 	  public void testSearchResults() throws Exception {
 
-		  driver.get(baseUrl + "/");
-
-		  Thread.sleep(1000);
-		  
+		  Thread.sleep(1000);		  
 		  try{
-			  new Select(driver.findElement(By.id("makesDrop"))).selectByVisibleText(make);
-			  driver.findElement(By.cssSelector("img[alt=\"Find It\"]")).click();
+			  select("id","makesDrop",make);
+			  click("cssSelector","img[alt=\"Find It\"]");
 			  Thread.sleep(1000);
 			  
 			  element.clear();

@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author hernan
@@ -57,9 +58,19 @@ public class TCUtil extends TestCase{
 	private static final String LIVE = "LIVE";
 	private static final String DEV = "DEV";
 	
-	public TCUtil(String tc) {
-		
+	public TCUtil() {}
+	
+	public void finalize(){
+		driver.quit();
+	}
+
+	/**
+	 * 
+	 * @param tc
+	 */
+	protected void init(String tc){
 		this.tcName = tc;
+
 		Properties prop = new Properties();	
 		try {
 
@@ -93,55 +104,20 @@ public class TCUtil extends TestCase{
 		this.counter = 0;
 		this.counterPass = 0;
 		this.counterFail = 0;
-
-	}
-
-	
-	/**
-	 * 
-	 * @param link
-	 */
-	protected void doVerifyElementPresent(Map<String,String> link){   
-	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
-	    	this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), true, this.tcName); 
-	    	counter++;
-	    }
-	}	
-	
-	/**
-	 * 
-	 * @param link
-	 * @param xpath
-	 */
-	protected void doVerifyTextPresent(Map<String,String> link, String xpath){
-	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
-	    	this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), true, this.tcName, xpath);    
-	    	counter++;
-	    }
+		
+		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(this.timeout, TimeUnit.SECONDS);
+		driver.get(baseUrl + "/");		
 	}
 	
 	/**
 	 * 
-	 * @param link
+	 * @return
 	 */
-	protected void doVerifyElementNotPresent(Map<String,String> link){   
-	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
-	    	this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), false, this.tcName); 
-	    	counter++;
-	    }
-	}	
-	
-	/**
-	 * 
-	 * @param link
-	 * @param xpath
-	 */
-	protected void doVerifyTextNotPresent(Map<String,String> link, String xpath){
-	    for(Map.Entry<String, String> lnkEntry : link.entrySet()){
-	    	this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), false, this.tcName, xpath);    
-	    	counter++;
-	    }
-	}	
+	public String getTcName(){
+		return this.tcName;
+		
+	}
 	
 	/**
 	 * 

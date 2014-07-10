@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import util.TCUtil;
+import util.TC;
 
 /**
  * @author hernan
@@ -12,23 +12,17 @@ import util.TCUtil;
  * @since Jul 7, 2014
  *
  */
-public class TestLogoNav extends TCUtil{
+public class TestLogoNav extends TC{
 
-	  public TestLogoNav(){
-		  super(TestLogoNav.class.getName());
-	  }
-	  
 	  @Before
 	  public void setUp() throws Exception {
-		  driver = new FirefoxDriver();
-		  driver.manage().timeouts().implicitlyWait(super.timeout, TimeUnit.SECONDS);
+		  super.init(TestLogoNav.class.getName());
 	  }
 	
 	  @Test
 	  public void testLogoNav() throws Exception {
 		  
-		  driver.get(baseUrl + "/");
-		  driver.findElement(By.cssSelector("img[alt=\"Go To Commercial Truck Home Page\"]")).click();
+		  click("cssSelector","img[alt=\"Go To Commercial Truck Home Page\"]");
 	    
 		  //Logo
 		  element.put("//a[@id='cttol_icon']/img", "xpath");
