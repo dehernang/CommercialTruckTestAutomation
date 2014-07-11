@@ -1,11 +1,11 @@
 package com.commercialtrucktrader.find;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.dominionenterprises.selenium.util.TC;
+import com.dominionenterprises.selenium.util.TestCaseHelper;
 
 /**
  * @author hernan
@@ -13,7 +13,7 @@ import com.dominionenterprises.selenium.util.TC;
  * @since Jul 10, 2014
  *
  */
-public class TestAdLinksLandingPage extends TC{
+public class TestAdLinksLandingPage extends TestCaseHelper{
 	
 	@Before
 	public void setUp() throws Exception {  
@@ -28,23 +28,19 @@ public class TestAdLinksLandingPage extends TC{
 
 		//--------- Chevy ---------
 
-		element.put("^[\\s\\S]*Bus for Sale[\\s\\S]*$","xpath");
-		this.doVerifyTextPresent(element, "//div[@id='topic_container']/div/h1");	
+		element.put("^[\\s\\S]*Bus for Sale[\\s\\S]*$","xpath");	
+	    doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
+		
 		  
 
-		  		  
-
-
-		  
 		  
 	  }
 	  
 	  
 	  @After
 	  public void tearDown() throws Exception {
-		  super.printTotalVerification(); 
-		  driver.quit();
-		  String verificationErrorString = verificationErrors.toString();
+		  this.finalize();
+		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);
 		  }

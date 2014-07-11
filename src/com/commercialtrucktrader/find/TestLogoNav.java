@@ -1,11 +1,11 @@
 package com.commercialtrucktrader.find;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.dominionenterprises.selenium.util.TC;
+import com.dominionenterprises.selenium.util.TestCaseHelper;
 
 /**
  * @author hernan
@@ -13,7 +13,7 @@ import com.dominionenterprises.selenium.util.TC;
  * @since Jul 7, 2014
  *
  */
-public class TestLogoNav extends TC {
+public class TestLogoNav extends TestCaseHelper {
 	  
 	  @Before
 	  public void setUp() throws Exception {
@@ -120,10 +120,10 @@ public class TestLogoNav extends TC {
 		  //Footer Dominion Enterprises
 		  element.put("Dominion Enterprises","linkText");
 	    
-		  this.doVerifyElementPresent(element);
-	    
+		  doVerifyElementPresentList(element);
+
 		  element.clear();		  
-		  driver.findElement(By.id("viewall_img1")).click();		  
+		  getDriver().findElement(By.id("viewall_img1")).click();		  
 		  element.put("Aero Trader", "linkText");
 		  element.put("ATV Trader", "linkText");
 		  element.put("Boat Trader", "linkText");
@@ -135,16 +135,16 @@ public class TestLogoNav extends TC {
 		  element.put("Trader Online", "linkText");
 		  element.put("Trailer Trader", "linkText");
 		  element.put("Fraud Awareness Tips", "linkText");
-		  element.put("div.viewDomLogo", "cssSelector");		  
-		  this.doVerifyElementPresent(element);
+		  element.put("div.viewDomLogo", "cssSelector");
+		  doVerifyElementPresentList(element);
+
 	   
 	  }
 	
 	  @After
 	  public void tearDown() throws Exception {
-		  super.printTotalVerification(); 
-		  driver.quit();
-		  String verificationErrorString = verificationErrors.toString();
+		  this.finalize();
+		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);
 		  }

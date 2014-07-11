@@ -1,11 +1,11 @@
 package com.commercialtrucktrader.home;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.dominionenterprises.selenium.util.TC;
+import com.dominionenterprises.selenium.util.TestCaseHelper;
 
 /**
  * @author hernan
@@ -13,7 +13,7 @@ import com.dominionenterprises.selenium.util.TC;
  * @since Jul 7, 2014
  *
  */
-public class TestAdLinks extends TC{
+public class TestAdLinks extends TestCaseHelper{
   
 	@Before
 	public void setUp() throws Exception {
@@ -75,19 +75,18 @@ public class TestAdLinks extends TC{
 	    element.put("Medium Duty Trucks","linkText");
 	    element.put("Light Duty Trucks","linkText");
 	    element.put("Trailers","linkText");
-	    
-	    this.doVerifyElementPresent(element);
+	    doVerifyElementPresentList(element);
+
 	   
 	  }
 	
 	  @After
 	  public void tearDown() throws Exception {
-		super.printTotalVerification();  
-	    driver.quit();
-	    String verificationErrorString = verificationErrors.toString();
-	    if (!"".equals(verificationErrorString)) {
-	      fail(verificationErrorString);
-	    }
+		  this.finalize();
+		  String verificationErrorString = this.getVerificationErrors().toString();
+		  if (!"".equals(verificationErrorString)) {
+			  fail(verificationErrorString);
+		  }
 	  }
 	
 	  

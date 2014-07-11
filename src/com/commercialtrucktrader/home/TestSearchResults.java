@@ -10,8 +10,7 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-
-import com.dominionenterprises.selenium.util.TC;
+import com.dominionenterprises.selenium.util.TestCaseHelper;
 
 import java.util.Map;
 
@@ -21,7 +20,7 @@ import java.util.Map;
  * @since Jul 7, 2014
  *
  */
-public class TestSearchResults extends TC{
+public class TestSearchResults extends TestCaseHelper{
 
 		private Map<String,String[]> makes;
 		private Boolean makeFound;
@@ -110,13 +109,13 @@ public class TestSearchResults extends TC{
 			    	  
 			    	  //Verify all results header/title
 			    	  for(String xpath : xpaths){
-			    		  this.doVerifyTextPresent(element, xpath);
+			    		  doVerifyTextPresentList(element, xpath);
 			    	  }
 			    	  
 			      }
 			      
 			      Thread.sleep(1000);
-			      driver.findElement(By.linkText("HOME")).click();
+			      getDriver().findElement(By.linkText("HOME")).click();
 			      Thread.sleep(1000);
 		  
 			  }
@@ -128,9 +127,8 @@ public class TestSearchResults extends TC{
 	
 	  @After
 	  public void tearDown() throws Exception {
-		  super.printTotalVerification(); 
-		  driver.quit();
-		  String verificationErrorString = verificationErrors.toString();
+		  this.finalize();
+		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);
 		  }
