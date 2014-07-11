@@ -10,7 +10,9 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
-import util.TC;
+
+import com.dominionenterprises.selenium.util.TC;
+
 import java.util.Map;
 
 /**

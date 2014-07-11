@@ -1,14 +1,15 @@
 /**
  * 
  */
-package util;
+package com.dominionenterprises.selenium.util;
 
 import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-import util.TCUtil;
+import com.dominionenterprises.selenium.util.TCUtil;
+
 
 /**
  * @author hernan

@@ -1,4 +1,4 @@
-package util;
+package com.dominionenterprises.selenium.util;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;

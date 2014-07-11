@@ -4,7 +4,8 @@ import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import util.TC;
+
+import com.dominionenterprises.selenium.util.TC;
 
 /**
  * @author hernan
