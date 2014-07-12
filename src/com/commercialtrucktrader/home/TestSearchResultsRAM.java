@@ -97,7 +97,8 @@ public class TestSearchResultsRAM extends TestCaseHelper{
 	
 	  @After
 	  public void tearDown() throws Exception {
-		  this.finalize();
+		  printTotalVerification();
+		  super.finalize();
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);

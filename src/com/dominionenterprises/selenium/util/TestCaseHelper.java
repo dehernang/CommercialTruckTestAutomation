@@ -124,40 +124,56 @@ public class TestCaseHelper extends TestCaseExt{
     public void doVerifyTextPresentList(Map<String, String> e, String locationStr){
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyTextPresent(lnkEntry, locationStr);
-			if(retval == 0)
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresent-"+lnkEntry.getValue());
-			else
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementPresent-"+lnkEntry.getValue());
+			this.counter++;
+			if(retval == 0){
+				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextPresentList-"+lnkEntry.getValue());
+				this.counterPass++;
+			}else{
+				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextPresentList-"+lnkEntry.getValue());
+				this.counterFail++;
+			}
 		}
     }
     
     public void doVerifyElementPresentList(Map<String, String> e){
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyElementPresent(lnkEntry);
-			if(retval == 0)
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresent-"+lnkEntry.getValue());
-			else
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementPresent-"+lnkEntry.getValue());
+			this.counter++;
+			if(retval == 0){
+				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresentList-"+lnkEntry.getValue());
+				this.counterPass++;
+			}else{
+				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementPresentList-"+lnkEntry.getValue());
+				this.counterFail++;
+			}
 		}
     }
 
     public void doVerifyTextNotPresentList(Map<String, String> e, String locationStr){
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyTextNotPresent(lnkEntry, locationStr);
-			if(retval == 0)
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresent-"+lnkEntry.getValue());
-			else
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementPresent-"+lnkEntry.getValue());
+			this.counter++;
+			if(retval == 0){
+				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextNotPresentList-"+lnkEntry.getValue());
+				this.counterPass++;
+			}else{
+				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextNotPresentList-"+lnkEntry.getValue());
+				this.counterFail++;
+			}
 		}
     }
     
     public void doVerifyElementNotPresentList(Map<String, String> e){
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyElementNotPresent(lnkEntry);
-			if(retval == 0)
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresent-"+lnkEntry.getValue());
-			else
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementPresent-"+lnkEntry.getValue());
+			this.counter++;
+			if(retval == 0){
+				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementNotPresentList-"+lnkEntry.getValue());
+				this.counterPass++;
+			}else{
+				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementNotPresentList-"+lnkEntry.getValue());
+				this.counterFail++;
+			}
 		}
     }    
 }
