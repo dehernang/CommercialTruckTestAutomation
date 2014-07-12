@@ -44,6 +44,8 @@ public class TestCaseHelper extends TestCaseExt{
 	public TestCaseHelper() {
 		super();
 		
+		this.baseUrlTmp = null;
+		this.timeoutTmp = -1;
 		Properties prop = new Properties();	
 		try {
 
@@ -66,10 +68,6 @@ public class TestCaseHelper extends TestCaseExt{
 			prop.load(is);
 			println("getProperty baseurl: " + prop.getProperty("baseurl"));
 			
-			//super.setDriver(new FirefoxDriver());
-			//super.setBaseUrl(prop.getProperty("baseurl"));	
-			//super.setTimeout(Integer.parseInt(prop.getProperty("timeout")));	
-			
 			this.baseUrlTmp = prop.getProperty("baseurl");
 			this.timeoutTmp = Integer.parseInt(prop.getProperty("timeout"));
 			
@@ -85,11 +83,16 @@ public class TestCaseHelper extends TestCaseExt{
 		
 	}
 	
-	public void init(String testCaseName){
+	public Boolean init(String testCaseName){
+		if(this.baseUrlTmp == null)
+			return false;
+		if(this.timeoutTmp == -1)
+			this.timeoutTmp = 30; //default
 		super.setDriver(new FirefoxDriver());
 		super.setTestCaseName(testCaseName);
 		super.setBaseUrl(this.baseUrlTmp);	
 		super.setTimeout(this.timeoutTmp);
+		return true;
 	}
 	
 	public void result(String target, String tcName, Boolean pass, String method){

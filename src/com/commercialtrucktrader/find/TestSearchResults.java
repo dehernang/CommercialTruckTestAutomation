@@ -27,7 +27,9 @@ public class TestSearchResults extends TestCaseHelper{
 	  
 		@Before
 		public void setUp() throws Exception {
-			super.init(TestSearchResults.class.getName());
+			Boolean good = super.init(TestSearchResults.class.getName());
+			if(!good)
+				throw new Exception();
 		    makes = new HashMap<String,String[]>();	
 			makes.put("CHEVROLET", new String[]{"CHEVROLET","Chevrolet"});
 			makes.put("DODGE",new String[]{"DODGE"});

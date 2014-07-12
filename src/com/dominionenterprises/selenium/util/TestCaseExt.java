@@ -42,7 +42,6 @@ public class TestCaseExt extends TestCase{
 	public TestCaseExt() {
 		this.setAcceptNextAlert(true);
 		this.setVerificationErrors(new StringBuffer());
-		//this.driver = new FirefoxDriver();	
 	}
 
 	public void finalize(){

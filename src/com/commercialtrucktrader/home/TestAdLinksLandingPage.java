@@ -17,7 +17,9 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 	
 	  @Before
 	  public void setUp() throws Exception {
-		  super.init(TestAdLinksLandingPage.class.getName());
+		  Boolean good = super.init(TestAdLinksLandingPage.class.getName());
+			if(!good)
+				throw new Exception();
 	  }
 	
 	  @Test

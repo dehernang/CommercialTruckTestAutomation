@@ -10,6 +10,8 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import com.commercialtrucktrader.find.TestAdLinksLandingPage;
 import com.dominionenterprises.selenium.util.TestCaseHelper;
 
 import java.util.Map;
@@ -28,7 +30,9 @@ public class TestSearchResultsRAM extends TestCaseHelper{
 
 		@Before
 		public void setUp() throws Exception {
-			super.init(TestSearchResultsRAM.class.getName());
+			Boolean good = super.init(TestSearchResultsRAM.class.getName());
+			if(!good)
+				throw new Exception();
 			notExistsKW = new HashMap<String,String[]>();	
 			notExistsKW.put("RAM",new String[]{"DODGE","DODGE/RAM"});
 			

@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.commercialtrucktrader.find.TestAdLinksLandingPage;
 import com.dominionenterprises.selenium.util.TestCaseHelper;
 
 /**
@@ -17,7 +19,9 @@ public class TestLogoNav extends TestCaseHelper{
 
 	  @Before
 	  public void setUp() throws Exception {
-		  super.init(TestLogoNav.class.getName());
+		  Boolean good = super.init(TestLogoNav.class.getName());
+			if(!good)
+				throw new Exception();
 	  }
 	
 	  @Test

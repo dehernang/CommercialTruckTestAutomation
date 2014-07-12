@@ -10,6 +10,8 @@ import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import com.commercialtrucktrader.find.TestAdLinksLandingPage;
 import com.dominionenterprises.selenium.util.TestCaseHelper;
 
 import java.util.Map;
@@ -28,7 +30,9 @@ public class TestSearchResults extends TestCaseHelper{
 
 		@Before
 		public void setUp() throws Exception {
-			super.init(TestSearchResults.class.getName());
+			Boolean good = super.init(TestSearchResults.class.getName());
+			if(!good)
+				throw new Exception();
 		    makes = new HashMap<String,String[]>();	
 		    makes.put("CHEVROLET", new String[]{"CHEVROLET"});
 			makes.put("DODGE",new String[]{"DODGE"});

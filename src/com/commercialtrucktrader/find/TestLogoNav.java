@@ -17,7 +17,9 @@ public class TestLogoNav extends TestCaseHelper {
 	  
 	  @Before
 	  public void setUp() throws Exception {
-		  super.init(TestLogoNav.class.getName());
+		  Boolean good = super.init(TestLogoNav.class.getName());
+			if(!good)
+				throw new Exception();
 	  }
 	
 	  @Test

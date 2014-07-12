@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="run" name="run sample selenium tc 1">
-  	<property name="testdir" location="staging" />
+  	<property name="classdir" location="bin" />
     <property name="srcdir" location="src" />
-	<property name="projdir" location="." />
 	<property name="cleandir" location="staging/*" />
   	<property name="full-compile" value="true" />
 	<path id="classpath.base"/>
-	<path id="classpath.test">
+	<path id="classpath">
 		<pathelement location="lib/junit-4.10.jar" />
 		<pathelement location="lib/selenium-java-2.42.2.jar" />
 		<pathelement location="lib/selenium-server-standalone-2.42.2.jar" />
-		<pathelement location="${testdir}" />
+		<pathelement location="${classdir}" />
         <pathelement location="${srcdir}" />
-		<pathelement location="${projdir}" />
 		<path refid="classpath.base" />
 	</path>
 	<property file="dev.properties"/>
 	<target name="compile" depends="clean">
-		<javac includeantruntime="false" srcdir="${srcdir}" destdir="${testdir}" verbose="${full-compile}">
-			<classpath refid="classpath.test"/>
+		<javac includeantruntime="false" srcdir="${srcdir}" destdir="${classdir}" verbose="${full-compile}">
+			<classpath refid="classpath"/>
 		</javac>
 	</target>
 	<target name="run" depends="compile">
-		<!-- <junit showoutput="true"> -->
-			<junit fork="yes" printsummary="on">
-			<!-- <formatter type="brief" usefile="false" /> -->
-			<!-- let output more details -->
+		<junit fork="yes" printsummary="on">
 			<formatter type="plain" usefile="false" />
-			<classpath refid="classpath.test" />
-			<batchtest fork="yes" todir="${testdir}">
+			<classpath refid="classpath" />
+			<batchtest fork="yes" todir="${classdir}">
 				<fileset dir="src">
 					<include name="**/Suite*.java"/>
 				</fileset>
