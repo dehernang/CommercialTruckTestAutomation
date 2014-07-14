@@ -125,15 +125,15 @@ public class TestCaseHelper extends TestCaseExt{
 	private void reportTemplate(String target, String tcName, Boolean pass, String method, String xpath){
 		String status = "Passed";
 		if(!pass)
-			status = "!!!Failed!!!";
+			status = "!Failed!";
 		
 		StringBuilder text = new StringBuilder();
-		text.append("Status<"+status+">");
-		text.append(" TC<"+tcName+">");
-		text.append(" Method<"+method+">");
-		text.append(" Target<"+target+">");
+		text.append(status);
+		text.append(" <"+tcName+">");
+		text.append(" <"+method+">");
+		text.append(" <"+target+">");
 		if(xpath != null)
-			text.append(" XPath<"+xpath+">");
+			text.append(" <"+xpath+">");
 		System.out.println(text);
 	}
 	
