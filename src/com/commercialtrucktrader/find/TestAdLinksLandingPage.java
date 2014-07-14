@@ -33,7 +33,6 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 		
 		targets = new HashMap<String,String>();
 		
-
 		targets.put("Bus for Sale","//div[@id='topic_container']/div/h1");
 		targets.put("Bus results found","//div[@id='pagineationSort_container']/h2");		
 		addToVerification("Bus",targets);
@@ -153,6 +152,92 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 		targets.put("Wrecker Tow Truck results found","//div[@id='pagineationSort_container']/h2");
 		addToVerification("Wrecker Tow Truck",targets);
 
+		// Browse by Trucks
+
+		targets = new HashMap<String,String>();
+		targets.put("Chevrolet Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("Chevrolet results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Chevrolet",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Dodge Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("Dodge results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Dodge",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Ford Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("Ford results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Ford",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Freightliner Trucks for Sale","//div[@id='topic_container']/div/h1");
+		targets.put("Freightliner results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Freightliner",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Gmc Trucks for Sale","//div[@id='topic_container']/div/h1");
+		targets.put("Gmc results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("GMC",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Hino Trucks for Sale","//div[@id='topic_container']/div/h1");
+		targets.put("Hino results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Hino",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("International Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("International results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("International",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Isuzu Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("Isuzu results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Isuzu",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Kenworth Trucks for Sale","//div[@id='topic_container']/div/h1");
+		targets.put("Kenworth results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Kenworth",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Mack Trucks for Sale","//div[@id='topic_container']/div/h1");
+		targets.put("Mack results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Mack",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Mitsubishi.*.Fuso Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("Mitsubishi.*.Fuso results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Mitsubishi-Fuso",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Peterbilt Trucks for Sale","//div[@id='topic_container']/div/h1");
+		targets.put("Peterbilt results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Peterbilt",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Ram Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("Ram results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Ram",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Sterling Trucks for Sale","//div[@id='topic_container']/div/h1");
+		targets.put("Sterling results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Sterling",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("Volvo Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("Volvo results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Volvo",targets);
+		
+		targets = new HashMap<String,String>();
+		targets.put("W.*.Star Trucks for Sale","//div[@id='topic_container']/div/h1");
+		targets.put("W.*.Star results found","//div[@id='pagineationSort_container']/h2");
+		addToVerification("Western Star",targets);
+
+		targets = new HashMap<String,String>();
+		targets.put("Commercial Trucks for Sale by Manufacturer","//h1");
+		targets.put("Ford Trucks, Chevy Trucks, Peterbilt Trucks.*.Choose a Manufacturer","//h5");
+		addToVerification("Browse All Makes...",targets);
 		
 	}
 	
@@ -171,45 +256,7 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 				}
 			}
 		}
-		
-		
-		/*
-		for(Map.Entry<String, String[]> e: link.entrySet()){
-			
-			click("linkText","FIND");
-			click("linkText",e.getKey());
-			
-			element.clear();
-			element.put("^[\\s\\S]*"+e.getValue()[0]+"[\\s\\S]*$","xpath");
-			doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
-			
-			element.clear();
-			element.put("^[\\s\\S]*"+e.getValue()[1]+"[\\s\\S]*$","xpath");
-			doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
-			
-			
-////////////
-			element.clear();
-			for(String target: e.getValue()){			
-				//element.put("^[\\s\\S]*"+target+"[\\s\\S]*$","xpath");	
-				//element.put("^[\\s\\S]*Bus results found[\\s\\S]*$","xpath");	
-			}
-			
-			Bus for Sale
-			element.put("^[\\s\\S]*Bus results found[\\s\\S]*$","xpath");
-			
-			wait(1);
-			doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
-			//div[@id='pagineationSort_container']/h2
-		    
-///////////////
-		
-		
-		
-		}
-		*/
-		
-	    
+			    
 	    
 	  }
 	  
