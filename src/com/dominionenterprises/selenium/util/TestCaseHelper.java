@@ -95,6 +95,10 @@ public class TestCaseHelper extends TestCaseExt{
 		return true;
 	}
 	
+	/*
+	 * Printers
+	 */
+	
 	public void result(String target, String tcName, Boolean pass, String method){
 		
 		String status = "Passed";
@@ -120,6 +124,21 @@ public class TestCaseHelper extends TestCaseExt{
     public void printTotalVerification(){
     	this.println(super.getTestCaseName() + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);  	
     }
+    
+    
+    /*
+     * others
+     */
+    
+    public void wait(int sec) throws InterruptedException{
+    	long msec = sec * 1000;
+    	Thread.sleep(msec);
+    }
+    
+    
+    /*
+     * Operations
+     */
     
     public void doVerifyTextPresentList(Map<String, String> e, String locationStr){
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
@@ -176,4 +195,6 @@ public class TestCaseHelper extends TestCaseExt{
 			}
 		}
     }    
+    
+
 }
