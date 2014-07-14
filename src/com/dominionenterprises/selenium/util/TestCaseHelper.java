@@ -125,7 +125,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyTextPresent(lnkEntry, locationStr);
 			this.counter++;
-			if(retval == 0){
+			if(retval == super.PASS){
 				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextPresentList-"+lnkEntry.getValue());
 				this.counterPass++;
 			}else{
@@ -139,7 +139,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyElementPresent(lnkEntry);
 			this.counter++;
-			if(retval == 0){
+			if(retval == super.PASS){
 				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresentList-"+lnkEntry.getValue());
 				this.counterPass++;
 			}else{
@@ -153,7 +153,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyTextNotPresent(lnkEntry, locationStr);
 			this.counter++;
-			if(retval == 0){
+			if(retval == super.PASS){
 				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextNotPresentList-"+lnkEntry.getValue());
 				this.counterPass++;
 			}else{
@@ -167,7 +167,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyElementNotPresent(lnkEntry);
 			this.counter++;
-			if(retval == 0){
+			if(retval == super.PASS){
 				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementNotPresentList-"+lnkEntry.getValue());
 				this.counterPass++;
 			}else{

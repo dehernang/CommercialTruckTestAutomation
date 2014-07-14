@@ -34,6 +34,11 @@ public class TestCaseExt extends TestCase{
 	private static final String ERROR = "Error";
 	private static final String EXCEPTION = "Exception";
 	private static final String THROWABLE = "Throwable";
+	
+	protected final int PASS = 1;
+	protected final int FAIL = 0;
+	protected final int ERR1 = -1;
+	protected final int ERR2 = -2;
 
 	/* 
 	 * Constructor and Destructor
@@ -103,7 +108,7 @@ public class TestCaseExt extends TestCase{
 		this.timeout = timeout;
 		this.driver.manage().timeouts().implicitlyWait(this.timeout, TimeUnit.SECONDS);
 	}
-
+	
 	
 	/* 
 	 * Selenium Methods
@@ -286,32 +291,32 @@ public class TestCaseExt extends TestCase{
 		String retval = null;
 		retval = this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), true); 
 		if(retval == null)
-			return 0;
-		return 1;
+			return PASS;
+		return FAIL;
 	}	
 	
 	protected int doVerifyTextPresent(Map.Entry<String, String> lnkEntry, String locationStr){
 		String retval = null;
 	    retval = this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), true, locationStr);  
 		if(retval == null)
-			return 0;
-		return 1;
+			return PASS;
+		return FAIL;
 	}
 	
 	protected int doVerifyElementNotPresent(Map.Entry<String, String> lnkEntry){   
 		String retval = null;
 	    retval = this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), false); 
 		if(retval == null)
-			return 0;
-		return 1;
+			return PASS;
+		return FAIL;
 	}	
 	
 	protected int doVerifyTextNotPresent(Map.Entry<String, String> lnkEntry, String locationStr){
 		String retval = null;
 	    retval = this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), false, locationStr);    
 		if(retval == null)
-			return 0;
-		return 1;
+			return PASS;
+		return FAIL;
 	}	
 
 
@@ -325,16 +330,16 @@ public class TestCaseExt extends TestCase{
 					this.driver.findElement(By.cssSelector(target)).click();
 					break;			
 				default:
-					return 2;			
+					return ERR2;			
 			}
 		}catch(Exception e){
-			return 1; 
+			return ERR1; 
 		}catch(Error e){	
-			return 1; 
+			return ERR1; 
 		}catch(Throwable e){
-			return 1;  		  
+			return ERR1;  		  
 		}
-		return 0;
+		return PASS;
 	}
 
 	protected int select(String type, String id, String target){
@@ -344,16 +349,16 @@ public class TestCaseExt extends TestCase{
 					new Select(this.driver.findElement(By.id(id))).selectByVisibleText(target);
 					break;				
 				default:
-					return 2;	
+					return ERR2;			
 			}
 		}catch(Exception e){
-			return 1; 
+			return ERR1; 
 		}catch(Error e){	
-			return 1; 
+			return ERR1; 
 		}catch(Throwable e){
-			return 1;  		  
+			return ERR1;  		  
 		}
-		return 0;
+		return PASS;
 	}
 	
 
