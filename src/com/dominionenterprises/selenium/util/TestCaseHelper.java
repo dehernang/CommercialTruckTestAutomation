@@ -101,20 +101,40 @@ public class TestCaseHelper extends TestCaseExt{
 	
 	public void result(String target, String tcName, Boolean pass, String method){
 		
+		/*
 		String status = "Passed";
 		if(!pass)
 			status = "<<<Failed>>>";
 	
-		println(tcName+" "+status+" - "+method+" [" + target + "]");
+		println("<"+status+"> - <"+tcName+"> <"+method+"> <" + target + ">");
+		*/
+		reportTemplate(target,tcName, pass, method, null);
 	}
 	
 	public void result(String target, String tcName, Boolean pass, String method, String xpath){
-		
+		/*
 		String status = "Passed";
 		if(!pass)
 			status = "<<<Failed>>>";
 	
-		println(tcName+" "+status+" - "+method+" [" + target + "] xpath["+xpath+"]");
+		println("<"+status+"> - <"+tcName+"> <"+method+"> <" + target + "> <"+xpath+">");
+		*/
+		reportTemplate(target,tcName, pass, method, xpath);
+	}
+	
+	private void reportTemplate(String target, String tcName, Boolean pass, String method, String xpath){
+		String status = "Passed";
+		if(!pass)
+			status = "!!!Failed!!!";
+		
+		StringBuilder text = new StringBuilder();
+		text.append("Status<"+status+">");
+		text.append(" TC<"+tcName+">");
+		text.append(" Method<"+method+">");
+		text.append(" Target<"+target+">");
+		if(xpath != null)
+			text.append(" XPath<"+xpath+">");
+		System.out.println(text);
 	}
 	
 	public void println(String msg){
@@ -145,10 +165,10 @@ public class TestCaseHelper extends TestCaseExt{
 			retval = this.doVerifyTextPresent(lnkEntry, locationStr);
 			this.counter++;
 			if(retval == super.PASS){
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextPresentList-"+lnkEntry.getValue());
+				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextPresentList("+lnkEntry.getValue()+")", locationStr);
 				this.counterPass++;
 			}else{
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextPresentList-"+lnkEntry.getValue());
+				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextPresentList("+lnkEntry.getValue()+")", locationStr);
 				this.counterFail++;
 			}
 		}
@@ -159,10 +179,10 @@ public class TestCaseHelper extends TestCaseExt{
 			retval = this.doVerifyElementPresent(lnkEntry);
 			this.counter++;
 			if(retval == super.PASS){
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresentList-"+lnkEntry.getValue());
+				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresentList("+lnkEntry.getValue()+")");
 				this.counterPass++;
 			}else{
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementPresentList-"+lnkEntry.getValue());
+				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementPresentList("+lnkEntry.getValue()+")");
 				this.counterFail++;
 			}
 		}
@@ -173,10 +193,10 @@ public class TestCaseHelper extends TestCaseExt{
 			retval = this.doVerifyTextNotPresent(lnkEntry, locationStr);
 			this.counter++;
 			if(retval == super.PASS){
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextNotPresentList-"+lnkEntry.getValue());
+				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextNotPresentList-"+lnkEntry.getValue(), locationStr);
 				this.counterPass++;
 			}else{
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextNotPresentList-"+lnkEntry.getValue());
+				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextNotPresentList-"+lnkEntry.getValue(), locationStr);
 				this.counterFail++;
 			}
 		}

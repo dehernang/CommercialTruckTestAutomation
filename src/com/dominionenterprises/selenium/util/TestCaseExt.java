@@ -328,7 +328,10 @@ public class TestCaseExt extends TestCase{
 					break;			
 				case "cssSelector":
 					this.driver.findElement(By.cssSelector(target)).click();
-					break;			
+					break;	
+				case "id":
+					this.driver.findElement(By.id(target)).click();
+					break;
 				default:
 					return ERR2;			
 			}
@@ -361,5 +364,24 @@ public class TestCaseExt extends TestCase{
 		return PASS;
 	}
 	
+	protected int input(String type, String id, String text){
+		try{
+			switch(type){		
+				case "id":
+				    driver.findElement(By.id(id)).clear();
+				    driver.findElement(By.id(id)).sendKeys(text);
+					break;				
+				default:
+					return ERR2;			
+			}
+		}catch(Exception e){
+			return ERR1; 
+		}catch(Error e){	
+			return ERR1; 
+		}catch(Throwable e){
+			return ERR1;  		  
+		}
+		return PASS;
+	}
 
 }

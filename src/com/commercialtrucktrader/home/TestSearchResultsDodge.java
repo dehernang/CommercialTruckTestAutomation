@@ -67,31 +67,34 @@ public class TestSearchResultsDodge extends TestCaseHelper{
 
 	  @Test
 	  public void testSearchResults() throws Exception {
-
-		  Thread.sleep(1000);
+		  
+		  /*
+		   * Search by selecting from drop down menu
+		   */
+		  
+		  wait(1);
 		  try{
 			  select("id","makesDrop",make);
 			  click("cssSelector","img[alt=\"Find It\"]");
-			  Thread.sleep(1000);
+			  wait(1);
 			  
-			  element.clear();
-			  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+make+"*)[\\s\\S]*$","xpath");
-			  //Verify all results header/title
-			  for(String xpath : xpaths){
-				  doVerifyTextPresentList(element, xpath);
-			  }
+			  verifyResults();
 			      
-			  Thread.sleep(1000);
+			  wait(1);
 			  getDriver().findElement(By.linkText("HOME")).click();
-			  Thread.sleep(1000);
-		  
-			  
 		  }catch(Exception e){
 			  println(e.getMessage());
 			  result(make, TestSearchResultsDodge.class.getSimpleName(), false, "selectByVisibleText");
 		  }
 			  
-
+		  /*
+		   * Search using keyword only
+		   */
+		  
+		  click("linkText","HOME");
+		  input("id","keyword",make);
+		  click("cssSelector","img[alt=\"Find It\"]");
+		  verifyResults();
 		  
 	  }
 	
@@ -105,6 +108,13 @@ public class TestSearchResultsDodge extends TestCaseHelper{
 		  }
 	  }
 	  
+	  private void verifyResults(){
+		  element.clear();
+		  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+make+"*)[\\s\\S]*$","xpath");	  
+		  for(String xpath : xpaths){ 
+			  doVerifyTextPresentList(element, xpath); //Verify all results header/title
+		  }
+	  }
 
  
 }
