@@ -147,6 +147,7 @@ public class TestCaseHelper extends TestCaseExt{
 	public Boolean setDriverBaseUrl(String url){
 		try{
 			super.setBaseUrl(url);
+			println("baseurl: "+url);
 		}catch(Exception e){
 			return false;
 		}	
@@ -156,6 +157,7 @@ public class TestCaseHelper extends TestCaseExt{
 	public Boolean setDriverTimeout(int to){
 		try{
 			super.setTimeout(to);
+			println("timeout: "+to);
 		}catch(Exception e){
 			return false;
 		}	
@@ -166,6 +168,8 @@ public class TestCaseHelper extends TestCaseExt{
 	    Dimension d = new Dimension(x,y);
 	    try{
 	    	super.setDimension(d);	
+	    	println("dimensionx: "+x);
+	    	println("dimensiony: "+y);
 	    }catch(Exception e){
 			return false;
 		}	
@@ -176,6 +180,8 @@ public class TestCaseHelper extends TestCaseExt{
 		Point p = new Point(1,1);
 		try{
 			super.setPoint(p);
+			println("pointx: "+x);
+			println("pointy: "+y);
 		}catch(Exception e){
 			return false;
 		}	

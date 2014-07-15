@@ -10,6 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
@@ -421,4 +423,25 @@ public class TestCaseExt extends TestCase{
 		return PASS;
 	}
 
+	protected int moveToElement(String type, String id){
+		Actions actions = new Actions(_driver);
+		try{
+			switch(type){		
+				case "id":
+					WebElement e = _driver.findElement(By.id(id));
+					actions.moveToElement(e).perform();
+					break;				
+				default:
+					return ERR2;			
+			}
+		}catch(Exception e){
+			return ERR1; 
+		}catch(Error e){	
+			return ERR1; 
+		}catch(Throwable e){
+			return ERR1;  		  
+		}
+		return PASS;		  
+	}
+	
 }
