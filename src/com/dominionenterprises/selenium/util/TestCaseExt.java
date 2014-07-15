@@ -49,8 +49,7 @@ public class TestCaseExt extends TestCase{
 	 * Constructor and Destructor
 	 */
 	
-	public TestCaseExt(WebDriver wd) {
-		_driver = wd;
+	public TestCaseExt() {
 		this.setAcceptNextAlert(true);
 		this.setVerificationErrors(new StringBuffer());
 	}
