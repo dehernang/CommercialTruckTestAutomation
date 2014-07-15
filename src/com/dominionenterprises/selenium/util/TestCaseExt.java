@@ -49,7 +49,8 @@ public class TestCaseExt extends TestCase{
 	 * Constructor and Destructor
 	 */
 	
-	public TestCaseExt() {
+	public TestCaseExt(WebDriver wd) {
+		_driver = wd;
 		this.setAcceptNextAlert(true);
 		this.setVerificationErrors(new StringBuffer());
 	}
@@ -57,16 +58,6 @@ public class TestCaseExt extends TestCase{
 	public void finalize(){
 		if(_driver != null)
 			_driver.quit();
-	}
-
-	/*
-	 * helpers
-	 */
-	
-	private Boolean validDriver() {
-		if(!(_driver instanceof WebDriver))
-			return false;
-		return true;
 	}
 
 	/* 
@@ -109,10 +100,8 @@ public class TestCaseExt extends TestCase{
 		return baseUrl;
 	}
 
-	public void setBaseUrl(String baseUrl) throws Exception {
+	public void setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
-		if(!validDriver())
-			throw new Exception();	
 		_driver.get(this.baseUrl + "/");
 	}
 
@@ -120,10 +109,8 @@ public class TestCaseExt extends TestCase{
 		return timeout;
 	}
 
-	public void setTimeout(int timeout) throws Exception {
+	public void setTimeout(int timeout) {
 		this.timeout = timeout;
-		if(!validDriver())
-			throw new Exception();
 		_driver.manage().timeouts().implicitlyWait(this.timeout, TimeUnit.SECONDS);
 	}
 	
@@ -131,10 +118,8 @@ public class TestCaseExt extends TestCase{
 		return dimension;
 	}
 
-	public void setDimension(Dimension dimension) throws Exception {
+	public void setDimension(Dimension dimension) {
 		this.dimension = dimension;
-		if(!validDriver())
-			throw new Exception();
 		_driver.manage().window().setSize(this.dimension);
 	}
 
@@ -142,10 +127,8 @@ public class TestCaseExt extends TestCase{
 		return point;
 	}
 
-	public void setPoint(Point point) throws Exception {
-		this.point = point;	
-		if(!validDriver())
-			throw new Exception();			
+	public void setPoint(Point point) {
+		this.point = point;			
 		_driver.manage().window().setPosition(this.point);
 	}
 	

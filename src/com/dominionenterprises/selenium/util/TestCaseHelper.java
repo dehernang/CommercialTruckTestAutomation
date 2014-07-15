@@ -52,7 +52,7 @@ public class TestCaseHelper extends TestCaseExt{
 	private Boolean _sharedDriver;
 	
 	public TestCaseHelper() {
-		super();
+		super(new FirefoxDriver());
 		
 		this._baseUrl = null;
 		this._timeout = -1;
