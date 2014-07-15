@@ -113,8 +113,9 @@ public class TestCaseHelper extends TestCaseExt{
 	}
 
 	public Boolean init(String testCaseName){
-		if(this._baseUrl == null)
-			return false;
+		
+		if(this._baseUrl == null) return false;
+		
 		if(this._timeout == -1)
 			this._timeout = 30; //default
 
@@ -123,67 +124,51 @@ public class TestCaseHelper extends TestCaseExt{
 			WebDriver dr = super.getDriver();
 			if(dr == null){	
 				println("Driver is null. Creating new instance...");
-				super.setDriver(new FirefoxDriver());
+				if(!super.setDriver(new FirefoxDriver())) return false;
 			}
 		}else{
-			super.setDriver(new FirefoxDriver());	
+			if(!super.setDriver(new FirefoxDriver())) return false;
 		}
 		
-		super.setTestCaseName(testCaseName);
+		if(!super.setTestCaseName(testCaseName)) return false;
 		
 		//setting params based on config file
 		try{
-			super.setDimension(new Dimension(this._dimensionx,this._dimensiony));
-			super.setPoint(new Point(this._pointx,this._pointy));
-			super.setBaseUrl(this._baseUrl);	
-			super.setTimeout(this._timeout);
-		}catch(Exception e){
-			return false;
-		}
+			if(!super.setDimension(new Dimension(this._dimensionx,this._dimensiony))) return false;
+			if(!super.setPoint(new Point(this._pointx,this._pointy))) return false;
+			if(!super.setBaseUrl(this._baseUrl)) return false;	 
+			if(!super.setTimeout(this._timeout)) return false;
+		}catch(Exception e){ return false; }
 		return true;
 	}
 	
 	public Boolean setDriverBaseUrl(String url){
-		try{
-			super.setBaseUrl(url);
-			println("baseurl: "+url);
-		}catch(Exception e){
-			return false;
-		}	
+		if(!super.setBaseUrl(url))
+			return false;		
+		println("set baseUrl: "+url);
 		return true;
 	}
 	
 	public Boolean setDriverTimeout(int to){
-		try{
-			super.setTimeout(to);
-			println("timeout: "+to);
-		}catch(Exception e){
+		if(!super.setTimeout(to))
 			return false;
-		}	
+		println("set timeout: "+to);
 		return true;
 	}
 
 	public Boolean setDriverDimension(int x, int y){
 	    Dimension d = new Dimension(x,y);
-	    try{
-	    	super.setDimension(d);	
-	    	println("dimensionx: "+x);
-	    	println("dimensiony: "+y);
-	    }catch(Exception e){
+	    if(!super.setDimension(d))
 			return false;
-		}	
+	    println("set dimension("+x+","+y+")");
 	    return true;
 	}
 	
 	public Boolean setDriverPoint(int x, int y){
 		Point p = new Point(1,1);
-		try{
-			super.setPoint(p);
-			println("pointx: "+x);
-			println("pointy: "+y);
-		}catch(Exception e){
+		if(!super.setPoint(p))
 			return false;
-		}	
+		println("set point("+x+","+y+")");
 		return true;
 	}
 	
