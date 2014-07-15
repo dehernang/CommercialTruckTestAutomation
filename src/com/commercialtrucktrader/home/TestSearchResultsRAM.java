@@ -66,7 +66,7 @@ public class TestSearchResultsRAM extends TestCaseHelper{
 	  }
 
 	  @Test
-	  public void testSearchResults() throws Exception {
+	  public void testHomeSearchResultsRAM() throws Exception {
 		  
 		  /*
 		   * Search by selecting from drop down menu
@@ -101,8 +101,7 @@ public class TestSearchResultsRAM extends TestCaseHelper{
 	
 	  @After
 	  public void tearDown() throws Exception {
-		  printTotalVerification();
-		  super.finalize();
+		  printTotalVerification();	  
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);

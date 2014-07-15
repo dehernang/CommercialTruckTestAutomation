@@ -242,7 +242,7 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 	}
 	
 	@Test
-	public void testAdLinksLandingPage() throws Exception {
+	public void testFindAdLinksLandingPage() throws Exception {
 
 		for(Map.Entry<String, ArrayList<HashMap<String,String>>> e: link.entrySet()){
 			click("linkText","FIND");
@@ -264,7 +264,6 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 	  @After
 	  public void tearDown() throws Exception {
 		  printTotalVerification();
-		  super.finalize();
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);

@@ -19,7 +19,7 @@ public class SuiteCommercialTruckTraderHome {
 		  suite.addTestSuite(com.commercialtrucktrader.home.TestSearchResults.class);
 		  suite.addTestSuite(com.commercialtrucktrader.home.TestSearchResultsDodge.class);
 		  suite.addTestSuite(com.commercialtrucktrader.home.TestSearchResultsRAM.class);
- 
+
 		  return suite;
 	  }
 	

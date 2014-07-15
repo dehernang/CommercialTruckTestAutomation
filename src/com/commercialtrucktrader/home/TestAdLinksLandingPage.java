@@ -23,7 +23,7 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 	  }
 	
 	  @Test
-	  public void testAdLinksLandingPage() throws Exception {
+	  public void testHomeAdLinksLandingPage() throws Exception {
 
 		  click("linkText","Chevy Trucks");
 
@@ -198,7 +198,6 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 	  @After
 	  public void tearDown() throws Exception {
 		  printTotalVerification();
-		  super.finalize(); 
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);

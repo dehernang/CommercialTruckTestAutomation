@@ -23,7 +23,7 @@ public class TestLogoNav extends TestCaseHelper {
 	  }
 	
 	  @Test
-	  public void testLogoNav() throws Exception {
+	  public void testFindLogoNav() throws Exception {
 		  
 		  click("linkText","FIND");
 	    
@@ -146,7 +146,6 @@ public class TestLogoNav extends TestCaseHelper {
 	  @After
 	  public void tearDown() throws Exception {
 		  printTotalVerification();
-		  super.finalize();
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);

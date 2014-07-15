@@ -66,7 +66,7 @@ public class TestSearchResultsDodge extends TestCaseHelper{
 	  }
 
 	  @Test
-	  public void testSearchResults() throws Exception {
+	  public void testHomeSearchResultsDodge() throws Exception {
 		  
 		  /*
 		   * Search by selecting from drop down menu
@@ -101,7 +101,6 @@ public class TestSearchResultsDodge extends TestCaseHelper{
 	  @After
 	  public void tearDown() throws Exception {
 		  printTotalVerification();
-		  super.finalize();
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);

@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import com.dominionenterprises.selenium.util.TestCaseExt;
+import org.openqa.selenium.WebDriver;
 
 /**
  * @author hernan
@@ -84,12 +85,22 @@ public class TestCaseHelper extends TestCaseExt{
 		
 	}
 	
+	public void finalize(){
+		if(super.getDriver() != null)
+			super.finalize();
+	}
+
 	public Boolean init(String testCaseName){
 		if(this.baseUrlTmp == null)
 			return false;
 		if(this.timeoutTmp == -1)
 			this.timeoutTmp = 30; //default
-		super.setDriver(new FirefoxDriver());
+
+		WebDriver dr = super.getDriver();
+		if(dr == null){	
+			println("Driver is null creating new instance");
+			super.setDriver(new FirefoxDriver());
+		}
 		super.setTestCaseName(testCaseName);
 		super.setBaseUrl(this.baseUrlTmp);	
 		super.setTimeout(this.timeoutTmp);
@@ -128,7 +139,8 @@ public class TestCaseHelper extends TestCaseExt{
 	}
 
     public void printTotalVerification(){
-    	this.println(super.getTestCaseName() + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);  	
+    	this.println(super.getTestCaseName() + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);  
+    	this.println("----------------------------------------------------------------------");
     }
     
     

@@ -25,7 +25,7 @@ public class TestAdLinks extends TestCaseHelper{
 	}
 
 	@Test
-	public void testAdLinks() throws Exception {
+	public void testHomeAdLinks() throws Exception {
 
 		click("cssSelector","img[alt=\"Go To Commercial Truck Home Page\"]");
     
@@ -87,7 +87,6 @@ public class TestAdLinks extends TestCaseHelper{
 	  @After
 	  public void tearDown() throws Exception {
 		  printTotalVerification();
-		  super.finalize();
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);

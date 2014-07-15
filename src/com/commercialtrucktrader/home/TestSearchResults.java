@@ -83,7 +83,7 @@ public class TestSearchResults extends TestCaseHelper{
 	  }
 
 	  @Test
-	  public void testSearchResults() throws Exception {
+	  public void testHomeSearchResults() throws Exception {
 
 		  //Make list
 		  for(Map.Entry<String,String[]> make : makes.entrySet()){
@@ -132,7 +132,6 @@ public class TestSearchResults extends TestCaseHelper{
 	  @After
 	  public void tearDown() throws Exception {
 		  printTotalVerification();
-		  super.finalize();
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);

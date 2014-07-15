@@ -23,7 +23,7 @@ import junit.framework.TestCase;
  */
 public class TestCaseExt extends TestCase{
 
-	private WebDriver driver;
+	private static WebDriver _driver;
 	private String testCaseName;
 	private boolean acceptNextAlert;
 	private StringBuffer verificationErrors;
@@ -50,8 +50,8 @@ public class TestCaseExt extends TestCase{
 	}
 
 	public void finalize(){
-		if(this.driver != null)
-			this.driver.quit();
+		if(_driver != null)
+			_driver.quit();
 	}
 
 
@@ -60,11 +60,11 @@ public class TestCaseExt extends TestCase{
 	 */
 	
 	public WebDriver getDriver() {
-		return driver;
+		return _driver;
 	}
 
 	public void setDriver(WebDriver driver) {
-		this.driver = driver;
+		_driver = driver;
 	}
 
 	public String getTestCaseName() {
@@ -97,7 +97,7 @@ public class TestCaseExt extends TestCase{
 
 	public void setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
-		this.driver.get(this.baseUrl + "/");
+		_driver.get(this.baseUrl + "/");
 	}
 
 	public int getTimeout() {
@@ -106,7 +106,7 @@ public class TestCaseExt extends TestCase{
 
 	public void setTimeout(int timeout) {
 		this.timeout = timeout;
-		this.driver.manage().timeouts().implicitlyWait(this.timeout, TimeUnit.SECONDS);
+		_driver.manage().timeouts().implicitlyWait(this.timeout, TimeUnit.SECONDS);
 	}
 	
 	
@@ -116,7 +116,7 @@ public class TestCaseExt extends TestCase{
 	
 	private boolean isElementPresent(By by) {
 		 try{
-			 this.driver.findElement(by);
+			 _driver.findElement(by);
 		     return true;
 		 }catch (NoSuchElementException e){
 			 return false;
@@ -125,7 +125,7 @@ public class TestCaseExt extends TestCase{
 	
 	private boolean isAlertPresent() {
 		try{
-		    this.driver.switchTo().alert();
+		    _driver.switchTo().alert();
 		    return true;
 		}catch(NoAlertPresentException e){
 		    return false;
@@ -134,7 +134,7 @@ public class TestCaseExt extends TestCase{
 
 	private String closeAlertAndGetItsText() {
 		try {
-			Alert alert = driver.switchTo().alert();
+			Alert alert = _driver.switchTo().alert();
 			String alertText = alert.getText();
 		    if(acceptNextAlert){
 		    	alert.accept();
@@ -222,9 +222,9 @@ public class TestCaseExt extends TestCase{
 	private String verifyTextPresentByCssSelector(String cssSelectorStr, String textStr, Boolean verifyExist){
 		try{		
 			if(verifyExist)
-				assertTrue(this.driver.findElement(By.cssSelector(cssSelectorStr)).getText().matches(textStr));
+				assertTrue(_driver.findElement(By.cssSelector(cssSelectorStr)).getText().matches(textStr));
 			else{
-				assertFalse(this.driver.findElement(By.cssSelector(cssSelectorStr)).getText().matches(textStr));	
+				assertFalse(_driver.findElement(By.cssSelector(cssSelectorStr)).getText().matches(textStr));	
 			}
 		}catch(Exception e){
 			return EXCEPTION; 
@@ -239,9 +239,9 @@ public class TestCaseExt extends TestCase{
 	private String verifyTextPresentByXpath(String xpathStr, String textStr, Boolean verifyExist){
 		try{	
 			if(verifyExist)
-				assertTrue(this.driver.findElement(By.xpath(xpathStr)).getText().matches(textStr));			
+				assertTrue(_driver.findElement(By.xpath(xpathStr)).getText().matches(textStr));			
 			else{
-				assertFalse(this.driver.findElement(By.xpath(xpathStr)).getText().matches(textStr));	
+				assertFalse(_driver.findElement(By.xpath(xpathStr)).getText().matches(textStr));	
 			}
 		}catch(Exception e){
 			return EXCEPTION; 
@@ -324,13 +324,13 @@ public class TestCaseExt extends TestCase{
 		try{	
 			switch(type){		
 				case "linkText":
-					this.driver.findElement(By.linkText(target)).click();
+					_driver.findElement(By.linkText(target)).click();
 					break;			
 				case "cssSelector":
-					this.driver.findElement(By.cssSelector(target)).click();
+					_driver.findElement(By.cssSelector(target)).click();
 					break;	
 				case "id":
-					this.driver.findElement(By.id(target)).click();
+					_driver.findElement(By.id(target)).click();
 					break;
 				default:
 					return ERR2;			
@@ -349,7 +349,7 @@ public class TestCaseExt extends TestCase{
 		try{
 			switch(type){		
 				case "id":
-					new Select(this.driver.findElement(By.id(id))).selectByVisibleText(target);
+					new Select(_driver.findElement(By.id(id))).selectByVisibleText(target);
 					break;				
 				default:
 					return ERR2;			
@@ -368,8 +368,8 @@ public class TestCaseExt extends TestCase{
 		try{
 			switch(type){		
 				case "id":
-				    driver.findElement(By.id(id)).clear();
-				    driver.findElement(By.id(id)).sendKeys(text);
+					_driver.findElement(By.id(id)).clear();
+					_driver.findElement(By.id(id)).sendKeys(text);
 					break;				
 				default:
 					return ERR2;			

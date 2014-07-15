@@ -25,7 +25,7 @@ public class TestLogoNav extends TestCaseHelper{
 	  }
 	
 	  @Test
-	  public void testLogoNav() throws Exception {
+	  public void testHomeLogoNav() throws Exception {
 		  
 		  click("cssSelector","img[alt=\"Go To Commercial Truck Home Page\"]");
 	    
@@ -123,7 +123,6 @@ public class TestLogoNav extends TestCaseHelper{
 	  @After
 	  public void tearDown() throws Exception {
 		  printTotalVerification();
-		  super.finalize();
 		  String verificationErrorString = this.getVerificationErrors().toString();
 		  if (!"".equals(verificationErrorString)) {
 			  fail(verificationErrorString);
