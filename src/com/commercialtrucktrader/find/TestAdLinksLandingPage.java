@@ -160,7 +160,7 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 		addToVerification("Chevrolet",targets);
 		
 		targets = new HashMap<String,String>();
-		targets.put("Dodge Trucks for Sale","//div[@id='topic_container']/h1");
+		targets.put("Dodge Trucks for Sale","//div[@id='topic_container']/div/h1");
 		targets.put("Dodge results found","//div[@id='pagineationSort_container']/h2");
 		addToVerification("Dodge",targets);
 		
