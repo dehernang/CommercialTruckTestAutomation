@@ -16,7 +16,7 @@ import com.dominionenterprises.selenium.util.TestCaseHelper;
 public class TestLogoNav extends TestCaseHelper {
 	  
 	  @Before
-	  public void setUp() throws Exception {
+	  public void setUp() throws Exception {  
 		  Boolean good = super.init(TestLogoNav.class.getName());
 			if(!good)
 				throw new Exception();

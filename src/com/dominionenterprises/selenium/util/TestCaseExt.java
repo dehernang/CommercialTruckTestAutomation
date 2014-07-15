@@ -10,8 +10,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 
 import junit.framework.TestCase;
 
@@ -29,6 +30,8 @@ public class TestCaseExt extends TestCase{
 	private StringBuffer verificationErrors;
 	private String baseUrl;
 	private int timeout;
+	private Dimension dimension;
+	private Point point;
 	
 	private static final String TYPE_NOT_FOUND = "Type Not Found";
 	private static final String ERROR = "Error";
@@ -54,6 +57,15 @@ public class TestCaseExt extends TestCase{
 			_driver.quit();
 	}
 
+	/*
+	 * helpers
+	 */
+	
+	private Boolean validDriver() {
+		if(!(_driver instanceof WebDriver))
+			return false;
+		return true;
+	}
 
 	/* 
 	 * Getters and Setters
@@ -95,8 +107,10 @@ public class TestCaseExt extends TestCase{
 		return baseUrl;
 	}
 
-	public void setBaseUrl(String baseUrl) {
+	public void setBaseUrl(String baseUrl) throws Exception {
 		this.baseUrl = baseUrl;
+		if(!validDriver())
+			throw new Exception();	
 		_driver.get(this.baseUrl + "/");
 	}
 
@@ -104,11 +118,34 @@ public class TestCaseExt extends TestCase{
 		return timeout;
 	}
 
-	public void setTimeout(int timeout) {
+	public void setTimeout(int timeout) throws Exception {
 		this.timeout = timeout;
+		if(!validDriver())
+			throw new Exception();
 		_driver.manage().timeouts().implicitlyWait(this.timeout, TimeUnit.SECONDS);
 	}
 	
+	public Dimension getDimension() {
+		return dimension;
+	}
+
+	public void setDimension(Dimension dimension) throws Exception {
+		this.dimension = dimension;
+		if(!validDriver())
+			throw new Exception();
+		_driver.manage().window().setSize(this.dimension);
+	}
+
+	public Point getPoint() {
+		return point;
+	}
+
+	public void setPoint(Point point) throws Exception {
+		this.point = point;	
+		if(!validDriver())
+			throw new Exception();			
+		_driver.manage().window().setPosition(this.point);
+	}
 	
 	/* 
 	 * Selenium Methods

@@ -11,6 +11,9 @@ import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import com.dominionenterprises.selenium.util.TestCaseExt;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -40,14 +43,19 @@ public class TestCaseHelper extends TestCaseExt{
 	private static final String DEV = "dev";
 	private static final String CONFIG_PATH = "com/dominionenterprises/selenium/util/";
 	
-	private String baseUrlTmp;
-	private int timeoutTmp;
+	private String _baseUrl;
+	private int _timeout;
+	private int _dimensionx;
+	private int _dimensiony;
+	private int _pointx;
+	private int _pointy;
+	private Boolean _sharedDriver;
 	
 	public TestCaseHelper() {
 		super();
 		
-		this.baseUrlTmp = null;
-		this.timeoutTmp = -1;
+		this._baseUrl = null;
+		this._timeout = -1;
 		Properties prop = new Properties();	
 		try {
 
@@ -66,12 +74,18 @@ public class TestCaseHelper extends TestCaseExt{
 				println("Loading Default DEV. " + conf + " " + DEV + "==" + env);
 			}
 			
+			//get params
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream(CONFIG_PATH + conf);
 			prop.load(is);
 			println("getProperty baseurl: " + prop.getProperty("baseurl"));
 			
-			this.baseUrlTmp = prop.getProperty("baseurl");
-			this.timeoutTmp = Integer.parseInt(prop.getProperty("timeout"));
+			this._baseUrl = prop.getProperty("baseurl");
+			this._timeout = Integer.parseInt(prop.getProperty("timeout").trim());
+			this._dimensionx = Integer.parseInt(prop.getProperty("dimensionx").trim());
+			this._dimensiony = Integer.parseInt(prop.getProperty("dimensiony").trim());
+			this._pointx = Integer.parseInt(prop.getProperty("pointx").trim());
+			this._pointy = Integer.parseInt(prop.getProperty("pointy").trim());
+			this._sharedDriver = Boolean.valueOf(prop.getProperty("sharedDriver"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();		
@@ -86,24 +100,78 @@ public class TestCaseHelper extends TestCaseExt{
 	}
 	
 	public void finalize(){
+		println("Cleaning up...");
 		if(super.getDriver() != null)
 			super.finalize();
 	}
 
 	public Boolean init(String testCaseName){
-		if(this.baseUrlTmp == null)
+		if(this._baseUrl == null)
 			return false;
-		if(this.timeoutTmp == -1)
-			this.timeoutTmp = 30; //default
+		if(this._timeout == -1)
+			this._timeout = 30; //default
 
-		WebDriver dr = super.getDriver();
-		if(dr == null){	
-			println("Driver is null creating new instance");
-			super.setDriver(new FirefoxDriver());
+		//re-use if there is already an instance
+		if(_sharedDriver){
+			WebDriver dr = super.getDriver();
+			if(dr == null){	
+				println("Driver is null creating new instance");
+				super.setDriver(new FirefoxDriver());
+			}
+		}else{
+			super.setDriver(new FirefoxDriver());		
 		}
+		
+		
 		super.setTestCaseName(testCaseName);
-		super.setBaseUrl(this.baseUrlTmp);	
-		super.setTimeout(this.timeoutTmp);
+		
+		//setting params based on config file
+		try{
+			super.setDimension(new Dimension(this._dimensionx,this._dimensiony));
+			super.setPoint(new Point(this._pointx,this._pointy));
+			super.setBaseUrl(this._baseUrl);	
+			super.setTimeout(this._timeout);
+		}catch(Exception e){
+			return false;
+		}
+		return true;
+	}
+	
+	public Boolean setDriverBaseUrl(String url){
+		try{
+			super.setBaseUrl(url);
+		}catch(Exception e){
+			return false;
+		}	
+		return true;
+	}
+	
+	public Boolean setDriverTimeout(int to){
+		try{
+			super.setTimeout(to);
+		}catch(Exception e){
+			return false;
+		}	
+		return true;
+	}
+
+	public Boolean setDriverDimension(int x, int y){
+	    Dimension d = new Dimension(x,y);
+	    try{
+	    	super.setDimension(d);	
+	    }catch(Exception e){
+			return false;
+		}	
+	    return true;
+	}
+	
+	public Boolean setDriverPoint(int x, int y){
+		Point p = new Point(1,1);
+		try{
+			super.setPoint(p);
+		}catch(Exception e){
+			return false;
+		}	
 		return true;
 	}
 	
