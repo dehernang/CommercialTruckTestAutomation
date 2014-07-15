@@ -77,8 +77,7 @@ public class TestCaseHelper extends TestCaseExt{
 			//get params
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream(CONFIG_PATH + conf);
 			prop.load(is);
-			println("getProperty baseurl: " + prop.getProperty("baseurl"));
-			
+
 			this._baseUrl = prop.getProperty("baseurl");
 			this._timeout = Integer.parseInt(prop.getProperty("timeout").trim());
 			this._dimensionx = Integer.parseInt(prop.getProperty("dimensionx").trim());
@@ -86,6 +85,14 @@ public class TestCaseHelper extends TestCaseExt{
 			this._pointx = Integer.parseInt(prop.getProperty("pointx").trim());
 			this._pointy = Integer.parseInt(prop.getProperty("pointy").trim());
 			this._sharedDriver = Boolean.valueOf(prop.getProperty("sharedDriver"));
+			
+			println("getProperty baseurl: " + prop.getProperty("baseurl"));
+			println("getProperty timeout: " + prop.getProperty("timeout"));
+			println("getProperty dimensionx: " + prop.getProperty("dimensionx"));
+			println("getProperty dimensiony: " + prop.getProperty("dimensiony"));
+			println("getProperty pointx: " + prop.getProperty("pointx"));
+			println("getProperty pointy: " + prop.getProperty("pointy"));
+			println("getProperty sharedDriver: " + prop.getProperty("sharedDriver"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();		
@@ -115,7 +122,7 @@ public class TestCaseHelper extends TestCaseExt{
 		if(_sharedDriver){
 			WebDriver dr = super.getDriver();
 			if(dr == null){	
-				println("Driver is null creating new instance");
+				println("Driver is null. Creating new instance...");
 				super.setDriver(new FirefoxDriver());
 			}
 		}else{
