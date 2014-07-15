@@ -60,75 +60,103 @@ public class TestCaseExt extends TestCase{
 	}
 
 	/* 
-	 * Getters and Setters
+	 * Getters
 	 */
 	
 	public WebDriver getDriver() {
 		return _driver;
 	}
 
-	public void setDriver(WebDriver driver) {
-		_driver = driver;
-	}
-
 	public String getTestCaseName() {
 		return testCaseName;
 	}
 
-	public void setTestCaseName(String testCaseName) {
-		this.testCaseName = testCaseName;
-	}
-	
 	public boolean isAcceptNextAlert() {
 		return acceptNextAlert;
 	}
-
-	public void setAcceptNextAlert(boolean acceptNextAlert) {
-		this.acceptNextAlert = acceptNextAlert;
-	}	
 	
 	public StringBuffer getVerificationErrors() {
 		return verificationErrors;
-	}
-
-	public void setVerificationErrors(StringBuffer verificationErrors) {
-		this.verificationErrors = verificationErrors;
 	}
 
 	public String getBaseUrl() {
 		return baseUrl;
 	}
 
-	public void setBaseUrl(String baseUrl) {
-		this.baseUrl = baseUrl;
-		_driver.get(this.baseUrl + "/");
-	}
-
 	public int getTimeout() {
 		return timeout;
 	}
 
-	public void setTimeout(int timeout) {
-		this.timeout = timeout;
-		_driver.manage().timeouts().implicitlyWait(this.timeout, TimeUnit.SECONDS);
-	}
-	
 	public Dimension getDimension() {
 		return dimension;
-	}
-
-	public void setDimension(Dimension dimension) {
-		this.dimension = dimension;
-		_driver.manage().window().setSize(this.dimension);
 	}
 
 	public Point getPoint() {
 		return point;
 	}
 
-	public void setPoint(Point point) {
-		this.point = point;			
-		_driver.manage().window().setPosition(this.point);
+	/*
+	 * Setters
+	 */
+	
+	public Boolean setDriver(WebDriver driver) {
+		_driver = driver;
+		return true;
+	}
+	
+	public Boolean setTestCaseName(String testCaseName) {
+		this.testCaseName = testCaseName;
+		return true;
+	}
+	
+	public Boolean setAcceptNextAlert(boolean acceptNextAlert) {
+		this.acceptNextAlert = acceptNextAlert;
+		return true;
+	}	
+	
+	public Boolean setVerificationErrors(StringBuffer verificationErrors) {
+		this.verificationErrors = verificationErrors;
+		return true;
+	}
+	
+	public Boolean setBaseUrl(String baseUrl) {
+		this.baseUrl = baseUrl;
+		try{
+			_driver.get(this.baseUrl + "/");
+		}catch(Throwable e){
+			return false;  		  
+		}
+		return true;
+	}
+	
+	public Boolean setTimeout(int timeout) {
+		this.timeout = timeout;
+		try{
+			_driver.manage().timeouts().implicitlyWait(this.timeout, TimeUnit.SECONDS);
+		}catch(Throwable e){
+			return false;  		  
+		}
+		return true;
+	}
+	
+	public Boolean setDimension(Dimension dimension) {
+		this.dimension = dimension;
+		try{
+			_driver.manage().window().setSize(this.dimension);
+		}catch(Throwable e){
+			return false;  		  
+		}
+		return true;
+	}
+
+	public Boolean setPoint(Point point) {
+		this.point = point;	
+		try{
+			_driver.manage().window().setPosition(this.point);
+		}catch(Throwable e){
+			return false;  		  
+		}
+		return true;
 	}
 	
 	/* 
