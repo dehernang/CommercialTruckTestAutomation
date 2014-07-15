@@ -35,10 +35,10 @@ public class TestCaseExt extends TestCase{
 	private static final String EXCEPTION = "Exception";
 	private static final String THROWABLE = "Throwable";
 	
-	protected final int PASS = 1;
-	protected final int FAIL = 0;
-	protected final int ERR1 = -1;
-	protected final int ERR2 = -2;
+	protected static final int PASS = 1;
+	protected static final int FAIL = 0;
+	protected static final int ERR1 = -1;
+	protected static final int ERR2 = -2;
 
 	/* 
 	 * Constructor and Destructor

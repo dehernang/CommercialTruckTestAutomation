@@ -101,25 +101,10 @@ public class TestCaseHelper extends TestCaseExt{
 	 */
 	
 	public void result(String target, String tcName, Boolean pass, String method){
-		
-		/*
-		String status = "Passed";
-		if(!pass)
-			status = "<<<Failed>>>";
-	
-		println("<"+status+"> - <"+tcName+"> <"+method+"> <" + target + ">");
-		*/
 		reportTemplate(target,tcName, pass, method, null);
 	}
 	
 	public void result(String target, String tcName, Boolean pass, String method, String xpath){
-		/*
-		String status = "Passed";
-		if(!pass)
-			status = "<<<Failed>>>";
-	
-		println("<"+status+"> - <"+tcName+"> <"+method+"> <" + target + "> <"+xpath+">");
-		*/
 		reportTemplate(target,tcName, pass, method, xpath);
 	}
 	
@@ -165,7 +150,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyTextPresent(lnkEntry, locationStr);
 			this.counter++;
-			if(retval == super.PASS){
+			if(retval == TestCaseHelper.PASS){
 				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextPresentList("+lnkEntry.getValue()+")", locationStr);
 				this.counterPass++;
 			}else{
@@ -179,7 +164,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyElementPresent(lnkEntry);
 			this.counter++;
-			if(retval == super.PASS){
+			if(retval == TestCaseHelper.PASS){
 				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresentList("+lnkEntry.getValue()+")");
 				this.counterPass++;
 			}else{
@@ -193,7 +178,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyTextNotPresent(lnkEntry, locationStr);
 			this.counter++;
-			if(retval == super.PASS){
+			if(retval == TestCaseHelper.PASS){
 				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextNotPresentList-"+lnkEntry.getValue(), locationStr);
 				this.counterPass++;
 			}else{
@@ -207,7 +192,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
 			retval = this.doVerifyElementNotPresent(lnkEntry);
 			this.counter++;
-			if(retval == super.PASS){
+			if(retval == TestCaseHelper.PASS){
 				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementNotPresentList-"+lnkEntry.getValue());
 				this.counterPass++;
 			}else{
