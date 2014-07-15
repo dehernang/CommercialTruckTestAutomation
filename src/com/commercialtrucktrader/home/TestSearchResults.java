@@ -88,7 +88,7 @@ public class TestSearchResults extends TestCaseHelper{
 		  //Make list
 		  for(Map.Entry<String,String[]> make : makes.entrySet()){
 
-			  Thread.sleep(1000);
+			  wait(1);
 			  try{
 				  select("id","makesDrop",make.getKey());
 				  makeFound = true;
@@ -104,7 +104,7 @@ public class TestSearchResults extends TestCaseHelper{
 			  if(makeFound){
 
 			      click("cssSelector","img[alt=\"Find It\"]");
-			      Thread.sleep(1000);
+			      wait(1);
 			
 			      //Evaluate each item in the array per Make
 			      for(String kw : make.getValue()){
@@ -118,9 +118,9 @@ public class TestSearchResults extends TestCaseHelper{
 			    	  
 			      }
 			      
-			      Thread.sleep(1000);
+			      wait(1);
 			      getDriver().findElement(By.linkText("HOME")).click();
-			      Thread.sleep(1000);
+			      //wait(1);
 		  
 			  }
 			  
