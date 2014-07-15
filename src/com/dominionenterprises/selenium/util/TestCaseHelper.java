@@ -35,8 +35,8 @@ public class TestCaseHelper extends TestCaseExt{
 	private String env;
 	private static final String CONFIG_DEV = "dev.properties";
 	private static final String CONFIG_LIVE = "live.properties";
-	private static final String LIVE = "LIVE";
-	private static final String DEV = "DEV";
+	private static final String LIVE = "live";
+	private static final String DEV = "dev";
 	
 	private String baseUrlTmp;
 	private int timeoutTmp;
