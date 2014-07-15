@@ -37,6 +37,7 @@ public class TestCaseHelper extends TestCaseExt{
 	private static final String CONFIG_LIVE = "live.properties";
 	private static final String LIVE = "live";
 	private static final String DEV = "dev";
+	private static final String CONFIG_PATH = "com/dominionenterprises/selenium/util/";
 	
 	private String baseUrlTmp;
 	private int timeoutTmp;
@@ -64,7 +65,7 @@ public class TestCaseHelper extends TestCaseExt{
 				println("Loading Default DEV. " + conf + " " + DEV + "==" + env);
 			}
 			
-			InputStream is = this.getClass().getClassLoader().getResourceAsStream("com/dominionenterprises/selenium/util/" + conf);
+			InputStream is = this.getClass().getClassLoader().getResourceAsStream(CONFIG_PATH + conf);
 			prop.load(is);
 			println("getProperty baseurl: " + prop.getProperty("baseurl"));
 			
