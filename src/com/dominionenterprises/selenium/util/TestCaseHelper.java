@@ -96,7 +96,7 @@ public class TestCaseHelper extends TestCaseExt{
 			this._pointx = Integer.parseInt(prop.getProperty("pointx").trim());
 			this._pointy = Integer.parseInt(prop.getProperty("pointy").trim());
 			this._sharedDriver = Boolean.valueOf(prop.getProperty("sharedDriver"));
-			
+
 			println("getProperty baseurl: " + prop.getProperty("baseurl"));
 			println("getProperty timeout: " + prop.getProperty("timeout"));
 			println("getProperty dimensionx: " + prop.getProperty("dimensionx"));
