@@ -467,4 +467,25 @@ public class TestCaseExt extends TestCase{
 		return PASS;		  
 	}
 	
+	protected String getValue(String type, String target){
+		String val = null;
+		try{	
+			switch(type){		
+				case "xpath":
+					WebElement tmp = _driver.findElement(By.xpath(target));
+					val = tmp.getText();
+					break;			
+				default:
+					return "error";			
+			}
+		}catch(Exception e){
+			return "error";	
+		}catch(Error e){	
+			return "error";	
+		}catch(Throwable e){
+			return "error";			  
+		}
+		return val;
+	}
+	
 }
