@@ -433,14 +433,27 @@ public class TestCaseExt extends TestCase{
 		return PASS;
 	}
 
-	protected int moveToElement(String type, String id){
+	protected int moveToElement(String type, String target){
 		Actions actions = new Actions(_driver);
+		WebElement el;
 		try{
 			switch(type){		
 				case "id":
-					WebElement e = _driver.findElement(By.id(id));
-					actions.moveToElement(e).perform();
-					break;				
+					el = _driver.findElement(By.id(target));
+					actions.moveToElement(el).perform();
+					break;	
+				case "linkText":
+					el = _driver.findElement(By.linkText(target));
+					actions.moveToElement(el).perform();
+					break;
+				case "cssSelector":
+					el = _driver.findElement(By.cssSelector(target));
+					actions.moveToElement(el).perform();
+					break;	
+				case "xpath":
+					el = _driver.findElement(By.xpath(target));
+					actions.moveToElement(el).perform();
+					break;		
 				default:
 					return ERR2;			
 			}
