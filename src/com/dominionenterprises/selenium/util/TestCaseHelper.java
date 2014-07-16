@@ -290,6 +290,7 @@ public class TestCaseHelper extends TestCaseExt{
 				this.counterPass++;
 			}else{
 				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextNotPresentList-"+lnkEntry.getValue(), locationStr);
+				println("Failed Value: " + getText("xpath",locationStr));
 				this.counterFail++;
 			}
 		}
