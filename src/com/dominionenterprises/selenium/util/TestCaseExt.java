@@ -467,7 +467,7 @@ public class TestCaseExt extends TestCase{
 		return PASS;		  
 	}
 	
-	protected String getValue(String type, String target){
+	protected String getText(String type, String target){
 		String val = null;
 		try{	
 			switch(type){		

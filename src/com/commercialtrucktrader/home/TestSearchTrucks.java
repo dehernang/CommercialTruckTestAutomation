@@ -31,17 +31,18 @@ public class TestSearchTrucks extends TestCaseHelper{
 			xpaths.add("//h3/a");
 			xpaths.add("//div[4]/div/h3/a");
 			xpaths.add("//div[5]/div/h3/a");
+			xpaths.add("//div[6]/div/h3/a");
 			xpaths.add("//div[7]/div/h3/a");
 			xpaths.add("//div[8]/div/h3/a");
 			xpaths.add("//div[9]/div/h3/a");
-			//xpaths.add("//div[10]/div/h3/a");
+			xpaths.add("//div[10]/div/h3/a");
 			xpaths.add("//div[11]/div/h3/a");
 			xpaths.add("//div[12]/div/h3/a");
 			xpaths.add("//div[13]/div/h3/a");
 			xpaths.add("//div[14]/div/h3/a");
 			xpaths.add("//div[15]/div/h3/a");
-			xpaths.add("//div[16]/div/h3/a");//add
-			//xpaths.add("//div[17]/div/h3/a");
+			xpaths.add("//div[16]/div/h3/a");
+			xpaths.add("//div[17]/div/h3/a");
 			xpaths.add("//div[18]/div/h3/a");
 			xpaths.add("//div[19]/div/h3/a");
 			xpaths.add("//div[20]/div/h3/a");
@@ -49,15 +50,15 @@ public class TestSearchTrucks extends TestCaseHelper{
 			xpaths.add("//div[22]/div/h3/a");
 			xpaths.add("//div[23]/div/h3/a");
 			xpaths.add("//div[24]/div/h3/a");		
-			//xpaths.add("//div[25]/div/h3/a");
-			//xpaths.add("//div[26]/div/h3/a");
-			//xpaths.add("//div[27]/div/h3/a");
+			xpaths.add("//div[25]/div/h3/a");
+			xpaths.add("//div[26]/div/h3/a");
+			xpaths.add("//div[27]/div/h3/a");
 			xpaths.add("//div[28]/div/h3/a");
 			xpaths.add("//div[29]/div/h3/a");
-			xpaths.add("//div[30]/div/h3/a");//add
-			xpaths.add("//div[31]/div/h3/a");//add
-			xpaths.add("//div[32]/div/h3/a");//add
-			xpaths.add("//div[33]/div/h3/a");//add
+			xpaths.add("//div[30]/div/h3/a");
+			xpaths.add("//div[31]/div/h3/a");
+			xpaths.add("//div[32]/div/h3/a");
+			xpaths.add("//div[33]/div/h3/a");
 			
 	  }
 	

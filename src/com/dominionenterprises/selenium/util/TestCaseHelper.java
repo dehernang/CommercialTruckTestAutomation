@@ -261,6 +261,7 @@ public class TestCaseHelper extends TestCaseExt{
 				this.counterPass++;
 			}else{
 				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextPresentList("+lnkEntry.getValue()+")", locationStr);
+				println("Failed Value: " + getText("xpath",locationStr));
 				this.counterFail++;
 			}
 		}
