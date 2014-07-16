@@ -3,8 +3,11 @@
  */
 package com.dominionenterprises.selenium.util;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -45,6 +48,11 @@ public class TestCaseHelper extends TestCaseExt{
 	private static final String LIVE = "live";
 	private static final String DEV = "dev";
 	private static final String CONFIG_PATH = "com/dominionenterprises/selenium/util/";
+
+	private Properties prop;
+	
+	private Properties resultProp;
+	private OutputStream output;
 	
 	private String _baseUrl;
 	private int _timeout;
@@ -59,7 +67,8 @@ public class TestCaseHelper extends TestCaseExt{
 		
 		this._baseUrl = null;
 		this._timeout = -1;
-		Properties prop = new Properties();	
+		prop = new Properties();
+		
 		try {
 
 			env = (String)System.getenv("ENV_TEST_AUTO");
@@ -77,10 +86,9 @@ public class TestCaseHelper extends TestCaseExt{
 				println("Loading Default DEV. " + conf + " " + DEV + "==" + env);
 			}
 			
-			//get params
 			InputStream is = this.getClass().getClassLoader().getResourceAsStream(CONFIG_PATH + conf);
-			prop.load(is);
-
+			prop.load(is);			
+			
 			this._baseUrl = prop.getProperty("baseurl");
 			this._timeout = Integer.parseInt(prop.getProperty("timeout").trim());
 			this._dimensionx = Integer.parseInt(prop.getProperty("dimensionx").trim());
@@ -114,7 +122,7 @@ public class TestCaseHelper extends TestCaseExt{
 		if(super.getDriver() != null)
 			super.finalize();
 	}
-
+	
 	public Boolean init(String testCaseName){
 		
 		if(this._baseUrl == null) return false;
