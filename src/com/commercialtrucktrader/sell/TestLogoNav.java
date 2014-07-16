@@ -97,7 +97,7 @@ public class TestLogoNav extends TestCaseHelper {
 		  /*
 		   * Dynamic
 		   */
-		  
+
 		  //Body
 		  element.clear();	
 		  element.put("^[\\s\\S]*SELL YOUR COMMERCIAL TRUCK AND TRAILER*[\\s\\S]*$","xpath");
