@@ -5,8 +5,11 @@ package com.dominionenterprises.selenium.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -189,15 +192,33 @@ public class TestCaseHelper extends TestCaseExt{
 		if(!pass)
 			status = "!Failed!";
 		
+		StringBuilder fStr = trimTestCaseName(tcName);
+		
 		StringBuilder text = new StringBuilder();
 		text.append(status);
-		text.append(" <"+tcName+">");
+		text.append(" <"+fStr+">");
 		text.append(" <"+method+">");
 		text.append(" <"+target+">");
 		if(xpath != null)
 			text.append(" <"+xpath+">");
 		System.out.println(text);
 	}
+	
+	//remove the com.xxx
+	private StringBuilder trimTestCaseName(String tcName){
+		final String dot = ".";
+		String[] tmp = tcName.split("\\"+dot);
+		StringBuilder str = new StringBuilder();
+		String prep = "";
+		for(int x=0; x<tmp.length; x++){
+			if(x != 0 && x != 1){
+				str.append(prep + tmp[x]);
+				prep = dot;
+			}
+		}
+		return str;
+	}
+	
 	
 	public void println(String msg){
 		System.out.println(msg);
