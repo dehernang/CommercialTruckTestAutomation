@@ -250,10 +250,10 @@ public class TestCaseHelper extends TestCaseExt{
 	}
 
 
-    /*
-     * Helpers
-     */
-    
+	/*
+	 * Helpers
+	 */
+
 	public Map<String,String> newElement(String k, String v){
 		 Map<String,String> tmp = new HashMap<String,String>();
 		 tmp.put(k,v);
@@ -286,9 +286,9 @@ public class TestCaseHelper extends TestCaseExt{
 		TestCaseHelper.counterFailOverall++;
 	}
 
-    /*
-     * Operations
-     */
+	/*
+	 * Operations
+	 */
 
 	public void doVerifyTextPresentList(ArrayList<Map<String, String>> e, String locationStr){
 		for(Map<String, String> list: e){
