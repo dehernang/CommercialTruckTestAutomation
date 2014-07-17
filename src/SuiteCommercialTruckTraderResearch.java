@@ -15,7 +15,7 @@ public class SuiteCommercialTruckTraderResearch {
 	}
 
 	public static void main(String[] args) {
-		//junit.textui.TestRunner.run(suite());
+		junit.textui.TestRunner.run(suite());
 	}
   
 }

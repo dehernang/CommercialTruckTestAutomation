@@ -3,17 +3,11 @@
  */
 package com.dominionenterprises.selenium.util;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -41,6 +35,8 @@ public class TestCaseHelper extends TestCaseExt{
 	protected int retval;
 	
 	protected static int counterOverall;
+	protected static int counterPassOverall;
+	protected static int counterFailOverall;
 	
 	protected Iterator<String> iterator;
 	protected String lnkName;
@@ -55,9 +51,6 @@ public class TestCaseHelper extends TestCaseExt{
 	private static final String CONFIG_PATH = "com/dominionenterprises/selenium/util/";
 
 	private Properties prop;
-	
-	private Properties resultProp;
-	private OutputStream output;
 	
 	private String _baseUrl;
 	private int _timeout;
@@ -249,9 +242,11 @@ public class TestCaseHelper extends TestCaseExt{
 	}
 
     public void printTotalVerification(){
-    	this.println(super.getTestCaseName() + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail 
-    			+ " Overall: " + TestCaseHelper.counterOverall);  
-    	this.println("----------------------------------------------------------------------");
+    	this.println(super.getTestCaseName() + " TestCase Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);
+    	this.println(super.getTestCaseName() + " Suite Total: " + TestCaseHelper.counterOverall
+    			+ " Pass: " + TestCaseHelper.counterPassOverall
+    			+ " Fail: " + TestCaseHelper.counterFailOverall);
+    	this.println("------------- ---------------- ---------------");
     }
     
     
@@ -275,15 +270,20 @@ public class TestCaseHelper extends TestCaseExt{
     }
 
     public void incrementCounterPass(){
-    	this.counter++;
     	this.counterPass++;
-    	TestCaseHelper.counterOverall++;
+    	this.incrementCounters();
     }
     
-    public void incrementCounterFail(){
-    	this.counter++;
+    public void incrementCounterFail(){    	
     	this.counterFail++;
+    	this.incrementCounters();
+    }
+    
+    private void incrementCounters(){
+    	this.counter++;
     	TestCaseHelper.counterOverall++;
+    	TestCaseHelper.counterPassOverall++;
+    	TestCaseHelper.counterFailOverall++;
     }
     
     /*

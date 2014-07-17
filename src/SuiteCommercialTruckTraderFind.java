@@ -12,10 +12,11 @@ public class SuiteCommercialTruckTraderFind {
 	
   public static Test suite() {
     TestSuite suite = new TestSuite();
+   
     suite.addTestSuite(com.commercialtrucktrader.find.TestLogoNav.class);
     suite.addTestSuite(com.commercialtrucktrader.find.TestSearchResults.class);
     suite.addTestSuite(com.commercialtrucktrader.find.TestAdLinksLandingPage.class);
-    
+   
     return suite;
   }
 

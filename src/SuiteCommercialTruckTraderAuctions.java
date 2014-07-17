@@ -11,11 +11,14 @@ public class SuiteCommercialTruckTraderAuctions {
 
 	public static Test suite() {
 		TestSuite suite = new TestSuite();
+		
+		
+		
 		return suite;
 	}
 
 	public static void main(String[] args) {
-		//junit.textui.TestRunner.run(suite());
+		junit.textui.TestRunner.run(suite());
 	}
 
   
