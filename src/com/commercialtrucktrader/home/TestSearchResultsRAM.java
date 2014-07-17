@@ -108,11 +108,11 @@ public class TestSearchResultsRAM extends TestCaseHelper{
 		  }
 	  }
 	  
-	  private void verifyResults(){
-		  element.clear();
-		  element.put("^[\\s\\S]*201[1-9](?i:.*"+make+"*)[\\s\\S]*$","xpath");	
+	  private void verifyResults(){	
+		  elementListReset();
+    	  elementList.add(newElement("xpath", "^[\\s\\S]*201[1-9](?i:.*"+make+"*)[\\s\\S]*$"));
 		  for(String xpath : xpaths){ 
-			  doVerifyTextPresentList(element, xpath); //Verify all results header/title
+			  doVerifyTextPresentList(elementList, xpath); //Verify all results header/title
 		  }
 	  }
  

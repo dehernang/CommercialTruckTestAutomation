@@ -34,10 +34,10 @@ public class TestBrowseMakeLinks extends TestCaseHelper{
 		  moveToElement("id","browse");
 		  click("linkText","Browse Trucks by Make");
 
-		  element.put("Dodge/Ram","cssSelector");
-		  element.put("Dodge / Ram","cssSelector");
-		  element.put("Dodge.*.Ram","cssSelector");
-		  doVerifyTextNotPresentList(element, "BODY");
+		  elementList.add(newElement("cssSelector", "Dodge/Ram"));
+		  elementList.add(newElement("cssSelector", "Dodge / Ram"));
+		  elementList.add(newElement("cssSelector", "Dodge.*.Ram"));
+		  doVerifyTextNotPresentList(elementList, "BODY");
 
 		  
 	  }

@@ -30,7 +30,6 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 		if(!good)
 			throw new Exception();
 		
-		
 		targets = new HashMap<String,String>();
 		
 		targets.put("Bus for Sale","//div[@id='topic_container']/div/h1");
@@ -247,12 +246,12 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 		for(Map.Entry<String, ArrayList<HashMap<String,String>>> e: link.entrySet()){
 			click("linkText","FIND");
 			click("linkText",e.getKey());
-			
-			for(HashMap<String,String> kws : e.getValue()){
+
+			for(HashMap<String,String> kws : e.getValue()){			
 				for(Map.Entry<String,String> targs: kws.entrySet()){
-					element.clear();
-					element.put("^[\\s\\S]*"+targs.getKey()+"[\\s\\S]*$", "xpath");
-					doVerifyTextPresentList(element, targs.getValue());
+					elementListReset();
+					elementList.add(newElement("xpath", "^[\\s\\S]*"+targs.getKey()+"[\\s\\S]*$"));
+					doVerifyTextPresentList(elementList, targs.getValue());
 				}
 			}
 		}

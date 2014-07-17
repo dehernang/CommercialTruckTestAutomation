@@ -44,6 +44,17 @@ public class TestCaseExt extends TestCase{
 	protected static final int FAIL = 0;
 	protected static final int ERR1 = -1;
 	protected static final int ERR2 = -2;
+	
+	protected static final String LINK_TEXT = "linkText";
+	protected static final String ID = "id";
+	protected static final String XPATH = "xpath";
+	protected static final String CSS_SELECTOR = "cssSelector";
+	
+	protected static final String ELEMENT_PRESENT = "ElementPresent";
+	protected static final String ELEMENT_NOT_PRESENT = "ElementNotPresent";
+	protected static final String TEXT_PRESENT = "TextPresent";
+	protected static final String TEXT_NOT_PRESENT = "TextNotPresent";
+		
 
 	/* 
 	 * Constructor and Destructor
@@ -306,68 +317,74 @@ public class TestCaseExt extends TestCase{
 	 * Controllers
 	 */
 	
-	private String verifyElementPresent(String targetStr, String type, Boolean verifyExist){  		    	
+	private String verifyElementPresent(String type, String targetStr, Boolean verifyExist){  		    	
 	    switch(type){
-	    	case "linkText":
+	    	case LINK_TEXT:
 	    		return this.verifyElementPresentBytLinkText(targetStr, verifyExist);
-	    	case "id":
+	    	case ID:
 	    		return this.verifyElementPresentById(targetStr, verifyExist);
-	    	case "xpath":
+	    	case XPATH:
 	    		return this.verifyElementPresentByXpath(targetStr, verifyExist);
-	    	case "cssSelector":
+	    	case CSS_SELECTOR:
 	    		return this.verifyElementPresentByCssSelector(targetStr, verifyExist);
 	    	default:
 	    		return TYPE_NOT_FOUND; 	
 	    }
 	}
 	
-	private String verifyTextPresent(String targetStr, String type, Boolean verifyExist, String locationStr){		    	
+	private String verifyTextPresent(String type, String targetStr, Boolean verifyExist, String locationStr){		    	
 		switch(type){
-	    	case "cssSelector":
+	    	case CSS_SELECTOR:
 	    		return this.verifyTextPresentByCssSelector(locationStr, targetStr, verifyExist);
-	    	case "xpath":   		
+	    	case XPATH:   		
 	    		return this.verifyTextPresentByXpath(locationStr, targetStr, verifyExist);    			
 	    	default:
 	    		return TYPE_NOT_FOUND; 	
 		}
 	}
 	
+	private int doVerify(String method, String type, String target, String locationStr){
+		String retval = null;
+		switch(method){
+	    	case ELEMENT_PRESENT:
+	    		retval = this.verifyElementPresent(type, target, true); 
+	    		break;
+	    	case ELEMENT_NOT_PRESENT:
+	    		retval = this.verifyElementPresent(type, target, false); 
+	    		break;	
+	    	case TEXT_PRESENT:
+	    		retval = this.verifyTextPresent(type, target, true, locationStr); 
+	    		break;
+	    	case TEXT_NOT_PRESENT:
+	    		retval = this.verifyTextPresent(type, target, false, locationStr); 
+	    		break;
+	    	default:
+	    		return ERR2; 	
+		}  
+		if(retval == null)
+			return PASS;
+		return FAIL;
+	}	
+	
 	/* 
 	 * Wrappers
 	 */
 	
-	protected int doVerifyElementPresent(Map.Entry<String, String> lnkEntry){
-		String retval = null;
-		retval = this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), true); 
-		if(retval == null)
-			return PASS;
-		return FAIL;
+	protected int doVerifyElementPresent(String type, String target){
+		return this.doVerify(ELEMENT_PRESENT, type, target, null);
 	}	
 	
-	protected int doVerifyTextPresent(Map.Entry<String, String> lnkEntry, String locationStr){
-		String retval = null;
-	    retval = this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), true, locationStr);  
-		if(retval == null)
-			return PASS;
-		return FAIL;
+	protected int doVerifyTextPresent(String type, String target, String locationStr){
+		return this.doVerify(TEXT_PRESENT, type, target, locationStr);
 	}
 	
-	protected int doVerifyElementNotPresent(Map.Entry<String, String> lnkEntry){   
-		String retval = null;
-	    retval = this.verifyElementPresent(lnkEntry.getKey(),lnkEntry.getValue(), false); 
-		if(retval == null)
-			return PASS;
-		return FAIL;
+	protected int doVerifyElementNotPresent(String type, String target){   
+		return this.doVerify(ELEMENT_NOT_PRESENT, type, target, null);
 	}	
 	
-	protected int doVerifyTextNotPresent(Map.Entry<String, String> lnkEntry, String locationStr){
-		String retval = null;
-	    retval = this.verifyTextPresent(lnkEntry.getKey(),lnkEntry.getValue(), false, locationStr);    
-		if(retval == null)
-			return PASS;
-		return FAIL;
+	protected int doVerifyTextNotPresent(String type, String target, String locationStr){
+		return this.doVerify(TEXT_NOT_PRESENT, type, target, locationStr);
 	}	
-
 
 	protected int click(String type, String target){
 		try{	

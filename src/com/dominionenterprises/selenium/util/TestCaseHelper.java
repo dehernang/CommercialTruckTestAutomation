@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,7 +31,9 @@ import org.openqa.selenium.WebDriver;
  */
 public class TestCaseHelper extends TestCaseExt{
 
-	protected Map<String, String> element;
+	//protected Map<String, String> element;
+	protected ArrayList<Map<String,String>> elementList;
+	
 	protected String testing;
 	protected int counter;
 	protected int counterPass;
@@ -109,7 +112,7 @@ public class TestCaseHelper extends TestCaseExt{
 			e.printStackTrace();		
 		}
 		
-		this.element = new HashMap<String, String>();		
+		this.elementList = new ArrayList<Map<String,String>>();
 		this.counter = 0;
 		this.counterPass = 0;
 		this.counterFail = 0;
@@ -183,6 +186,17 @@ public class TestCaseHelper extends TestCaseExt{
 		return true;
 	}
 	
+    private void generateResult(int result, String method, String type, String target){    	
+    	if(result == TestCaseHelper.PASS){
+			result(target, super.getTestCaseName(), true, method+"-"+type);
+			this.counterPass++;
+		}else{
+			result(target, super.getTestCaseName(), false, method+"-"+type);
+			this.counterFail++;
+		}
+    }
+   
+	
 	/*
 	 * Printers
 	 */
@@ -239,8 +253,18 @@ public class TestCaseHelper extends TestCaseExt{
     
     
     /*
-     * others
+     * Helpers
      */
+    
+    public Map<String,String> newElement(String k, String v){
+		 Map<String,String> tmp = new HashMap<String,String>();
+		 tmp.put(k,v);
+		 return tmp;
+    }
+    
+    public void elementListReset(){
+    	this.elementList = new ArrayList<Map<String,String>>();
+    }
     
     public void wait(int sec) throws InterruptedException{
     	long msec = sec * 1000;
@@ -252,63 +276,47 @@ public class TestCaseHelper extends TestCaseExt{
      * Operations
      */
     
-    public void doVerifyTextPresentList(Map<String, String> e, String locationStr){
-		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
-			retval = this.doVerifyTextPresent(lnkEntry, locationStr);
-			this.counter++;
-			if(retval == TestCaseHelper.PASS){
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextPresentList("+lnkEntry.getValue()+")", locationStr);
-				this.counterPass++;
-			}else{
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextPresentList("+lnkEntry.getValue()+")", locationStr);
-				//println("Failed Value: " + getText("xpath",locationStr));
-				this.counterFail++;
+    public void doVerifyTextPresentList(ArrayList<Map<String, String>> e, String locationStr){
+    	for(Map<String, String> list: e){
+			for(Map.Entry<String, String> listEntry : list.entrySet()){
+				retval = this.doVerifyTextPresent(listEntry.getKey(), listEntry.getValue(), locationStr);
+				this.counter++;
+				generateResult(retval,"doVerifyTextPresentList",listEntry.getKey(), listEntry.getValue());
 			}
-		}
+    	}
     }
     
-    public void doVerifyElementPresentList(Map<String, String> e){
-		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
-			retval = this.doVerifyElementPresent(lnkEntry);
-			this.counter++;
-			if(retval == TestCaseHelper.PASS){
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementPresentList("+lnkEntry.getValue()+")");
-				this.counterPass++;
-			}else{
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementPresentList("+lnkEntry.getValue()+")");
-				this.counterFail++;
+    public void doVerifyElementPresentList(ArrayList<Map<String, String>> e){
+    	for(Map<String, String> list: e){
+			for(Map.Entry<String, String> listEntry : list.entrySet()){		
+				retval = this.doVerifyElementPresent(listEntry.getKey(), listEntry.getValue());
+				this.counter++;
+				generateResult(retval,"doVerifyElementPresentList",listEntry.getKey(), listEntry.getValue());
 			}
-		}
+    	}
     }
 
-    public void doVerifyTextNotPresentList(Map<String, String> e, String locationStr){
-		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
-			retval = this.doVerifyTextNotPresent(lnkEntry, locationStr);
-			this.counter++;
-			if(retval == TestCaseHelper.PASS){
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyTextNotPresentList-"+lnkEntry.getValue(), locationStr);
-				this.counterPass++;
-			}else{
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyTextNotPresentList-"+lnkEntry.getValue(), locationStr);
-				//println("Failed Value: " + getText("xpath",locationStr));
-				this.counterFail++;
+    public void doVerifyTextNotPresentList(ArrayList<Map<String, String>> e, String locationStr){
+    	for(Map<String, String> list: e){
+			for(Map.Entry<String, String> listEntry : list.entrySet()){
+				retval = this.doVerifyTextNotPresent(listEntry.getKey(), listEntry.getValue(), locationStr);
+				this.counter++;
+				generateResult(retval,"doVerifyTextNotPresentList",listEntry.getKey(), listEntry.getValue());
 			}
-		}
+    	}
     }
     
-    public void doVerifyElementNotPresentList(Map<String, String> e){
-		for(Map.Entry<String, String> lnkEntry : e.entrySet()){
-			retval = this.doVerifyElementNotPresent(lnkEntry);
-			this.counter++;
-			if(retval == TestCaseHelper.PASS){
-				result(lnkEntry.getKey(), super.getTestCaseName(), true, "doVerifyElementNotPresentList-"+lnkEntry.getValue());
-				this.counterPass++;
-			}else{
-				result(lnkEntry.getKey(), super.getTestCaseName(), false, "doVerifyElementNotPresentList-"+lnkEntry.getValue());
-				this.counterFail++;
+    public void doVerifyElementNotPresentList(ArrayList<Map<String, String>> e){
+    	for(Map<String, String> list: e){
+	    	for(Map.Entry<String, String> listEntry : list.entrySet()){
+				retval = this.doVerifyElementNotPresent(listEntry.getKey(), listEntry.getValue());
+				this.counter++;
+				generateResult(retval,"doVerifyElementNotPresentList",listEntry.getKey(), listEntry.getValue());
 			}
-		}
-    }    
+    	}
+    }  
+    
+
     
 
 }

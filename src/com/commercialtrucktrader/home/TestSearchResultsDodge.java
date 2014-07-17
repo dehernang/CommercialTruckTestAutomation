@@ -109,10 +109,10 @@ public class TestSearchResultsDodge extends TestCaseHelper{
 	  }
 	  
 	  private void verifyResults(){
-		  element.clear();
-		  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+make+"*)[\\s\\S]*$","xpath");	  
+		  elementListReset();
+    	  elementList.add(newElement("xpath", "^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+make+"*)[\\s\\S]*$"));
 		  for(String xpath : xpaths){ 
-			  doVerifyTextPresentList(element, xpath); //Verify all results header/title
+			  doVerifyTextPresentList(elementList, xpath); //Verify all results header/title
 		  }
 	  }
 

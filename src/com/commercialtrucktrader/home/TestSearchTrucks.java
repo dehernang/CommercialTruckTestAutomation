@@ -72,8 +72,9 @@ public class TestSearchTrucks extends TestCaseHelper{
 		  //moveToElement("linkText","» Search Trucks");
 		  click("linkText","» Search Trucks");
 
-		  element.put("SEARCH TRUCK LISTINGS","xpath");
-		  doVerifyTextPresentList(element, "//h2");
+		  elementListReset();
+    	  elementList.add(newElement("xpath", "SEARCH TRUCK LISTINGS"));
+		  doVerifyTextPresentList(elementList, "//h2");
 		  
 		  click("id","newOrUsed");
 		  select("id","lYear","2001");
@@ -82,13 +83,13 @@ public class TestSearchTrucks extends TestCaseHelper{
 		  input("id","zipcode","23510");
 		  click("cssSelector","a.sGo");
 		  
-		  element.clear();
-		  element.put("Dodge Trucks for Sale near Norfolk, Virginia","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "Dodge Trucks for Sale near Norfolk, Virginia"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/div/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Dodge results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Dodge results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  verifyResults(make, xpaths);
 	  }
@@ -103,10 +104,10 @@ public class TestSearchTrucks extends TestCaseHelper{
 	  }
 
 	  private void verifyResults(String mk, ArrayList<String> xps){
-		  element.clear(); 
-		  element.put("^[\\s\\S]*200[1-9](?i:.*"+mk+"*)[\\s\\S]*$","xpath");	  
+		  elementListReset();	
+		  elementList.add(newElement("xpath", "^[\\s\\S]*200[1-9](?i:.*"+mk+"*)[\\s\\S]*$"));
 		  for(String xp : xps){ 
-			  doVerifyTextPresentList(element, xp); //Verify all results header/title
+			  doVerifyTextPresentList(elementList, xp); //Verify all results header/title
 		  }
 	  }  
 	

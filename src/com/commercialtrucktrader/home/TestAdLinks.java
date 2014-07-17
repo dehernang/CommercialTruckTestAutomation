@@ -30,56 +30,56 @@ public class TestAdLinks extends TestCaseHelper{
 		click("cssSelector","img[alt=\"Go To Commercial Truck Home Page\"]");
     
 	    //top truck manufacturers - dynamic may change
-	    element.put("Chevy Trucks","linkText");
-	    //element.put("Dodge / Ram Trucks","linkText");
-	    element.put("Ram Trucks","linkText");
-	    element.put("Ford Trucks","linkText");
-	    element.put("Freightliner Trucks","linkText");
-	    element.put("GMC Trucks","linkText");
-	    element.put("Hino Trucks","linkText");
-	    element.put("International Trucks","linkText");
-	    element.put("Isuzu Trucks","linkText");
-	    element.put("Nissan Trucks","linkText");
-	    element.put("Peterbilt Trucks","linkText");
-	    element.put("Sterling Trucks","linkText");
-	    element.put("Volvo Trucks","linkText");
-	    element.put("More Trucks","linkText");
+	    elementList.add(newElement("linkText", "Chevy Trucks"));
+	    //elementList.add(newElement("linkText", "Dodge / Ram Trucks"));
+	    elementList.add(newElement("linkText", "Ram Trucks"));
+	    elementList.add(newElement("linkText", "Ford Trucks"));
+	    elementList.add(newElement("linkText", "Freightliner Trucks"));
+	    elementList.add(newElement("linkText", "GMC Trucks"));
+	    elementList.add(newElement("linkText", "Hino Trucks"));
+	    elementList.add(newElement("linkText", "International Trucks"));
+	    elementList.add(newElement("linkText", "Isuzu Trucks"));
+	    elementList.add(newElement("linkText", "Nissan Trucks"));
+	    elementList.add(newElement("linkText", "Peterbilt Trucks"));
+	    elementList.add(newElement("linkText", "Sterling Trucks"));
+	    elementList.add(newElement("linkText", "Volvo Trucks"));
+	    elementList.add(newElement("linkText", "More Trucks"));
 	    
 	    
 	    //top trucks for sale - dynamic may change
-	    element.put("Box Truck","linkText");
-	    element.put("Bucket Truck","linkText");
-	    element.put("Cab Chassis","linkText");
-	    element.put("Cabover - Sleeper","linkText");
-	    element.put("Cargo Van","linkText");
-	    element.put("Conventional - Day Cab","linkText");
-	    element.put("Conventional - Sleeper","linkText");
-	    element.put("Crane Truck","linkText");
-	    element.put("Crew Cab","linkText");
-	    element.put("Dump Truck","linkText");
-	    element.put("Flatbed Truck","linkText");
-	    element.put("Garbage Truck","linkText");
-	    element.put("Pickup Truck","linkText");
-	    element.put("Reefer Truck","linkText");
-	    element.put("Rollback Tow Truck","linkText");
-	    element.put("Utility/Service Truck","linkText");
-	    element.put("Wrecker Tow Truck","linkText");
-	    element.put("More Truck Categories","linkText");
+	    elementList.add(newElement("linkText", "Box Truck"));
+	    elementList.add(newElement("linkText", "Bucket Truck"));
+	    elementList.add(newElement("linkText", "Cab Chassis"));
+	    elementList.add(newElement("linkText", "Cabover - Sleeper"));
+	    elementList.add(newElement("linkText", "Cargo Van"));
+	    elementList.add(newElement("linkText", "Conventional - Day Cab"));
+	    elementList.add(newElement("linkText", "Conventional - Sleeper"));
+	    elementList.add(newElement("linkText", "Crane Truck"));
+	    elementList.add(newElement("linkText", "Crew Cab"));
+	    elementList.add(newElement("linkText", "Dump Truck"));
+	    elementList.add(newElement("linkText", "Flatbed Truck"));
+	    elementList.add(newElement("linkText", "Garbage Truck"));
+	    elementList.add(newElement("linkText", "Pickup Truck"));
+	    elementList.add(newElement("linkText", "Reefer Truck"));
+	    elementList.add(newElement("linkText", "Rollback Tow Truck"));
+	    elementList.add(newElement("linkText", "Utility/Service Truck"));
+	    elementList.add(newElement("linkText", "Wrecker Tow Truck"));
+	    elementList.add(newElement("linkText", "More Truck Categories"));
 	    
 	    //top trailers for sale - dynamic may change
-	    element.put("Dry Van Trailer","linkText");
-	    element.put("Dump Trailer","linkText");
-	    element.put("Enclosed Trailer","linkText");
-	    element.put("Box Truck","linkText");
-	    element.put("Flat Trailer","linkText");
-	    element.put("More Trailers","linkText");
+	    elementList.add(newElement("linkText", "Dry Van Trailer"));
+	    elementList.add(newElement("linkText", "Dump Trailer"));
+	    elementList.add(newElement("linkText", "Enclosed Trailer"));
+	    elementList.add(newElement("linkText", "Box Truck"));
+	    elementList.add(newElement("linkText", "Flat Trailer"));
+	    elementList.add(newElement("linkText", "More Trailers"));
 	    
 	    //trucks
-	    element.put("Heavy Duty Trucks","linkText");
-	    element.put("Medium Duty Trucks","linkText");
-	    element.put("Light Duty Trucks","linkText");
-	    element.put("Trailers","linkText");
-	    doVerifyElementPresentList(element);
+	    elementList.add(newElement("linkText", "Heavy Duty Trucks"));
+	    elementList.add(newElement("linkText", "Medium Duty Trucks"));
+	    elementList.add(newElement("linkText", "Light Duty Trucks"));
+	    elementList.add(newElement("linkText", "Trailers"));
+	    doVerifyElementPresentList(elementList);
 
 	   
 	  }

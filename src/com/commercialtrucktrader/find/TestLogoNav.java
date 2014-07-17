@@ -1,5 +1,7 @@
 package com.commercialtrucktrader.find;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -26,119 +28,130 @@ public class TestLogoNav extends TestCaseHelper {
 	  public void testFindLogoNav() throws Exception {
 		  
 		  click("linkText","FIND");
-	    
+  	  
+		  /*
+		   * Part A
+		   */
+		  
 		  //Logo
-		  element.put("//a[@id='cttol_icon']/img", "xpath");
-		  element.put("tol_logo", "id");
+		  elementList.add(newElement("xpath", "//a[@id='cttol_icon']/img"));
+		  elementList.add(newElement("id", "tol_logo"));
 
 		  //Top Right Links
-		  element.put("Sign In","linkText");
-		  element.put("Join Now","linkText");
-		  element.put("(//a[contains(text(),'Help')])[2]","xpath");
-	    
+		  elementList.add(newElement("linkText", "Sign In"));
+		  elementList.add(newElement("linkText", "Join Now"));
+		  elementList.add(newElement("xpath", "(//a[contains(text(),'Help')])[2]"));
+
 		  //Main Nav
-		  element.put("HOME","linkText");
-		  element.put("FIND","linkText");
-		  element.put("SELL","linkText");
-		  element.put("AUCTIONS","linkText");
-		  element.put("RESEARCH","linkText");
+		  elementList.add(newElement("linkText", "HOME"));
+		  elementList.add(newElement("linkText", "FIND"));
+		  elementList.add(newElement("linkText", "SELL"));
+		  elementList.add(newElement("linkText", "AUCTIONS"));
+		  elementList.add(newElement("linkText", "RESEARCH"));
 	    
 		  //Sub Nav
-		  element.put("» Search Trucks","linkText");
-		  element.put("» Browse Trucks","linkText");
-		  element.put("» Browse Trailers","linkText");
-		  element.put("» Find A Dealer","linkText");
-		  element.put("» Truck Locator","linkText");
+		  elementList.add(newElement("linkText", "» Search Trucks"));
+		  elementList.add(newElement("linkText", "» Browse Trucks"));
+		  elementList.add(newElement("linkText", "» Browse Trailers"));
+		  elementList.add(newElement("linkText", "» Find A Dealer"));
+		  elementList.add(newElement("linkText", "» Truck Locator"));
 	    
 		  //Right Sub Nav
-		  element.put("viewall_img1","id");
+		  elementList.add(newElement("id", "viewall_img1"));
 	    
 		  //Footer Nav
-		  element.put("About Us","linkText");
-		  element.put("Become a Dealer","linkText");
-		  element.put("Testimonials","linkText");
-		  element.put("Advertise","linkText");
-		  element.put("Contact Us","linkText");
-		  element.put("Help Center","linkText");
-		  element.put("Site Map","linkText");
+		  elementList.add(newElement("linkText", "About Us"));
+		  elementList.add(newElement("linkText", "Become a Dealer"));
+		  elementList.add(newElement("linkText", "Testimonials"));
+		  elementList.add(newElement("linkText", "Advertise"));
+		  elementList.add(newElement("linkText", "Contact Us"));
+		  elementList.add(newElement("linkText", "Help Center"));
+		  elementList.add(newElement("linkText", "Site Map"));
 	    
 		
 		  //types of trucks
-		  element.put("Bus","linkText");
-		  element.put("Crew Cab","linkText");
-		  element.put("Extended Cab","linkText");
-		  element.put("Pickup Truck","linkText");
-		  element.put("Van","linkText");
-		  element.put("Beverage Truck","linkText");
-		  element.put("Box/Straight Truck","linkText");
-		  element.put("Flatbed Truck","linkText");
-		  element.put("Refrigerated Truck","linkText");
-		  element.put("Cab Chassis","linkText");
-		  element.put("Day Cab","linkText");
-		  element.put("Sleeper Truck","linkText");
-		  element.put("Dump Body","linkText");
-		  element.put("Flatbed Body","linkText");
-		  element.put("Reefer Body","linkText");
-		  element.put("Service Body","linkText");
-		  element.put("Van Body","linkText");
-		  element.put("Dump Truck","linkText");
-		  element.put("Bucket/Boom Truck","linkText");
-		  element.put("Fire Truck","linkText");
-		  element.put("Garbage Truck","linkText");
-		  element.put("Landscape Truck","linkText");
-		  element.put("Landscape Truck","linkText");
-		  element.put("Utility/Service Truck","linkText");
-		  element.put("Wrecker Tow Truck","linkText");
-		  element.put("More Categories...","linkText");
+		  elementList.add(newElement("linkText", "Bus"));
+		  elementList.add(newElement("linkText", "Crew Cab"));
+		  elementList.add(newElement("linkText", "Extended Cab"));
+		  elementList.add(newElement("linkText", "Pickup Truck"));
+		  elementList.add(newElement("linkText", "Van"));
+		  elementList.add(newElement("linkText", "Beverage Truck"));
+		  elementList.add(newElement("linkText", "Box/Straight Truck"));
+		  elementList.add(newElement("linkText", "Flatbed Truck"));
+		  elementList.add(newElement("linkText", "Refrigerated Truck"));
+		  elementList.add(newElement("linkText", "Cab Chassis"));
+		  elementList.add(newElement("linkText", "Day Cab"));
+		  elementList.add(newElement("linkText", "Sleeper Truck"));
+		  elementList.add(newElement("linkText", "Dump Body"));
+		  elementList.add(newElement("linkText", "Flatbed Body"));
+		  elementList.add(newElement("linkText", "Reefer Body"));
+		  elementList.add(newElement("linkText", "Service Body"));
+		  elementList.add(newElement("linkText", "Van Body"));
+		  elementList.add(newElement("linkText", "Dump Truck"));
+		  elementList.add(newElement("linkText", "Bucket/Boom Truck"));
+		  elementList.add(newElement("linkText", "Fire Truck"));
+		  elementList.add(newElement("linkText", "Garbage Truck"));
+		  elementList.add(newElement("linkText", "Landscape Truck"));
+		  elementList.add(newElement("linkText", "Landscape Truck"));
+		  elementList.add(newElement("linkText", "Utility/Service Truck"));
+		  elementList.add(newElement("linkText", "Wrecker Tow Truck"));
+		  elementList.add(newElement("linkText", "More Categories..."));
 		  
 		  //browse trucks by make
-		  element.put("Chevrolet","linkText");
-		  element.put("Dodge","linkText");
-		  element.put("Ford","linkText");
-		  element.put("Freightliner","linkText");
-		  element.put("GMC","linkText");
-		  element.put("Hino","linkText");
-		  element.put("International","linkText");
-		  element.put("Isuzu","linkText");
-		  element.put("Kenworth","linkText");
-		  element.put("Mack","linkText");
-		  element.put("Mitsubishi-Fuso","linkText");
-		  element.put("Peterbilt","linkText");
-		  element.put("Ram","linkText");
-		  element.put("Sterling","linkText");
-		  element.put("Volvo","linkText");
-		  element.put("Western Star","linkText");
-		  element.put("Browse All Makes...","linkText");
+		  elementList.add(newElement("linkText", "Chevrolet"));
+		  elementList.add(newElement("linkText", "Dodge"));
+		  elementList.add(newElement("linkText", "Ford"));
+		  elementList.add(newElement("linkText", "Freightliner"));
+		  elementList.add(newElement("linkText", "GMC"));
+		  elementList.add(newElement("linkText", "Hino"));
+		  elementList.add(newElement("linkText", "International"));
+		  elementList.add(newElement("linkText", "Isuzu"));
+		  elementList.add(newElement("linkText", "Kenworth"));
+		  elementList.add(newElement("linkText", "Mack"));
+		  elementList.add(newElement("linkText", "Mitsubishi-Fuso"));
+		  elementList.add(newElement("linkText", "Peterbilt"));
+		  elementList.add(newElement("linkText", "Ram"));
+		  elementList.add(newElement("linkText", "Sterling"));
+		  elementList.add(newElement("linkText", "Volvo"));
+		  elementList.add(newElement("linkText", "Western Star"));
+		  elementList.add(newElement("linkText", "Browse All Makes..."));
 
 		  //Footer Sub Nav
-		  element.put("Security Center","linkText");
-		  element.put("Advertiser Agreement","linkText");
-		  element.put("Privacy Policy","linkText");
-		  element.put("Copyright","linkText");
+		  elementList.add(newElement("linkText", "Security Center"));
+		  elementList.add(newElement("linkText", "Advertiser Agreement"));
+		  elementList.add(newElement("linkText", "Privacy Policy"));
+		  elementList.add(newElement("linkText", "Copyright"));
 	    
 		  //Terms of Use
-		  element.put("Terms of Use","linkText");
+		  elementList.add(newElement("linkText", "Terms of Use"));
 	    
 		  //Footer Dominion Enterprises
-		  element.put("Dominion Enterprises","linkText");
-	    
-		  doVerifyElementPresentList(element);
+		  elementList.add(newElement("linkText", "Dominion Enterprises"));
+    
+		  doVerifyElementPresentList(elementList);
 
-		  element.clear();		  
-		  getDriver().findElement(By.id("viewall_img1")).click();		  
-		  element.put("Aero Trader", "linkText");
-		  element.put("ATV Trader", "linkText");
-		  element.put("Boat Trader", "linkText");
-		  element.put("Cycle Trader", "linkText");
-		  element.put("Equipment Trader", "linkText");
-		  element.put("PWC Trader", "linkText");
-		  element.put("RV Trader", "linkText");
-		  element.put("Snowmobile Trader", "linkText");
-		  element.put("Trader Online", "linkText");
-		  element.put("Trailer Trader", "linkText");
-		  element.put("Fraud Awareness Tips", "linkText");
-		  element.put("div.viewDomLogo", "cssSelector");
-		  doVerifyElementPresentList(element);
+		  /*
+		   * Part B
+		   */
+		  
+		  elementListReset();
+		  
+		  click("id","viewall_img1");
+	  
+		  elementList.add(newElement("linkText", "Aero Trader"));
+		  elementList.add(newElement("linkText", "ATV Trader"));
+		  elementList.add(newElement("linkText", "Boat Trader"));
+		  elementList.add(newElement("linkText", "Cycle Trader"));
+		  elementList.add(newElement("linkText", "Equipment Trader"));
+		  elementList.add(newElement("linkText", "PWC Trader"));
+		  elementList.add(newElement("linkText", "RV Trader"));
+		  elementList.add(newElement("linkText", "Snowmobile Trader"));
+		  elementList.add(newElement("linkText", "Trader Online"));
+		  elementList.add(newElement("linkText", "Trailer Trader"));
+		  elementList.add(newElement("linkText", "Fraud Awareness Tips"));
+		  elementList.add(newElement("cssSelector", "div.viewDomLogo"));
+		  
+		  doVerifyElementPresentList(elementList);
 
 	   
 	  }

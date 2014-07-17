@@ -30,93 +30,93 @@ public class TestLogoNav extends TestCaseHelper{
 		  click("cssSelector","img[alt=\"Go To Commercial Truck Home Page\"]");
 	    
 		  //Logo
-		  element.put("//a[@id='cttol_icon']/img", "xpath");
-		  element.put("tol_logo2", "id");
+		  elementList.add(newElement("xpath", "//a[@id='cttol_icon']/img"));
+		  elementList.add(newElement("id", "tol_logo2"));
 	    
 		  //Social Media
-		  element.put("//img[@alt='Commercial Truck Trader Facebook']", "xpath");
-		  element.put("//img[@alt='Commercial Truck Trader Google+']", "xpath");
-		  element.put("//img[@alt='Commercial Truck Trader Twitter']", "xpath");
-		  element.put("//img[@alt='Commercial Truck Trader LinkedIn']", "xpath");
+		  elementList.add(newElement("xpath", "//img[@alt='Commercial Truck Trader Facebook']"));
+		  elementList.add(newElement("xpath", "//img[@alt='Commercial Truck Trader Google+']"));
+		  elementList.add(newElement("xpath", "//img[@alt='Commercial Truck Trader Twitter']"));
+		  elementList.add(newElement("xpath", "//img[@alt='Commercial Truck Trader LinkedIn']"));
 	    
 		  //Top Right Links
-		  element.put("Sign In","linkText");
-		  element.put("Join Now","linkText");
-		  element.put("(//a[contains(text(),'Help')])[2]","xpath");
+		  elementList.add(newElement("linkText", "Sign In"));
+		  elementList.add(newElement("linkText", "Join Now"));
+		  elementList.add(newElement("xpath", "(//a[contains(text(),'Help')])[2]"));
 	    
 		  //Main Nav
-		  element.put("HOME","linkText");
-		  element.put("FIND","linkText");
-		  element.put("SELL","linkText");
-		  element.put("AUCTIONS","linkText");
-		  element.put("RESEARCH","linkText");
+		  elementList.add(newElement("linkText", "HOME"));
+		  elementList.add(newElement("linkText", "FIND"));
+		  elementList.add(newElement("linkText", "SELL"));
+		  elementList.add(newElement("linkText", "AUCTIONS"));
+		  elementList.add(newElement("linkText", "RESEARCH"));
 	    
 		  //Sub Nav
-		  element.put("» Browse Trucks","linkText");
-		  element.put("» Browse Trailers","linkText");
-		  element.put("» Search Trucks","linkText");
-		  element.put("» Find Dealers","linkText");
-		  element.put("» Industry Resources","linkText");
-		  element.put("» Dealer Services/Login","linkText");
+		  elementList.add(newElement("linkText", "» Browse Trucks"));
+		  elementList.add(newElement("linkText", "» Browse Trailers"));
+		  elementList.add(newElement("linkText", "» Search Trucks"));
+		  elementList.add(newElement("linkText", "» Find Dealers"));
+		  elementList.add(newElement("linkText", "» Industry Resources"));
+		  elementList.add(newElement("linkText", "» Dealer Services/Login"));
 	    
 		  //Right Sub Nav
-		  element.put("viewall_img1","id");
+		  elementList.add(newElement("id", "viewall_img1"));
 	    
 		  //Footer Nav
-		  element.put("About Us","linkText");
-		  element.put("Become a Dealer","linkText");
-		  element.put("Testimonials","linkText");
-		  element.put("Advertise","linkText");
-		  element.put("Contact Us","linkText");
-		  element.put("Help Center","linkText");
-		  element.put("Site Map","linkText");
+		  elementList.add(newElement("linkText", "About Us"));
+		  elementList.add(newElement("linkText", "Become a Dealer"));
+		  elementList.add(newElement("linkText", "Testimonials"));
+		  elementList.add(newElement("linkText", "Advertise"));
+		  elementList.add(newElement("linkText", "Contact Us"));
+		  elementList.add(newElement("linkText", "Help Center"));
+		  elementList.add(newElement("linkText", "Site Map"));
 	    
 		  //Research Trucks and Trailers
-		  element.put("Insurance","linkText");
-		  element.put("Truck Auctions","linkText");
-		  element.put("Jobs & Training","linkText");
-		  element.put("Vehicle History","linkText");
-		  element.put("Truck Bodies","linkText");
-		  element.put("Finance/Lease","linkText");
-		  element.put("Shipping or Transport","linkText");
-		  element.put("Truck Parts","linkText");
-		  element.put("Steel Buildings","linkText");
-		  element.put("Fuel Management","linkText");
-		  element.put("Parts Providers","linkText");
-		  element.put("Marketplace Advertisers","linkText");
-		  element.put("Insurance","linkText");
-		  element.put("View All Resources","linkText");
+		  elementList.add(newElement("linkText", "Insurance"));
+		  elementList.add(newElement("linkText", "Truck Auctions"));
+		  elementList.add(newElement("linkText", "Jobs & Training"));
+		  elementList.add(newElement("linkText", "Vehicle History"));
+		  elementList.add(newElement("linkText", "Truck Bodies"));
+		  elementList.add(newElement("linkText", "Finance/Lease"));
+		  elementList.add(newElement("linkText", "Shipping or Transport"));
+		  elementList.add(newElement("linkText", "Truck Parts"));
+		  elementList.add(newElement("linkText", "Steel Buildings"));
+		  elementList.add(newElement("linkText", "Fuel Management"));
+		  elementList.add(newElement("linkText", "Parts Providers"));
+		  elementList.add(newElement("linkText", "Marketplace Advertisers"));
+		  elementList.add(newElement("linkText", "Insurance"));
+		  elementList.add(newElement("linkText", "View All Resources"));
 	    
 		  //Footer Sub Nav
-		  element.put("Security Center","linkText");
-		  element.put("Advertiser Agreement","linkText");
-		  element.put("Privacy Policy","linkText");
-		  element.put("Copyright","linkText");
+		  elementList.add(newElement("linkText", "Security Center"));
+		  elementList.add(newElement("linkText", "Advertiser Agreement"));
+		  elementList.add(newElement("linkText", "Privacy Policy"));
+		  elementList.add(newElement("linkText", "Copyright"));
 	    
 		  //Terms of Use
-		  element.put("Terms of Use","linkText");
+		  elementList.add(newElement("linkText", "Terms of Use"));
 	    
 		  //Footer Dominion Enterprises
-		  element.put("Dominion Enterprises","linkText");
-		  doVerifyElementPresentList(element);
+		  elementList.add(newElement("linkText", "Dominion Enterprises"));
+		  doVerifyElementPresentList(elementList);
 	    
-		  element.clear();
+		  elementListReset();
+
+		  click("id","viewall_img1");
 		  
-		  getDriver().findElement(By.id("viewall_img1")).click();
-		  
-		  element.put("Aero Trader", "linkText");
-		  element.put("ATV Trader", "linkText");
-		  element.put("Boat Trader", "linkText");
-		  element.put("Cycle Trader", "linkText");
-		  element.put("Equipment Trader", "linkText");
-		  element.put("PWC Trader", "linkText");
-		  element.put("RV Trader", "linkText");
-		  element.put("Snowmobile Trader", "linkText");
-		  element.put("Trader Online", "linkText");
-		  element.put("Trailer Trader", "linkText");
-		  element.put("Fraud Awareness Tips", "linkText");
-		  element.put("div.viewDomLogo", "cssSelector");
-		  doVerifyElementPresentList(element);
+		  elementList.add(newElement("linkText", "Aero Trader"));
+		  elementList.add(newElement("linkText", "ATV Trader"));
+		  elementList.add(newElement("linkText", "Boat Trader"));
+		  elementList.add(newElement("linkText", "Cycle Trader"));
+		  elementList.add(newElement("linkText", "Equipment Trader"));
+		  elementList.add(newElement("linkText", "PWC Trader"));
+		  elementList.add(newElement("linkText", "RV Trader"));
+		  elementList.add(newElement("linkText", "Snowmobile Trader"));
+		  elementList.add(newElement("linkText", "Trader Online"));
+		  elementList.add(newElement("linkText", "Trailer Trader"));
+		  elementList.add(newElement("linkText", "Fraud Awareness Tips"));
+		  elementList.add(newElement("cssSelector", "div.viewDomLogo"));
+		  doVerifyElementPresentList(elementList);
 		  
 	  }
 	

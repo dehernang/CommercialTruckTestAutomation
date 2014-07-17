@@ -1,5 +1,6 @@
 package com.commercialtrucktrader.home;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -26,171 +27,170 @@ public class TestAdLinksLandingPage extends TestCaseHelper{
 	  public void testHomeAdLinksLandingPage() throws Exception {
 
 		  click("linkText","Chevy Trucks");
+		  
 
 		  //--------- Chevy ---------
 
-		  element.put("^[\\s\\S]*Chevrolet Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/h1");
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Chevrolet Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Chevrolet results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
-		  		  
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Chevrolet results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
+
 		  //--------- Ford ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Ford Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Ford Trucks");
+ 
+		  elementListReset();	  
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Ford Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/h1");
 		  
-		  element.clear();
-		  
-		  element.put("^[\\s\\S]*Ford Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Ford results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Ford results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Freightliner ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Freightliner Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Freightliner Trucks");
+
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Freightliner Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/div/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Freightliner Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Freightliner results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Freightliner results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- GMC ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("GMC Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","GMC Trucks");
+
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Gmc Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/div/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Gmc Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Gmc results found[\\s\\S]*$","xpath");	  
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Gmc results found[\\s\\S]*$"));	  
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 
 		  //--------- Hino ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Hino Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Hino Trucks");
+	  
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Hino Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/div/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Hino Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Hino results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Hino results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- International ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("International Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","International Trucks");
+  
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*International Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*International Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*International results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*International results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Isuzu ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Isuzu Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Isuzu Trucks");
+
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Isuzu Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Isuzu Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Isuzu results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Isuzu results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Nissan ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Nissan Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Nissan Trucks");
+
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Nissan Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/div/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Nissan Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Nissan results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Nissan results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Peterbilt ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Peterbilt Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Peterbilt Trucks");
+
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Peterbilt Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/div/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Peterbilt Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Peterbilt results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Peterbilt results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Ram ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Ram Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Ram Trucks");
+
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Ram Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Ram Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Ram results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Ram results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Sterling ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Sterling Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Sterling Trucks");
+
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Sterling Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/div/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Sterling Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/div/h1");
-		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Sterling results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Sterling results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 		  
 		  
 		  //--------- Volvo ---------
 		  
-		  getDriver().findElement(By.linkText("HOME")).click();
-		  getDriver().findElement(By.linkText("Volvo Trucks")).click();
+		  click("linkText","HOME");
+		  click("linkText","Volvo Trucks");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Volvo Trucks for Sale[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='topic_container']/h1");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Volvo Trucks for Sale[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='topic_container']/h1");
 		  
-		  element.clear();
-		  element.put("^[\\s\\S]*Volvo results found[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element, "//div[@id='pagineationSort_container']/h2");
+		  elementListReset();
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Volvo results found[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList, "//div[@id='pagineationSort_container']/h2");
 
-		  
 		  
 	  }
 	  

@@ -101,33 +101,22 @@ public class TestSearchResults extends TestCaseHelper{
 					  click("cssSelector","img[alt=\"Find It\"]");				
 					  wait(1);				
 				      for(String kw : make.getValue()){
-				    	  element.clear();
-				    	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
-				    	  doVerifyTextPresentList(element, "//h3/a");					      
+				    	  elementListReset();
+						  elementList.add(newElement("xpath", "^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$"));
+				    	  doVerifyTextPresentList(elementList, "//h3/a");					      
 				      }
 				      
-				     // element.clear();		    		      
-				      //for(Map.Entry<String,String[]> e : makes.entrySet()){	    	  
-				    	  ////skip itself
-				    	  //if(!e.getKey().equals(make.getKey())){ 	    		  
-				    		  ////loop keywords of the make
-				    		//  for(String kw : e.getValue()){
-				    		//	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
-				    		//  }		    		
-				    	 // }
 				    	  
 				      for(String kw : make.getValue()){ 	  
-				    	  element.clear();	
-				    	  element.put("^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$","xpath");
-				    	  
+				    	  elementListReset();
+						  elementList.add(newElement("xpath", "^[\\s\\S]*[19|20]{2}[0-9]{2}(?i:.*"+kw+"*)[\\s\\S]*$"));
 				    	  //Verify all results header/title
 				    	  for(String xpath : xpaths){
-				    		  doVerifyTextPresentList(element, xpath);
+				    		  doVerifyTextPresentList(elementList, xpath);
 				    	  }
 				    	  
 				      }
-				      //doVerifyTextNotPresentList(element, "//h3/a");
-				      
+  
 				      wait(1);
 				      getDriver().findElement(By.linkText("FIND")).click();
 				      //wait(1);

@@ -32,88 +32,88 @@ public class TestLogoNav extends TestCaseHelper {
 		   */
 		  
 		  //Logo
-		  element.put("//a[@id='cttol_icon']/img", "xpath");
-		  element.put("tol_logo", "id");
+		  elementList.add(newElement("xpath", "//a[@id='cttol_icon']/img"));
+		  elementList.add(newElement("id", "tol_logo"));
 
 		  //Top Right Links
-		  element.put("Sign In","linkText");
-		  element.put("Join Now","linkText");
-		  element.put("(//a[contains(text(),'Help')])[2]","xpath");
+		  elementList.add(newElement("linkText", "Sign In"));
+		  elementList.add(newElement("linkText", "Join Now"));
+		  elementList.add(newElement("xpath", "(//a[contains(text(),'Help')])[2]"));
 	    
 		  //Main Nav
-		  element.put("HOME","linkText");
-		  element.put("FIND","linkText");
-		  element.put("SELL","linkText");
-		  element.put("AUCTIONS","linkText");
-		  element.put("RESEARCH","linkText");
+		  elementList.add(newElement("linkText", "HOME"));
+		  elementList.add(newElement("linkText", "FIND"));
+		  elementList.add(newElement("linkText", "SELL"));
+		  elementList.add(newElement("linkText", "AUCTIONS"));
+		  elementList.add(newElement("linkText", "RESEARCH"));
 	    
 		  //Sub Nav
-		  element.put("» Sell Your Trucks","linkText");
+		  elementList.add(newElement("linkText", "» Sell Your Trucks"));
 		  moveToElement("id","dealer-services");
-		  element.put("» Dealer Services","linkText");
+		  elementList.add(newElement("linkText", "» Dealer Services"));
 	    
 		  //Right Sub Nav
-		  element.put("viewall_img1","id");
+		  elementList.add(newElement("id", "viewall_img1"));
 		  
 		  //Footer Nav
-		  element.put("About Us","linkText");
-		  element.put("Become a Dealer","linkText");
-		  element.put("Testimonials","linkText");
-		  element.put("Advertise","linkText");
-		  element.put("Contact Us","linkText");
-		  element.put("Help Center","linkText");
-		  element.put("Site Map","linkText");
+		  elementList.add(newElement("linkText", "About Us"));
+		  elementList.add(newElement("linkText", "Become a Dealer"));
+		  elementList.add(newElement("linkText", "Testimonials"));
+		  elementList.add(newElement("linkText", "Advertise"));
+		  elementList.add(newElement("linkText", "Contact Us"));
+		  elementList.add(newElement("linkText", "Help Center"));
+		  elementList.add(newElement("linkText", "Site Map"));
 	    
 		  //Footer Sub Nav
-		  element.put("Security Center","linkText");
-		  element.put("Advertiser Agreement","linkText");
-		  element.put("Privacy Policy","linkText");
-		  element.put("Copyright","linkText");
+		  elementList.add(newElement("linkText", "Security Center"));
+		  elementList.add(newElement("linkText", "Advertiser Agreement"));
+		  elementList.add(newElement("linkText", "Privacy Policy"));
+		  elementList.add(newElement("linkText", "Copyright"));
 	    
 		  //Terms of Use
-		  element.put("Terms of Use","linkText");
+		  elementList.add(newElement("linkText", "Terms of Use"));
 	    
 		  //Footer Dominion Enterprises
-		  element.put("Dominion Enterprises","linkText");
+		  elementList.add(newElement("linkText", "Dominion Enterprises"));
 	    
-		  doVerifyElementPresentList(element);
+		  doVerifyElementPresentList(elementList);
 
-		  element.clear();		  
-		  getDriver().findElement(By.id("viewall_img1")).click();		  
-		  element.put("Aero Trader", "linkText");
-		  element.put("ATV Trader", "linkText");
-		  element.put("Boat Trader", "linkText");
-		  element.put("Cycle Trader", "linkText");
-		  element.put("Equipment Trader", "linkText");
-		  element.put("PWC Trader", "linkText");
-		  element.put("RV Trader", "linkText");
-		  element.put("Snowmobile Trader", "linkText");
-		  element.put("Trader Online", "linkText");
-		  element.put("Trailer Trader", "linkText");
-		  element.put("Fraud Awareness Tips", "linkText");
-		  element.put("div.viewDomLogo", "cssSelector");
-		  doVerifyElementPresentList(element);
+		  elementListReset();		  
+		  click("id","viewall_img1");
+		  elementList.add(newElement("linkText", "Aero Trader"));
+		  elementList.add(newElement("linkText", "ATV Trader"));
+		  elementList.add(newElement("linkText", "Boat Trader"));
+		  elementList.add(newElement("linkText", "Cycle Trader"));
+		  elementList.add(newElement("linkText", "Equipment Trader"));
+		  elementList.add(newElement("linkText", "PWC Trader"));
+		  elementList.add(newElement("linkText", "RV Trader"));
+		  elementList.add(newElement("linkText", "Snowmobile Trader"));
+		  elementList.add(newElement("linkText", "Trader Online"));
+		  elementList.add(newElement("linkText", "Trailer Trader"));
+		  elementList.add(newElement("linkText", "Fraud Awareness Tips"));
+		  elementList.add(newElement("cssSelector", "div.viewDomLogo"));
+		  doVerifyElementPresentList(elementList);
 
 		  /*
 		   * Dynamic
 		   */
 
 		  //Body
-		  element.clear();	
-		  element.put("^[\\s\\S]*SELL YOUR COMMERCIAL TRUCK AND TRAILER*[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element,"//div[@id='templateContainer']/div/h1");
+		  elementListReset();	
+		  elementList.add(newElement("xpath", "^[\\s\\S]*SELL YOUR COMMERCIAL TRUCK AND TRAILER*[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList,"//div[@id='templateContainer']/div/h1");
 
-		  element.clear();	
-		  element.put("^[\\s\\S]*For Individual Sellers*[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element,"//div[@id='sellLeft']/div/h1");
+		  elementListReset();	
+		  elementList.add(newElement("xpath", "^[\\s\\S]*For Individual Sellers*[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList,"//div[@id='sellLeft']/div/h1");
 		  
-		  element.clear();	
-		  element.put("^[\\s\\S]*For Dealers*[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element,"//div[@id='sellRight']/div/h1");
+		  elementListReset();	
+		  elementList.add(newElement("xpath", "^[\\s\\S]*For Dealers*[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList,"//div[@id='sellRight']/div/h1");
 		
-		  element.clear();	
-		  element.put("^[\\s\\S]*Sell*[\\s\\S]*$","xpath");
-		  doVerifyTextPresentList(element,"//div[@id='templateContainer']/div/div/span");
+		  elementListReset();	
+		  elementList.add(newElement("xpath", "^[\\s\\S]*Sell*[\\s\\S]*$"));
+		  doVerifyTextPresentList(elementList,"//div[@id='templateContainer']/div/div/span");
 		
 		
 	  }
