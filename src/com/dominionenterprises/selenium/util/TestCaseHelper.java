@@ -272,18 +272,18 @@ public class TestCaseHelper extends TestCaseExt{
 	public void incrementCounterPass(){
 		this.counterPass++;
 		this.incrementCounters();
+		TestCaseHelper.counterPassOverall++;
 	}
 
 	public void incrementCounterFail(){
 		this.counterFail++;
 		this.incrementCounters();
+		TestCaseHelper.counterFailOverall++;
 	}
 
 	private void incrementCounters(){
 		this.counter++;
 		TestCaseHelper.counterOverall++;
-		TestCaseHelper.counterPassOverall++;
-		TestCaseHelper.counterFailOverall++;
 	}
 
 	/*
