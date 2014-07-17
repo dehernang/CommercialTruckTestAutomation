@@ -3,7 +3,6 @@
  */
 package com.dominionenterprises.selenium.util;
 
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -54,8 +53,8 @@ public class TestCaseExt extends TestCase{
 	protected static final String ELEMENT_NOT_PRESENT = "ElementNotPresent";
 	protected static final String TEXT_PRESENT = "TextPresent";
 	protected static final String TEXT_NOT_PRESENT = "TextNotPresent";
-		
 
+	
 	/* 
 	 * Constructor and Destructor
 	 */
@@ -389,13 +388,13 @@ public class TestCaseExt extends TestCase{
 	protected int click(String type, String target){
 		try{	
 			switch(type){		
-				case "linkText":
+				case LINK_TEXT:
 					_driver.findElement(By.linkText(target)).click();
 					break;			
-				case "cssSelector":
+				case CSS_SELECTOR:
 					_driver.findElement(By.cssSelector(target)).click();
 					break;	
-				case "id":
+				case ID:
 					_driver.findElement(By.id(target)).click();
 					break;
 				default:
@@ -414,7 +413,7 @@ public class TestCaseExt extends TestCase{
 	protected int select(String type, String id, String target){
 		try{
 			switch(type){		
-				case "id":
+				case ID:
 					new Select(_driver.findElement(By.id(id))).selectByVisibleText(target);
 					break;				
 				default:
@@ -433,7 +432,7 @@ public class TestCaseExt extends TestCase{
 	protected int input(String type, String id, String text){
 		try{
 			switch(type){		
-				case "id":
+				case ID:
 					_driver.findElement(By.id(id)).clear();
 					_driver.findElement(By.id(id)).sendKeys(text);
 					break;				
@@ -455,19 +454,19 @@ public class TestCaseExt extends TestCase{
 		WebElement el;
 		try{
 			switch(type){		
-				case "id":
+				case ID:
 					el = _driver.findElement(By.id(target));
 					actions.moveToElement(el).perform();
 					break;	
-				case "linkText":
+				case LINK_TEXT:
 					el = _driver.findElement(By.linkText(target));
 					actions.moveToElement(el).perform();
 					break;
-				case "cssSelector":
+				case CSS_SELECTOR:
 					el = _driver.findElement(By.cssSelector(target));
 					actions.moveToElement(el).perform();
 					break;	
-				case "xpath":
+				case XPATH:
 					el = _driver.findElement(By.xpath(target));
 					actions.moveToElement(el).perform();
 					break;		
@@ -488,19 +487,19 @@ public class TestCaseExt extends TestCase{
 		String val = null;
 		try{	
 			switch(type){		
-				case "xpath":
+				case XPATH:
 					WebElement tmp = _driver.findElement(By.xpath(target));
 					val = tmp.getText();
 					break;			
 				default:
-					return "error";			
+					return ERROR;			
 			}
 		}catch(Exception e){
-			return "error";	
+			return ERROR;	
 		}catch(Error e){	
-			return "error";	
+			return ERROR;	
 		}catch(Throwable e){
-			return "error";			  
+			return ERROR;			  
 		}
 		return val;
 	}

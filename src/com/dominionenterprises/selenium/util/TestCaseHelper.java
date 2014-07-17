@@ -40,6 +40,8 @@ public class TestCaseHelper extends TestCaseExt{
 	protected int counterFail;
 	protected int retval;
 	
+	protected static int counterOverall;
+	
 	protected Iterator<String> iterator;
 	protected String lnkName;
 	protected String msg;
@@ -189,10 +191,10 @@ public class TestCaseHelper extends TestCaseExt{
     private void generateResult(int result, String method, String type, String target){    	
     	if(result == TestCaseHelper.PASS){
 			result(target, super.getTestCaseName(), true, method+"-"+type);
-			this.counterPass++;
+			incrementCounterPass();
 		}else{
 			result(target, super.getTestCaseName(), false, method+"-"+type);
-			this.counterFail++;
+			incrementCounterFail();
 		}
     }
    
@@ -247,7 +249,8 @@ public class TestCaseHelper extends TestCaseExt{
 	}
 
     public void printTotalVerification(){
-    	this.println(super.getTestCaseName() + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail);  
+    	this.println(super.getTestCaseName() + " Total: " + this.counter + " Pass: " + this.counterPass + " Fail: " + this.counterFail 
+    			+ " Overall: " + TestCaseHelper.counterOverall);  
     	this.println("----------------------------------------------------------------------");
     }
     
@@ -270,7 +273,18 @@ public class TestCaseHelper extends TestCaseExt{
     	long msec = sec * 1000;
     	Thread.sleep(msec);
     }
+
+    public void incrementCounterPass(){
+    	this.counter++;
+    	this.counterPass++;
+    	TestCaseHelper.counterOverall++;
+    }
     
+    public void incrementCounterFail(){
+    	this.counter++;
+    	this.counterFail++;
+    	TestCaseHelper.counterOverall++;
+    }
     
     /*
      * Operations
@@ -280,7 +294,6 @@ public class TestCaseHelper extends TestCaseExt{
     	for(Map<String, String> list: e){
 			for(Map.Entry<String, String> listEntry : list.entrySet()){
 				retval = this.doVerifyTextPresent(listEntry.getKey(), listEntry.getValue(), locationStr);
-				this.counter++;
 				generateResult(retval,"doVerifyTextPresentList",listEntry.getKey(), listEntry.getValue());
 			}
     	}
@@ -290,7 +303,6 @@ public class TestCaseHelper extends TestCaseExt{
     	for(Map<String, String> list: e){
 			for(Map.Entry<String, String> listEntry : list.entrySet()){		
 				retval = this.doVerifyElementPresent(listEntry.getKey(), listEntry.getValue());
-				this.counter++;
 				generateResult(retval,"doVerifyElementPresentList",listEntry.getKey(), listEntry.getValue());
 			}
     	}
@@ -300,7 +312,6 @@ public class TestCaseHelper extends TestCaseExt{
     	for(Map<String, String> list: e){
 			for(Map.Entry<String, String> listEntry : list.entrySet()){
 				retval = this.doVerifyTextNotPresent(listEntry.getKey(), listEntry.getValue(), locationStr);
-				this.counter++;
 				generateResult(retval,"doVerifyTextNotPresentList",listEntry.getKey(), listEntry.getValue());
 			}
     	}
@@ -310,7 +321,6 @@ public class TestCaseHelper extends TestCaseExt{
     	for(Map<String, String> list: e){
 	    	for(Map.Entry<String, String> listEntry : list.entrySet()){
 				retval = this.doVerifyElementNotPresent(listEntry.getKey(), listEntry.getValue());
-				this.counter++;
 				generateResult(retval,"doVerifyElementNotPresentList",listEntry.getKey(), listEntry.getValue());
 			}
     	}
