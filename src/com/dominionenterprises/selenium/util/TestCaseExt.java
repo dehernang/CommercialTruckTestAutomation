@@ -38,6 +38,7 @@ public class TestCaseExt extends TestCase{
 	private static final String ERROR = "Error";
 	private static final String EXCEPTION = "Exception";
 	private static final String THROWABLE = "Throwable";
+	private static final String SLASH = "/";
 	
 	protected static final int PASS = 1;
 	protected static final int FAIL = 0;
@@ -132,7 +133,7 @@ public class TestCaseExt extends TestCase{
 	public Boolean setBaseUrl(String baseUrl) {
 		this.baseUrl = baseUrl;
 		try{
-			_driver.get(this.baseUrl + "/");
+			_driver.get(this.baseUrl + SLASH);
 		}catch(Throwable e){
 			return false;  		  
 		}
