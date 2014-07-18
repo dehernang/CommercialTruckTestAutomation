@@ -181,12 +181,12 @@ public class TestCaseHelper extends TestCaseExt{
 		return true;
 	}
 
-	private void generateResult(int result, String method, String type, String target){
+	private void generateResult(int result, String method, String type, String target, String locationStr){
 		if(result == TestCaseHelper.PASS){
-			result(target, super.getTestCaseName(), true, method+"-"+type);
+			result(target, super.getTestCaseName(), true, method+"-"+type, locationStr);
 			incrementCounterPass();
 		}else{
-			result(target, super.getTestCaseName(), false, method+"-"+type);
+			result(target, super.getTestCaseName(), false, method+"-"+type, locationStr);
 			incrementCounterFail();
 		}
 	}
@@ -294,7 +294,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map<String, String> list: e){
 			for(Map.Entry<String, String> listEntry : list.entrySet()){
 				retval = this.doVerifyTextPresent(listEntry.getKey(), listEntry.getValue(), locationStr);
-				generateResult(retval,"doVerifyTextPresentList",listEntry.getKey(), listEntry.getValue());
+				generateResult(retval,"doVerifyTextPresentList",listEntry.getKey(), listEntry.getValue(), locationStr);
 			}
 		}
 	}
@@ -303,7 +303,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map<String, String> list: e){
 			for(Map.Entry<String, String> listEntry : list.entrySet()){		
 				retval = this.doVerifyElementPresent(listEntry.getKey(), listEntry.getValue());
-				generateResult(retval,"doVerifyElementPresentList",listEntry.getKey(), listEntry.getValue());
+				generateResult(retval,"doVerifyElementPresentList",listEntry.getKey(), listEntry.getValue(), null);
 			}
 		}
 	}
@@ -312,7 +312,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map<String, String> list: e){
 			for(Map.Entry<String, String> listEntry : list.entrySet()){
 				retval = this.doVerifyTextNotPresent(listEntry.getKey(), listEntry.getValue(), locationStr);
-				generateResult(retval,"doVerifyTextNotPresentList",listEntry.getKey(), listEntry.getValue());
+				generateResult(retval,"doVerifyTextNotPresentList",listEntry.getKey(), listEntry.getValue(), locationStr);
 			}
 		}
 	}
@@ -321,7 +321,7 @@ public class TestCaseHelper extends TestCaseExt{
 		for(Map<String, String> list: e){
 			for(Map.Entry<String, String> listEntry : list.entrySet()){
 				retval = this.doVerifyElementNotPresent(listEntry.getKey(), listEntry.getValue());
-				generateResult(retval,"doVerifyElementNotPresentList",listEntry.getKey(), listEntry.getValue());
+				generateResult(retval,"doVerifyElementNotPresentList",listEntry.getKey(), listEntry.getValue(), null);
 			}
 		}
 	}
