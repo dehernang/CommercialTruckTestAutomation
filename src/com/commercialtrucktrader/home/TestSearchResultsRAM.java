@@ -84,7 +84,7 @@ public class TestSearchResultsRAM extends TestCaseHelper{
 			  getDriver().findElement(By.linkText("HOME")).click();  
 		  }catch(Exception e){
 			  println(e.getMessage());
-			  result(make, TestSearchResultsRAM.class.getSimpleName(), false, "selectByVisibleText");
+			  result(make, TestSearchResultsRAM.class.getSimpleName(), false, "selectByVisibleText", null);
 		  }
 			  
 		  

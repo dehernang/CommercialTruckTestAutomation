@@ -196,10 +196,6 @@ public class TestCaseHelper extends TestCaseExt{
 	 * Printers
 	 */
 
-	public void result(String target, String tcName, Boolean pass, String method){
-		reportTemplate(target,tcName, pass, method, null);
-	}
-
 	public void result(String target, String tcName, Boolean pass, String method, String xpath){
 		reportTemplate(target,tcName, pass, method, xpath);
 	}

@@ -93,7 +93,7 @@ public class TestSearchResults extends TestCaseHelper{
 				  }catch(Exception e){
 					  makeFound = false;
 					  println(e.getMessage());
-					  result(make.getKey(), TestSearchResults.class.getSimpleName(), false, "selectByVisibleText");
+					  result(make.getKey(), TestSearchResults.class.getSimpleName(), false, "selectByVisibleText", null);
 				  }
 				  
 				  if(makeFound){

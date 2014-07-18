@@ -84,7 +84,7 @@ public class TestSearchResultsDodge extends TestCaseHelper{
 			  getDriver().findElement(By.linkText("HOME")).click();
 		  }catch(Exception e){
 			  println(e.getMessage());
-			  result(make, TestSearchResultsDodge.class.getSimpleName(), false, "selectByVisibleText");
+			  result(make, TestSearchResultsDodge.class.getSimpleName(), false, "selectByVisibleText", null);
 		  }
 			  
 		  /*
